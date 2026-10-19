@@ -1,0 +1,87 @@
+[
+  {
+    "group": "Weight and Wellness",
+    "groupNote": null,
+    "items": [
+      { "title": "GLP-3 (retatrutide)", "researchArea": "metabolic signaling research" },
+      { "title": "Oxytocin", "researchArea": "neuroendocrine signaling" },
+      { "title": "PT-141", "researchArea": "melanocortin pathways" },
+      { "title": "KLOW", "researchArea": "tissue-related research" },
+      { "title": "Epithalon", "researchArea": "cellular aging research" }
+    ]
+  },
+  {
+    "group": "Stress and Anxiety",
+    "groupNote": null,
+    "items": [
+      { "title": "Semax", "researchArea": "cognitive signaling research" },
+      { "title": "Selank", "researchArea": "stress-response pathways" },
+      { "title": "Oxytocin", "researchArea": "social bonding pathways" },
+      { "title": "PT-141", "researchArea": "melanocortin research" },
+      { "title": "Epithalon", "researchArea": "cellular aging research" }
+    ]
+  },
+  {
+    "group": "Rejuvenation",
+    "groupNote": null,
+    "items": [
+      { "title": "KLOW", "researchArea": "tissue and skin research" },
+      { "title": "Ipamorelin + CJC-1295", "researchArea": "growth hormone signaling" },
+      { "title": "MOTS-c", "researchArea": "metabolic signaling" },
+      { "title": "SS-31", "researchArea": "mitochondrial function" },
+      { "title": "Kisspeptin", "researchArea": "reproductive hormone signaling" },
+      { "title": "Epithalon", "researchArea": "cellular aging research" }
+    ]
+  },
+  {
+    "group": "Libido, Hormones and Menopause",
+    "groupNote": "Discuss hormone concerns with a licensed clinician.",
+    "items": [
+      { "title": "Kisspeptin", "researchArea": "reproductive hormone pathways" },
+      { "title": "PT-141", "researchArea": "melanocortin pathways" },
+      { "title": "Ipamorelin + CJC-1295", "researchArea": "growth hormone signaling" },
+      { "title": "Epithalon", "researchArea": "cellular aging research" }
+    ]
+  },
+  {
+    "group": "Immune Support, Training and Energy",
+    "groupNote": null,
+    "items": [
+      { "title": "KLOW", "researchArea": "tissue-related research" },
+      { "title": "TA1", "researchArea": "immune modulation research" },
+      { "title": "NAD+", "researchArea": "cellular metabolism" },
+      { "title": "SS-31", "researchArea": "mitochondrial function" },
+      { "title": "MOTS-c", "researchArea": "metabolic signaling" },
+      { "title": "Epithalon", "researchArea": "cellular aging research" },
+      { "title": "Ipamorelin", "researchArea": "growth hormone signaling" },
+      { "title": "CJC-1295", "researchArea": "growth hormone signaling" }
+    ]
+  },
+  {
+    "group": "Sleep",
+    "groupNote": null,
+    "items": [
+      { "title": "DSIP", "researchArea": "investigational sleep signaling" },
+      { "title": "Melatonin", "researchArea": "circadian rhythm signaling" },
+      { "title": "Pinealon", "researchArea": "experimental neuropeptide research" }
+    ]
+  },
+  {
+    "group": "Spike Protein Research",
+    "groupNote": "No proven spike-protein-clearing protocol exists.",
+    "groupSubtitle": "Investigational topics",
+    "items": [
+      { "title": "TA1", "researchArea": "immune modulation" },
+      { "title": "ARA-290", "researchArea": "inflammatory and nerve signaling" },
+      { "title": "SS-31", "researchArea": "mitochondrial function" },
+      { "title": "MOTS-c", "researchArea": "metabolic signaling" },
+      { "title": "NAD+", "researchArea": "cellular metabolism" },
+      { "title": "KLOW", "researchArea": "tissue-related research" },
+      { "title": "Bromelain", "researchArea": "supplement topic" },
+      { "title": "Omega-3", "researchArea": "supplement topic" },
+      { "title": "Vitamin C", "researchArea": "supplement topic" },
+      { "title": "Selenium", "researchArea": "supplement topic" },
+      { "title": "Magnesium", "researchArea": "supplement topic" }
+    ]
+  }
+]

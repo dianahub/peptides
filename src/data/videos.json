@@ -1,0 +1,23 @@
+[
+  {
+    "id": "8cKQEQVorSM",
+    "title": "Featured: Peptide and Longevity Education",
+    "description": "An introduction to peptide research and longevity science from The Longevity Consultants.",
+    "url": "https://www.youtube.com/watch?v=8cKQEQVorSM",
+    "featured": true
+  },
+  {
+    "id": "YsCA5gmYbrU",
+    "title": "Featured: Quick Overview",
+    "description": "A short overview of topics covered in longevity and peptide education.",
+    "url": "https://www.youtube.com/shorts/YsCA5gmYbrU",
+    "featured": true
+  },
+  {
+    "id": "placeholder-3",
+    "title": "Educational Video — Coming Soon",
+    "description": "Additional educational content will be added here. Replace this entry in src/data/videos.json.",
+    "url": "https://www.youtube.com/watch?v=PLACEHOLDER3",
+    "featured": false
+  }
+]
