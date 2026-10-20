@@ -4,12 +4,17 @@ function getEmbedUrl(url: string): string | null {
   try {
     const u = new URL(url);
 
-    // YouTube
+    // YouTube (regular, shorts, youtu.be)
     if (u.hostname.includes("youtube.com") || u.hostname.includes("youtu.be")) {
-      const videoId =
-        u.searchParams.get("v") ??
-        (u.hostname.includes("youtu.be") ? u.pathname.slice(1) : null);
-      if (!videoId || videoId === "PLACEHOLDER1" || videoId === "PLACEHOLDER2" || videoId === "PLACEHOLDER3") return null;
+      let videoId: string | null = null;
+      if (u.hostname.includes("youtu.be")) {
+        videoId = u.pathname.slice(1);
+      } else if (u.pathname.startsWith("/shorts/")) {
+        videoId = u.pathname.split("/shorts/")[1]?.split("/")[0] ?? null;
+      } else {
+        videoId = u.searchParams.get("v");
+      }
+      if (!videoId || videoId.startsWith("PLACEHOLDER")) return null;
       return `https://www.youtube-nocookie.com/embed/${videoId}`;
     }
 
