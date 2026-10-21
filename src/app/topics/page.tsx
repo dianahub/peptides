@@ -3,9 +3,9 @@ import { TopicCard } from "@/components/TopicCard";
 import topicsData from "@/data/topics.json";
 
 export const metadata: Metadata = {
-  title: "Peptide Education Topics",
+  title: "Peptide Education Topics — GLP-3, BPC-157, NAD+, Oxytocin & More",
   description:
-    "Educational information about peptide research areas organized by topic.",
+    "Educational information about peptide and longevity research areas including GLP-3, BPC-157, NAD+, Oxytocin, Epithalon, and more. Independent affiliate of The Longevity Consultants.",
 };
 
 const GLOBAL_NOTICE_TOP =
