@@ -1,5 +1,6 @@
 {
   "KLOW": {
+    "isBlend": true,
     "subtitle": "The KLOW Blend",
     "summary": "KLOW is a combination of four peptides — GHK-Cu, KPV, BPC-157, and TB-500 — currently studied across several research areas involving tissue, immune, and cellular signaling pathways.",
     "ingredients": [
@@ -24,6 +25,98 @@
         "researchArea": "Cell migration signaling, tissue repair pathways, and flexibility-related research."
       }
     ],
-    "consultationNote": "Dosing, scheduling, and reconstitution information is reviewed during a consultation. Ask about KLOW to learn more."
+    "consultationNote": "Dosing, scheduling, and reconstitution information is reviewed during a consultation."
+  },
+  "GLP-3 (retatrutide)": {
+    "summary": "Retatrutide is an investigational triagonist peptide studied for its activity at GLP-1, GIP, and glucagon receptors. Researchers are investigating its role in metabolic signaling pathways related to energy regulation.",
+    "researchNote": "Investigational compound. Not FDA-approved. Research is ongoing."
+  },
+  "Oxytocin": {
+    "summary": "Oxytocin is a naturally occurring neuropeptide produced in the hypothalamus. It is studied for its roles in neuroendocrine signaling, social bonding pathways, and stress-response modulation research.",
+    "researchNote": "Discussed in the context of neuroendocrine and social behavior research."
+  },
+  "PT-141": {
+    "summary": "PT-141 (bremelanotide) is a synthetic melanocortin receptor agonist studied for its activity at melanocortin MC3 and MC4 receptors. Research focuses on its role in central nervous system signaling pathways.",
+    "researchNote": "Investigational melanocortin pathway research."
+  },
+  "Epithalon": {
+    "summary": "Epithalon (Epitalon) is a synthetic tetrapeptide studied for its potential influence on telomerase activity and cellular aging research. It is being investigated in the context of longevity-related signaling pathways.",
+    "researchNote": "Investigational compound in cellular aging research."
+  },
+  "Semax": {
+    "summary": "Semax is a synthetic peptide analog of the ACTH fragment 4–10. Researchers study it for its activity in cognitive signaling and neuroprotective pathway investigations.",
+    "researchNote": "Cognitive signaling research; investigational in many regions."
+  },
+  "Selank": {
+    "summary": "Selank is a synthetic analog of the immunomodulatory peptide tuftsin. It is studied for its activity in stress-response and anxiety-related signaling pathway research.",
+    "researchNote": "Stress-response pathway research; investigational compound."
+  },
+  "Ipamorelin + CJC-1295": {
+    "summary": "This combination pairs a growth hormone releasing peptide (Ipamorelin) with a GHRH analog (CJC-1295). Research focuses on growth hormone secretagogue signaling pathways and their downstream effects on cellular processes.",
+    "researchNote": "Growth hormone axis research; investigational compounds."
+  },
+  "Ipamorelin": {
+    "summary": "Ipamorelin is a selective, third-generation growth hormone secretagogue studied for its activity at GHSR (growth hormone secretagogue receptor) signaling pathways with selectivity research.",
+    "researchNote": "Growth hormone secretagogue research; investigational compound."
+  },
+  "CJC-1295": {
+    "summary": "CJC-1295 is a synthetic GHRH (growth hormone releasing hormone) analog studied for its role in growth hormone signaling, extended half-life dynamics, and downstream cellular pathway research.",
+    "researchNote": "GHRH analog research; investigational compound."
+  },
+  "MOTS-c": {
+    "summary": "MOTS-c is a mitochondria-derived peptide encoded in the mitochondrial genome. It is studied for its role in metabolic signaling, insulin sensitivity research, and mitochondrial-nuclear communication pathways.",
+    "researchNote": "Mitochondria-derived peptide; metabolic signaling research."
+  },
+  "SS-31": {
+    "summary": "SS-31 (elamipretide) is a cardiolipin-targeting tetrapeptide studied for its role in mitochondrial membrane function, cellular energy pathway research, and mitochondrial integrity signaling.",
+    "researchNote": "Mitochondrial function research; investigational compound."
+  },
+  "Kisspeptin": {
+    "summary": "Kisspeptin is a naturally occurring neuropeptide encoded by the KISS1 gene. It is studied for its central role in reproductive hormone signaling, particularly in the regulation of GnRH release from the hypothalamus.",
+    "researchNote": "Reproductive hormone signaling research."
+  },
+  "TA1": {
+    "summary": "Thymosin Alpha-1 (TA1) is a thymic peptide studied for its role in immune modulation research, T-cell signaling pathways, and innate and adaptive immune system interaction.",
+    "researchNote": "Immune modulation research; approved in some countries, investigational in others."
+  },
+  "NAD+": {
+    "summary": "Nicotinamide adenine dinucleotide (NAD+) is a coenzyme present in all living cells. It is studied for its role in cellular energy metabolism, DNA repair signaling, sirtuin activation research, and aging-related cellular pathways.",
+    "researchNote": "Cellular metabolism and longevity research."
+  },
+  "DSIP": {
+    "summary": "Delta Sleep-Inducing Peptide (DSIP) is an investigational neuropeptide studied for its potential role in sleep-regulating signaling pathways and circadian rhythm-related research.",
+    "researchNote": "Investigational sleep signaling research."
+  },
+  "Melatonin": {
+    "summary": "Melatonin is a naturally occurring hormone produced by the pineal gland. It is studied for its role in circadian rhythm regulation, photoperiodic signaling, and antioxidant activity research.",
+    "researchNote": "Circadian rhythm signaling; widely studied."
+  },
+  "Pinealon": {
+    "summary": "Pinealon is an experimental tripeptide studied in preclinical research for its potential neuroprotective signaling properties and its possible interactions with pineal gland function.",
+    "researchNote": "Experimental neuropeptide research; limited human data."
+  },
+  "ARA-290": {
+    "summary": "ARA-290 (cibinetide) is an erythropoietin-derived peptide studied for its activity at the innate repair receptor. Research explores its role in inflammatory and nerve signaling pathway modulation.",
+    "researchNote": "Inflammatory and nerve signaling research; investigational compound."
+  },
+  "Bromelain": {
+    "summary": "Bromelain is a proteolytic enzyme complex derived from pineapple. It is studied for its activity in inflammatory pathway research, protein digestion, and immune signaling investigations.",
+    "researchNote": "Supplement topic; dietary enzyme with ongoing research."
+  },
+  "Omega-3": {
+    "summary": "Omega-3 fatty acids (EPA and DHA) are essential polyunsaturated fats studied for their roles in inflammatory signaling, cardiovascular pathway research, and neurological function investigations.",
+    "researchNote": "Supplement topic; widely researched essential fatty acids."
+  },
+  "Vitamin C": {
+    "summary": "Vitamin C (ascorbic acid) is an essential water-soluble nutrient studied for its role in antioxidant activity, collagen synthesis pathways, and immune signaling research.",
+    "researchNote": "Supplement topic; essential nutrient with broad research."
+  },
+  "Selenium": {
+    "summary": "Selenium is an essential trace mineral incorporated into selenoproteins. It is studied for its role in antioxidant enzyme activity, thyroid hormone signaling, and immune function pathway research.",
+    "researchNote": "Supplement topic; essential trace mineral."
+  },
+  "Magnesium": {
+    "summary": "Magnesium is an essential mineral that acts as a cofactor in over 300 enzymatic reactions. It is studied for its role in muscle and nerve signaling, energy metabolism, and DNA synthesis pathway research.",
+    "researchNote": "Supplement topic; essential mineral with broad research."
   }
 }

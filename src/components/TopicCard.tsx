@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { KlowModal } from "./KlowModal";
+import { TopicDetailModal } from "./TopicDetailModal";
+import topicDetails from "@/data/topicDetails.json";
 
 interface TopicCardProps {
   title: string;
@@ -9,6 +10,7 @@ interface TopicCardProps {
 
 export function TopicCard({ title, researchArea, group }: TopicCardProps) {
   const params = new URLSearchParams({ topic: `${title} (${group})` });
+  const hasDetail = title in topicDetails;
   const isKlow = title === "KLOW";
 
   return (
@@ -17,8 +19,8 @@ export function TopicCard({ title, researchArea, group }: TopicCardProps) {
         <h3 className="font-semibold text-stone-800">{title}</h3>
         <p className="text-sm text-stone-500 mt-0.5">{researchArea}</p>
       </div>
-      {isKlow ? (
-        <KlowModal group={group} />
+      {hasDetail ? (
+        <TopicDetailModal title={title} group={group} />
       ) : (
         <Link
           href={`/consultation?${params.toString()}`}
