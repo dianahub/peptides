@@ -32,12 +32,60 @@
     "researchNote": "Investigational compound. Not FDA-approved. Research is ongoing."
   },
   "Oxytocin": {
-    "summary": "Oxytocin is a naturally occurring neuropeptide produced in the hypothalamus. It is studied for its roles in neuroendocrine signaling, social bonding pathways, and stress-response modulation research.",
-    "researchNote": "Discussed in the context of neuroendocrine and social behavior research."
+    "bottleImage": "/oxytocin-bottle.svg",
+    "bottleAlt": "Oxytocin peptide bottle",
+    "subtitle": "Peptide Hormone & Neurotransmitter",
+    "summary": "Oxytocin is a naturally occurring neuropeptide and hormone produced in the hypothalamus and released by the pituitary gland. It is studied for its roles across several signaling pathways:",
+    "researchAreas": [
+      {
+        "area": "Neuroendocrine & Stress Signaling",
+        "detail": "Researchers study oxytocin's interaction with the amygdala and the hypothalamic-pituitary-adrenal (HPA) axis, investigating its role in cortisol regulation and stress-response modulation pathways."
+      },
+      {
+        "area": "Social Behavior & Bonding Pathways",
+        "detail": "Studies examine its influence on social recognition, trust signaling, and affiliative behavior research in both animal models and human subjects."
+      },
+      {
+        "area": "Mood & Neurotransmitter Signaling",
+        "detail": "Research investigates oxytocin's interaction with serotonin and dopamine pathways and its role in mood-related signaling research."
+      },
+      {
+        "area": "Metabolic & Appetite Signaling",
+        "detail": "Studies explore its role in energy balance, appetite-regulating neural pathways, and metabolic signaling research."
+      },
+      {
+        "area": "Sexual Function & Reproductive Signaling",
+        "detail": "Research examines its role in reproductive behavior, arousal-related pathways, and intimacy-related neuroendocrine signaling."
+      },
+      {
+        "area": "Analgesic Pathway Research",
+        "detail": "Researchers study oxytocin's interaction with spinal pain-modulation pathways and opioid receptor signaling in the context of pain research."
+      }
+    ],
+    "researchNote": "Naturally occurring hormone; investigational for many of the uses described. Not medical advice."
   },
   "PT-141": {
-    "summary": "PT-141 (bremelanotide) is a synthetic melanocortin receptor agonist studied for its activity at melanocortin MC3 and MC4 receptors. Research focuses on its role in central nervous system signaling pathways.",
-    "researchNote": "Investigational melanocortin pathway research."
+    "subtitle": "Melanocortin Receptor Research Peptide",
+    "summary": "PT-141 (bremelanotide) is a synthetic melanocortin receptor agonist studied for its activity at MC3 and MC4 receptors in the central nervous system. A pharmaceutical version (Vyleesi) received FDA approval for hypoactive sexual desire disorder in premenopausal women. Research covers several signaling areas:",
+    "researchAreas": [
+      {
+        "area": "Melanocortin Receptor Signaling",
+        "detail": "Research focuses on PT-141's activity at MC3 and MC4 receptors and its downstream effects on dopamine and norepinephrine signaling pathways."
+      },
+      {
+        "area": "Sexual Function Pathway Research",
+        "detail": "Studies examine its role in libido-related neural pathways, sexual arousal signaling, and desire-related CNS activity in both men and women."
+      },
+      {
+        "area": "Mood & Motivation Signaling",
+        "detail": "Researchers investigate its influence on dopaminergic pathways involved in mood, motivation, and reward-system signaling research."
+      },
+      {
+        "area": "Energy & CNS Activation Research",
+        "detail": "Studies explore its role in central nervous system activation signaling, alertness pathways, and energy-related neurological research."
+      }
+    ],
+    "researchNote": "A pharmaceutical version (Vyleesi/bremelanotide) is FDA-approved for HSDD in premenopausal women. PT-141 as a research peptide is investigational. Not medical advice."
   },
   "Epithalon": {
     "summary": "Epithalon (Epitalon) is a synthetic tetrapeptide studied for its potential influence on telomerase activity and cellular aging research. It is being investigated in the context of longevity-related signaling pathways.",

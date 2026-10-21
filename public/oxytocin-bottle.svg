@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 200" width="120" height="200" role="img" aria-label="Oxytocin peptide bottle">
+  <!-- Bottle neck -->
+  <rect x="44" y="20" width="32" height="18" rx="4" fill="#1a1a1a"/>
+  <!-- Bottle cap -->
+  <rect x="40" y="10" width="40" height="14" rx="6" fill="#111111"/>
+  <!-- Bottle body -->
+  <rect x="22" y="36" width="76" height="130" rx="12" fill="#1c1c1c"/>
+  <!-- Bottle shine -->
+  <rect x="30" y="45" width="10" height="80" rx="5" fill="#ffffff" opacity="0.08"/>
+  <!-- Label background -->
+  <rect x="28" y="64" width="64" height="76" rx="6" fill="#f8f8f8" opacity="0.95"/>
+  <!-- Label top accent bar -->
+  <rect x="28" y="64" width="64" height="10" rx="6" fill="#222222"/>
+  <rect x="28" y="70" width="64" height="4" fill="#222222"/>
+  <!-- Oxytocin text -->
+  <text x="60" y="96" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="900" fill="#111111" letter-spacing="0.5">Oxytocin</text>
+  <!-- Tagline -->
+  <text x="60" y="110" text-anchor="middle" font-family="sans-serif" font-size="5.5" fill="#555555" letter-spacing="0.5">PEPTIDE HORMONE</text>
+  <!-- Divider -->
+  <line x1="36" y1="116" x2="84" y2="116" stroke="#cccccc" stroke-width="0.8"/>
+  <!-- Research areas -->
+  <text x="60" y="126" text-anchor="middle" font-family="sans-serif" font-size="5" fill="#333333">Neuroendocrine Signaling</text>
+  <text x="60" y="136" text-anchor="middle" font-family="sans-serif" font-size="5" fill="#333333">Social Bonding Research</text>
+  <!-- Bottom label accent -->
+  <rect x="28" y="132" width="64" height="8" rx="0" fill="#222222"/>
+  <rect x="28" y="134" width="64" height="6" rx="6" fill="#222222"/>
+  <!-- Bottom shine -->
+  <ellipse cx="60" cy="164" rx="35" ry="6" fill="#000000" opacity="0.25"/>
+</svg>

@@ -5,16 +5,17 @@ import Image from "next/image";
 import Link from "next/link";
 import topicDetails from "@/data/topicDetails.json";
 
-type TopicKey = keyof typeof topicDetails;
-
-interface TopicDetail {
+type TopicDetail = {
   isBlend?: boolean;
   subtitle?: string;
+  bottleImage?: string;
+  bottleAlt?: string;
   summary: string;
   researchNote?: string;
   consultationNote?: string;
   ingredients?: { name: string; label: string; researchArea: string }[];
-}
+  researchAreas?: { area: string; detail: string }[];
+};
 
 interface Props {
   title: string;
@@ -29,6 +30,8 @@ export function TopicDetailModal({ title, group }: Props) {
   if (!detail) return null;
 
   const isKlow = detail.isBlend;
+  const bottleImage = isKlow ? "/klow-bottle.svg" : detail.bottleImage;
+  const bottleAlt = isKlow ? "KLOW peptide blend bottle" : detail.bottleAlt;
 
   return (
     <>
@@ -47,7 +50,7 @@ export function TopicDetailModal({ title, group }: Props) {
         <div
           role="dialog"
           aria-modal="true"
-          aria-labelledby={`modal-title-${title.replace(/\s+/g, "-")}`}
+          aria-labelledby={`modal-title-${title.replace(/[\s+()]/g, "-")}`}
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
         >
           <div
@@ -68,11 +71,11 @@ export function TopicDetailModal({ title, group }: Props) {
             </button>
 
             {/* Header */}
-            <div className={`flex items-center gap-4 mb-5 ${isKlow ? "" : ""}`}>
-              {isKlow && (
+            <div className="flex items-center gap-4 mb-5">
+              {bottleImage && (
                 <Image
-                  src="/klow-bottle.svg"
-                  alt="KLOW peptide blend bottle"
+                  src={bottleImage}
+                  alt={bottleAlt ?? `${title} bottle`}
                   width={60}
                   height={100}
                   className="flex-shrink-0"
@@ -80,13 +83,15 @@ export function TopicDetailModal({ title, group }: Props) {
               )}
               <div>
                 <h2
-                  id={`modal-title-${title.replace(/\s+/g, "-")}`}
+                  id={`modal-title-${title.replace(/[\s+()]/g, "-")}`}
                   className={`text-2xl font-bold ${isKlow ? "text-blue-900" : "text-stone-900"}`}
                 >
                   {title}
                 </h2>
                 {detail.subtitle && (
-                  <p className="text-sm text-blue-600 font-medium">{detail.subtitle}</p>
+                  <p className={`text-sm font-medium mt-0.5 ${isKlow ? "text-blue-600" : "text-teal-600"}`}>
+                    {detail.subtitle}
+                  </p>
                 )}
               </div>
             </div>
@@ -98,6 +103,23 @@ export function TopicDetailModal({ title, group }: Props) {
 
             {/* Summary */}
             <p className="text-sm text-stone-700 mb-4 leading-relaxed">{detail.summary}</p>
+
+            {/* Research areas list */}
+            {detail.researchAreas && detail.researchAreas.length > 0 && (
+              <>
+                <h3 className="font-semibold text-stone-800 mb-3 text-sm uppercase tracking-wide">
+                  Research areas
+                </h3>
+                <div className="space-y-3 mb-4">
+                  {detail.researchAreas.map((ra) => (
+                    <div key={ra.area} className="bg-stone-50 rounded-lg px-4 py-3">
+                      <p className="font-semibold text-stone-800 text-sm">{ra.area}</p>
+                      <p className="text-xs text-stone-600 mt-1">{ra.detail}</p>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
 
             {/* KLOW ingredient breakdown */}
             {isKlow && detail.ingredients && (
@@ -119,7 +141,7 @@ export function TopicDetailModal({ title, group }: Props) {
               </>
             )}
 
-            {/* Research note */}
+            {/* Research / consultation note */}
             {(detail.researchNote || detail.consultationNote) && (
               <p className="text-xs text-stone-500 italic mb-5 border-t border-stone-100 pt-4">
                 {detail.consultationNote ?? detail.researchNote}
