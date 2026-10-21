@@ -1,0 +1,29 @@
+{
+  "KLOW": {
+    "subtitle": "The KLOW Blend",
+    "summary": "KLOW is a combination of four peptides — GHK-Cu, KPV, BPC-157, and TB-500 — currently studied across several research areas involving tissue, immune, and cellular signaling pathways.",
+    "ingredients": [
+      {
+        "name": "GHK-Cu",
+        "label": "Copper Peptide",
+        "researchArea": "Collagen synthesis signaling, tissue remodeling, antioxidant activity, and angiogenesis pathway research."
+      },
+      {
+        "name": "KPV",
+        "label": "Tripeptide",
+        "researchArea": "Inflammatory signaling pathways and immune modulation research."
+      },
+      {
+        "name": "BPC-157",
+        "label": "Body Protection Compound",
+        "researchArea": "Musculoskeletal tissue signaling, gastrointestinal tract research, nerve signaling, and angiogenesis pathway research."
+      },
+      {
+        "name": "TB-500",
+        "label": "Thymosin Beta-4 Fragment",
+        "researchArea": "Cell migration signaling, tissue repair pathways, and flexibility-related research."
+      }
+    ],
+    "consultationNote": "Dosing, scheduling, and reconstitution information is reviewed during a consultation. Ask about KLOW to learn more."
+  }
+}
