@@ -30,20 +30,12 @@ export function Nav() {
         className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 gap-6"
         aria-label="Main navigation"
       >
-        <div className="flex items-center gap-4 flex-shrink-0">
-          <a
-            href="https://futurotekhealth.com"
-            className="text-xs text-white/50 hover:text-white/80 transition-colors hidden sm:block whitespace-nowrap"
-          >
-            ← Futurotek Health
-          </a>
-          <Link
-            href="/"
-            className="font-serif font-medium text-2xl text-white tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
-          >
-            {SITE_NAME}
-          </Link>
-        </div>
+        <Link
+          href="/"
+          className="font-serif font-medium text-2xl text-white tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded flex-shrink-0"
+        >
+          {SITE_NAME}
+        </Link>
 
         <a
           href="tel:+12026400054"
