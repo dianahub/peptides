@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { VideoCard } from "@/components/VideoCard";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/lib/config";
 import videosData from "@/data/videos.json";
@@ -53,7 +52,6 @@ export default function HomePage() {
                 Explore topics
               </Link>
             </div>
-            <AffiliateDisclosure className="max-w-md" />
           </div>
 
           {/* Right: decorative panel with molecule illustration */}
@@ -162,7 +160,6 @@ export default function HomePage() {
           Request a free consultation and get connected with an expert who can
           answer your questions.
         </p>
-        <AffiliateDisclosure className="max-w-xl mx-auto mb-6 text-left" />
         <Link
           href="/consultation"
           className="inline-block text-white font-medium rounded px-8 py-3 text-sm transition-all hover:brightness-110 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
