@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const GLOBAL_NOTICE_TOP =
   "Educational information only. Investigational uses may lack FDA approval. Not medical advice or a treatment plan.";
-const GLOBAL_NOTICE_BOTTOM = "Discuss any health concerns with a licensed clinician.";
+const GLOBAL_NOTICE_BOTTOM = "";
 
 interface TopicGroup {
   group: string;
@@ -32,7 +32,6 @@ export default function TopicsPage() {
         className="bg-amber-50 border border-amber-200 rounded-md px-4 py-3 text-sm text-stone-700 mb-8"
       >
         <p>{GLOBAL_NOTICE_TOP}</p>
-        <p className="mt-1 font-medium">{GLOBAL_NOTICE_BOTTOM}</p>
       </div>
 
       <div className="space-y-12">
@@ -81,7 +80,6 @@ export default function TopicsPage() {
         className="bg-amber-50 border border-amber-200 rounded-md px-4 py-3 text-sm text-stone-700 mt-12"
       >
         <p>{GLOBAL_NOTICE_TOP}</p>
-        <p className="mt-1 font-medium">{GLOBAL_NOTICE_BOTTOM}</p>
       </div>
     </div>
   );

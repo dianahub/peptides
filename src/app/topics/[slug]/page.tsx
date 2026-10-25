@@ -132,7 +132,7 @@ export default async function TopicPage({
 
       {/* Disclaimer */}
       <div className="bg-amber-50 border border-amber-200 rounded-md px-4 py-3 text-sm text-stone-700 mb-8">
-        Educational information only. Investigational uses may lack FDA approval. Not medical advice or a treatment plan. Discuss any health concerns with a licensed clinician.
+        Educational information only. Investigational uses may lack FDA approval. Not medical advice or a treatment plan.
       </div>
 
       {/* Summary */}
@@ -222,11 +222,6 @@ export default async function TopicPage({
           in a free consultation to learn more.
         </p>
       )}
-
-      {/* Bottom disclaimer */}
-      <p className="text-sm text-stone-500 mb-8">
-        Discuss any health concerns with a licensed clinician before making health decisions.
-      </p>
 
       {/* CTA */}
       <div className="bg-sky-50 border border-sky-200 rounded-xl p-6">
