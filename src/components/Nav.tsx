@@ -39,7 +39,7 @@ export function Nav() {
           </a>
           <Link
             href="/"
-            className="font-serif font-medium text-lg text-white tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
+            className="font-serif font-medium text-2xl text-white tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
           >
             {SITE_NAME}
           </Link>
