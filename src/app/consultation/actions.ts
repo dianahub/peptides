@@ -1,11 +1,6 @@
 "use server";
 
 import { z } from "zod";
-import { db } from "@/db";
-import { consultationRequests } from "@/db/schema";
-import { hashIp } from "@/lib/ip-hash";
-import { checkRateLimit, recordRateLimitHit } from "@/lib/rate-limit";
-import { sendAdminNotification } from "@/lib/email";
 import { headers } from "next/headers";
 
 const CONSENT_TEXT =
@@ -28,13 +23,7 @@ type FormState = {
   fieldErrors?: Record<string, string>;
 } | null;
 
-function getClientIp(headersList: Headers): string {
-  return (
-    headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ??
-    headersList.get("x-real-ip") ??
-    "unknown"
-  );
-}
+const LEAD_API = process.env.LEAD_API_URL ?? "https://futurotekhealth.com/api/lead";
 
 export async function submitConsultation(
   _prev: FormState,
@@ -64,37 +53,36 @@ export async function submitConsultation(
   }
 
   const headersList = await headers();
-  const ip = getClientIp(headersList);
-  const ipHash = hashIp(ip);
+  const clientIp =
+    headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    headersList.get("x-real-ip") ??
+    "unknown";
 
-  const allowed = await checkRateLimit(ipHash);
-  if (!allowed) {
-    return {
-      error: "Too many requests. Please try again later.",
-    };
+  try {
+    const res = await fetch(LEAD_API, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Client-IP": clientIp,
+      },
+      body: JSON.stringify({
+        name: parsed.data.name,
+        email: parsed.data.email,
+        interest: parsed.data.topic ?? "Peptides",
+        source: "peptides",
+      }),
+    });
+
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      if (res.status === 429) return { error: "Too many requests. Please try again later." };
+      console.error("[submitConsultation] API error:", res.status, data);
+      return { error: "Something went wrong. Please try again." };
+    }
+  } catch (err) {
+    console.error("[submitConsultation] fetch error:", err);
+    return { error: "Could not submit your request. Please try again." };
   }
-
-  const now = new Date();
-
-  await db.insert(consultationRequests).values({
-    name: parsed.data.name,
-    email: parsed.data.email,
-    message: parsed.data.message ?? null,
-    topic: parsed.data.topic ?? null,
-    consentGiven: true,
-    consentText: CONSENT_TEXT,
-    consentedAt: now,
-    ipHash,
-    status: "new",
-  });
-
-  await recordRateLimitHit(ipHash);
-
-  await sendAdminNotification({
-    name: parsed.data.name,
-    email: parsed.data.email,
-    topic: parsed.data.topic ?? null,
-  });
 
   return { success: true };
 }

@@ -26,26 +26,11 @@ export function ConsultationForm({ defaultTopic }: Props) {
       <div
         role="alert"
         aria-live="polite"
-        className="bg-sky-50 border border-sky-200 rounded-xl p-8 text-center"
+        className="bg-sage border border-[rgba(20,48,77,0.2)] rounded-xl p-8 text-center"
       >
-        <svg
-          className="mx-auto h-12 w-12 text-sky-500 mb-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <h2 className="text-xl font-semibold text-sky-800 mb-2">
-          Request received — thank you!
-        </h2>
-        <p className="text-stone-600">
+        <p className="text-2xl mb-2">✓</p>
+        <p className="text-lg font-serif text-navy mb-1">Request received — thank you!</p>
+        <p className="text-navy-soft text-sm">
           Your consultation request has been submitted. You&apos;ll be contacted
           to schedule a free consultation. In the meantime, feel free to keep
           exploring the educational content on this site.
@@ -65,7 +50,7 @@ export function ConsultationForm({ defaultTopic }: Props) {
       {state?.error && (
         <div
           role="alert"
-          className="bg-red-50 border border-red-200 text-red-700 rounded-md px-4 py-3 text-sm"
+          className="text-sm text-red-700 bg-red-50 border border-red-200 rounded px-4 py-2"
         >
           {state.error}
         </div>
@@ -79,86 +64,74 @@ export function ConsultationForm({ defaultTopic }: Props) {
 
       <input type="hidden" name="topic" value={defaultTopic ?? ""} />
 
-      <div>
-        <label
-          htmlFor="name"
-          className="block text-sm font-medium text-stone-700 mb-1"
-        >
-          Full name <span aria-hidden="true">*</span>
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          required
-          autoComplete="name"
-          className="w-full border border-stone-300 rounded-md px-3 py-2 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
-          placeholder="Your name"
-          aria-required="true"
-          aria-describedby={state?.fieldErrors?.name ? "name-error" : undefined}
-        />
-        {state?.fieldErrors?.name && (
-          <p id="name-error" className="text-red-600 text-xs mt-1" role="alert">
-            {state.fieldErrors.name}
-          </p>
-        )}
-      </div>
-
-      <div>
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-stone-700 mb-1"
-        >
-          Email address <span aria-hidden="true">*</span>
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          autoComplete="email"
-          className="w-full border border-stone-300 rounded-md px-3 py-2 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
-          placeholder="you@example.com"
-          aria-required="true"
-          aria-describedby={state?.fieldErrors?.email ? "email-error" : undefined}
-        />
-        {state?.fieldErrors?.email && (
-          <p id="email-error" className="text-red-600 text-xs mt-1" role="alert">
-            {state.fieldErrors.email}
-          </p>
-        )}
+      <div className="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-navy mb-1">
+            Full name <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            autoComplete="name"
+            placeholder="Your name"
+            className="w-full rounded border border-[rgba(20,48,77,0.2)] bg-paper px-4 py-2.5 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-navy-soft focus:border-transparent"
+            aria-required="true"
+            aria-describedby={state?.fieldErrors?.name ? "name-error" : undefined}
+          />
+          {state?.fieldErrors?.name && (
+            <p id="name-error" className="text-red-600 text-xs mt-1" role="alert">
+              {state.fieldErrors.name}
+            </p>
+          )}
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-navy mb-1">
+            Email address <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autoComplete="email"
+            placeholder="you@example.com"
+            className="w-full rounded border border-[rgba(20,48,77,0.2)] bg-paper px-4 py-2.5 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-navy-soft focus:border-transparent"
+            aria-required="true"
+            aria-describedby={state?.fieldErrors?.email ? "email-error" : undefined}
+          />
+          {state?.fieldErrors?.email && (
+            <p id="email-error" className="text-red-600 text-xs mt-1" role="alert">
+              {state.fieldErrors.email}
+            </p>
+          )}
+        </div>
       </div>
 
       {defaultTopic && (
-        <div className="bg-sky-50 border border-sky-200 rounded-md px-4 py-3 text-sm text-sky-800">
+        <div className="bg-sage border border-[rgba(20,48,77,0.2)] rounded px-4 py-3 text-sm text-navy">
           Topic of interest: <strong>{defaultTopic}</strong>
         </div>
       )}
 
       <div>
-        <label
-          htmlFor="message"
-          className="block text-sm font-medium text-stone-700 mb-1"
-        >
-          Message{" "}
-          <span className="text-stone-400 font-normal">(optional)</span>
+        <label htmlFor="message" className="block text-sm font-medium text-navy mb-1">
+          Message <span className="text-navy-soft font-normal">(optional)</span>
         </label>
         <textarea
           id="message"
           name="message"
           rows={4}
           maxLength={1000}
-          className="w-full border border-stone-300 rounded-md px-3 py-2 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent resize-y"
           placeholder="Any questions or context you'd like to share…"
+          className="w-full rounded border border-[rgba(20,48,77,0.2)] bg-paper px-4 py-2.5 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-navy-soft focus:border-transparent resize-y"
           aria-describedby="message-note"
         />
-        <p id="message-note" className="text-xs text-stone-400 mt-1">
-          Please don&apos;t include medical or personal health details. Max 1000
-          characters.
+        <p id="message-note" className="text-xs text-navy-soft mt-1">
+          Please don&apos;t include medical or personal health details. Max 1000 characters.
         </p>
       </div>
-
-      <AffiliateDisclosure />
 
       <div className="flex items-start gap-3">
         <input
@@ -166,15 +139,11 @@ export function ConsultationForm({ defaultTopic }: Props) {
           id="consent"
           name="consent"
           required
-          className="mt-0.5 h-4 w-4 rounded border-stone-300 text-sky-600 focus:ring-sky-500"
+          className="mt-0.5 h-4 w-4 rounded border-[rgba(20,48,77,0.2)] text-navy focus:ring-navy-soft"
           aria-required="true"
           aria-describedby={state?.fieldErrors?.consent ? "consent-error" : "consent-label"}
         />
-        <label
-          id="consent-label"
-          htmlFor="consent"
-          className="text-sm text-stone-600"
-        >
+        <label id="consent-label" htmlFor="consent" className="text-xs text-navy-soft leading-relaxed">
           {CONSENT_TEXT} <span aria-hidden="true">*</span>
         </label>
       </div>
@@ -187,7 +156,8 @@ export function ConsultationForm({ defaultTopic }: Props) {
       <button
         type="submit"
         disabled={pending}
-        className="w-full bg-sky-600 text-white font-medium rounded-md px-6 py-3 hover:bg-sky-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
+        className="w-full sm:w-auto text-white font-medium rounded px-8 py-3 text-sm transition-all hover:brightness-110 hover:-translate-y-0.5 disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
+        style={{ background: "linear-gradient(135deg, #9c6f16 0%, #7c540c 100%)" }}
         aria-busy={pending}
       >
         {pending ? "Submitting…" : "Request free consultation"}
