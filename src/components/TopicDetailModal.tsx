@@ -14,7 +14,7 @@ type TopicDetail = {
   researchNote?: string;
   consultationNote?: string;
   ingredients?: { name: string; label: string; researchArea: string }[];
-  researchAreas?: { area: string; detail: string }[];
+  researchAreas?: { area: string; detail: string; links?: { label: string; url: string }[] }[];
 };
 
 interface Props {
@@ -40,7 +40,7 @@ export function TopicDetailModal({ title, group }: Props) {
         className={`mt-auto text-sm font-medium rounded px-3 py-1.5 transition-colors text-center w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 ${
           isKlow
             ? "text-blue-700 border border-blue-300 hover:bg-blue-50 focus-visible:ring-blue-500"
-            : "text-teal-700 border border-teal-300 hover:bg-teal-50 focus-visible:ring-teal-500"
+            : "text-sky-700 border border-sky-300 hover:bg-sky-50 focus-visible:ring-sky-500"
         }`}
       >
         Learn about {title}
@@ -62,7 +62,7 @@ export function TopicDetailModal({ title, group }: Props) {
           <div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6">
             <button
               onClick={() => setOpen(false)}
-              className="absolute top-4 right-4 text-stone-400 hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 rounded"
+              className="absolute top-4 right-4 text-stone-400 hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded"
               aria-label="Close"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -89,7 +89,7 @@ export function TopicDetailModal({ title, group }: Props) {
                   {title}
                 </h2>
                 {detail.subtitle && (
-                  <p className={`text-sm font-medium mt-0.5 ${isKlow ? "text-blue-600" : "text-teal-600"}`}>
+                  <p className={`text-sm font-medium mt-0.5 ${isKlow ? "text-blue-600" : "text-sky-600"}`}>
                     {detail.subtitle}
                   </p>
                 )}
@@ -115,6 +115,21 @@ export function TopicDetailModal({ title, group }: Props) {
                     <div key={ra.area} className="bg-stone-50 rounded-lg px-4 py-3">
                       <p className="font-semibold text-stone-800 text-sm">{ra.area}</p>
                       <p className="text-xs text-stone-600 mt-1">{ra.detail}</p>
+                      {ra.links && ra.links.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5 mt-2">
+                          {ra.links.map((link) => (
+                            <a
+                              key={link.url}
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-xs text-sky-700 bg-sky-50 border border-sky-200 rounded px-2 py-0.5 hover:bg-sky-100 transition-colors"
+                            >
+                              <span>↗</span> {link.label}
+                            </a>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -152,7 +167,7 @@ export function TopicDetailModal({ title, group }: Props) {
             <Link
               href={`/consultation?${params.toString()}`}
               onClick={() => setOpen(false)}
-              className="block w-full bg-teal-600 text-white font-semibold text-center rounded-md px-4 py-3 hover:bg-teal-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+              className="block w-full bg-sky-600 text-white font-semibold text-center rounded-md px-4 py-3 hover:bg-sky-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
             >
               Ask about {title} — free consultation
             </Link>

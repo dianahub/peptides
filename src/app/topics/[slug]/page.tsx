@@ -16,7 +16,8 @@ type TopicDetail = {
   researchNote?: string;
   consultationNote?: string;
   ingredients?: { name: string; label: string; researchArea: string }[];
-  researchAreas?: { area: string; detail: string }[];
+  researchAreas?: { area: string; detail: string; links?: { label: string; url: string }[] }[];
+  citations?: { label: string; url: string }[];
 };
 
 interface TopicGroup {
@@ -90,7 +91,7 @@ export default async function TopicPage({
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="text-sm text-stone-400 mb-6">
-        <Link href="/topics" className="hover:text-teal-700">Topics</Link>
+        <Link href="/topics" className="hover:text-sky-700">Topics</Link>
         <span className="mx-2">›</span>
         <span className="text-stone-600">{topic.title}</span>
       </nav>
@@ -112,7 +113,7 @@ export default async function TopicPage({
             {topic.title} Research
           </h1>
           {detail?.subtitle && (
-            <p className="text-teal-700 font-medium mt-1">{detail.subtitle}</p>
+            <p className="text-sky-700 font-medium mt-1">{detail.subtitle}</p>
           )}
           <p className="text-sm text-stone-500 mt-2">
             Research area: {topic.researchArea}
@@ -148,6 +149,21 @@ export default async function TopicPage({
                   <div key={ra.area} className="bg-stone-50 border border-stone-200 rounded-lg px-5 py-4">
                     <h3 className="font-semibold text-stone-800 mb-1">{ra.area}</h3>
                     <p className="text-sm text-stone-600 leading-relaxed">{ra.detail}</p>
+                    {ra.links && ra.links.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        {ra.links.map((link) => (
+                          <a
+                            key={link.url}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-xs text-sky-700 bg-sky-50 border border-sky-200 rounded px-2 py-0.5 hover:bg-sky-100 transition-colors"
+                          >
+                            <span>↗</span> {link.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -174,9 +190,30 @@ export default async function TopicPage({
 
           {/* Research / consultation note */}
           {(detail.researchNote || detail.consultationNote) && (
-            <p className="text-sm text-stone-500 italic border-t border-stone-200 pt-4 mb-8">
+            <p className="text-sm text-stone-500 italic border-t border-stone-200 pt-4 mb-4">
               {detail.consultationNote ?? detail.researchNote}
             </p>
+          )}
+
+          {/* Citations */}
+          {detail.citations && detail.citations.length > 0 && (
+            <section className="mb-8">
+              <h2 className="text-base font-semibold text-stone-700 mb-2">Research References</h2>
+              <ul className="space-y-1 not-prose">
+                {detail.citations.map((c) => (
+                  <li key={c.url} className="text-sm">
+                    <a
+                      href={c.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sky-700 hover:underline"
+                    >
+                      {c.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
           )}
         </div>
       ) : (
@@ -192,7 +229,7 @@ export default async function TopicPage({
       </p>
 
       {/* CTA */}
-      <div className="bg-teal-50 border border-teal-200 rounded-xl p-6">
+      <div className="bg-sky-50 border border-sky-200 rounded-xl p-6">
         <h2 className="text-lg font-semibold text-stone-800 mb-2">
           Have questions about {topic.title}?
         </h2>
@@ -202,14 +239,14 @@ export default async function TopicPage({
         <AffiliateDisclosure className="mb-4" />
         <Link
           href={`/consultation?${consultationParams.toString()}`}
-          className="inline-block bg-teal-600 text-white font-semibold rounded-md px-6 py-3 hover:bg-teal-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+          className="inline-block bg-sky-600 text-white font-semibold rounded-md px-6 py-3 hover:bg-sky-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
         >
           Request a free consultation
         </Link>
       </div>
 
       <div className="mt-8">
-        <Link href="/topics" className="text-sm text-teal-700 hover:underline">
+        <Link href="/topics" className="text-sm text-sky-700 hover:underline">
           ← Back to all topics
         </Link>
       </div>

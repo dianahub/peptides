@@ -20,7 +20,7 @@ export function TopicCard({ title, researchArea, group }: TopicCardProps) {
       <div>
         <Link
           href={`/topics/${slug}`}
-          className="font-semibold text-stone-800 hover:text-teal-700 transition-colors focus:outline-none focus-visible:underline"
+          className="font-semibold text-stone-800 hover:text-sky-700 transition-colors focus:outline-none focus-visible:underline"
         >
           {title}
         </Link>
@@ -32,14 +32,14 @@ export function TopicCard({ title, researchArea, group }: TopicCardProps) {
         ) : (
           <Link
             href={`/consultation?${consultationParams.toString()}`}
-            className="text-sm font-medium text-teal-700 border border-teal-300 rounded px-3 py-1.5 hover:bg-teal-50 transition-colors text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+            className="text-sm font-medium text-sky-700 border border-sky-300 rounded px-3 py-1.5 hover:bg-sky-50 transition-colors text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
           >
             Ask about this topic
           </Link>
         )}
         <Link
           href={`/topics/${slug}`}
-          className="text-xs text-stone-400 hover:text-teal-600 text-center transition-colors"
+          className="text-xs text-stone-400 hover:text-sky-600 text-center transition-colors"
         >
           Full research page →
         </Link>

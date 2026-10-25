@@ -39,6 +39,7 @@
     "items": [
       { "title": "Kisspeptin", "researchArea": "reproductive hormone pathways" },
       { "title": "PT-141", "researchArea": "melanocortin pathways" },
+      { "title": "hCG", "researchArea": "reproductive hormone signaling" },
       { "title": "Ipamorelin + CJC-1295", "researchArea": "growth hormone signaling" },
       { "title": "Epithalon", "researchArea": "cellular aging research" }
     ]

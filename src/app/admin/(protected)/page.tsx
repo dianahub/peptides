@@ -72,7 +72,7 @@ export default async function AdminPage({ searchParams }: Props) {
         </h1>
         <a
           href="/api/admin/export"
-          className="text-sm bg-stone-100 border border-stone-300 text-stone-700 px-4 py-2 rounded hover:bg-stone-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+          className="text-sm bg-stone-100 border border-stone-300 text-stone-700 px-4 py-2 rounded hover:bg-stone-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
         >
           Export CSV ⚠ contains personal data
         </a>
@@ -85,13 +85,13 @@ export default async function AdminPage({ searchParams }: Props) {
           name="search"
           defaultValue={search}
           placeholder="Search name, email, topic…"
-          className="border border-stone-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 w-64"
+          className="border border-stone-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 w-64"
           aria-label="Search requests"
         />
         <select
           name="status"
           defaultValue={statusFilter}
-          className="border border-stone-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+          className="border border-stone-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
           aria-label="Filter by status"
         >
           <option value="">All statuses</option>
@@ -102,14 +102,14 @@ export default async function AdminPage({ searchParams }: Props) {
         </select>
         <button
           type="submit"
-          className="bg-teal-600 text-white text-sm px-4 py-2 rounded hover:bg-teal-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+          className="bg-sky-600 text-white text-sm px-4 py-2 rounded hover:bg-sky-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
         >
           Filter
         </button>
         {(search || statusFilter) && (
           <a
             href="/admin"
-            className="text-sm text-stone-500 px-4 py-2 hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 rounded"
+            className="text-sm text-stone-500 px-4 py-2 hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded"
           >
             Clear
           </a>
@@ -142,9 +142,9 @@ export default async function AdminPage({ searchParams }: Props) {
                 aria-current={p === page ? "page" : undefined}
                 className={`px-3 py-1 rounded text-sm border ${
                   p === page
-                    ? "bg-teal-600 text-white border-teal-600"
+                    ? "bg-sky-600 text-white border-sky-600"
                     : "border-stone-300 text-stone-600 hover:bg-stone-100"
-                } focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500`}
+                } focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500`}
               >
                 {p}
               </a>

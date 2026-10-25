@@ -30,7 +30,7 @@ export default function TermsPage() {
           <p>
             The content on this site is for educational purposes only. It is not
             medical advice. See our{" "}
-            <a href="/disclaimer" className="text-teal-700 underline">
+            <a href="/disclaimer" className="text-sky-700 underline">
               Disclaimer
             </a>{" "}
             for full details.

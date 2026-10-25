@@ -1,17 +1,33 @@
 @import "tailwindcss";
 
+@theme {
+  --color-ink: #1b2a3a;
+  --color-paper: #faf8f3;
+  --color-sage: #e9edf4;
+  --color-sage-deep: #d6e0ec;
+  --color-navy: #14304d;
+  --color-navy-soft: #3f5a78;
+  --color-gold: #cf9f3f;
+  --color-gold-dark: #8f6410;
+  --color-gold-soft: #ecd9ae;
+}
+
 :root {
-  --background: #fafaf9;
-  --foreground: #1c1917;
+  --line: rgba(20,48,77,0.16);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-paper, #faf8f3);
+  color: var(--color-ink, #1b2a3a);
 }
 
-/* Visible focus ring for keyboard navigation */
 :focus-visible {
-  outline: 2px solid #0d9488;
+  outline: 2px solid #cf9f3f;
   outline-offset: 2px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-fraunces, Georgia, "Times New Roman", serif);
+  font-weight: 500;
+  letter-spacing: -0.02em;
 }

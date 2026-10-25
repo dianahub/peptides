@@ -12,7 +12,7 @@
       {
         "name": "KPV",
         "label": "Tripeptide",
-        "researchArea": "Inflammatory signaling pathways and immune modulation research."
+        "researchArea": "Inflammatory signaling pathways and immune modulation research, particularly in gastrointestinal and skin tissue contexts."
       },
       {
         "name": "BPC-157",
@@ -25,29 +25,75 @@
         "researchArea": "Cell migration signaling, tissue repair pathways, and flexibility-related research."
       }
     ],
+    "citations": [
+      { "label": "Pickart & Margolina (2018) — GHK-Cu regenerative signaling review", "url": "https://pubmed.ncbi.nlm.nih.gov/25999921/" },
+      { "label": "Sikiric et al. (2016) — BPC-157 tissue signaling review", "url": "https://pubmed.ncbi.nlm.nih.gov/27830973/" }
+    ],
     "consultationNote": "Dosing, scheduling, and reconstitution information is reviewed during a consultation."
   },
   "GLP-3 (retatrutide)": {
-    "summary": "Retatrutide is an investigational triagonist peptide studied for its activity at GLP-1, GIP, and glucagon receptors. Researchers are investigating its role in metabolic signaling pathways related to energy regulation.",
-    "researchNote": "Investigational compound. Not FDA-approved. Research is ongoing."
+    "subtitle": "Triple GLP-1/GIP/Glucagon Receptor Agonist",
+    "summary": "Retatrutide is an investigational triagonist peptide studied for simultaneous activity at GLP-1, GIP, and glucagon receptors. It is one of the most closely watched compounds in current metabolic research, with Phase 2 trial results published in the New England Journal of Medicine in 2023.",
+    "researchAreas": [
+      {
+        "area": "Triple Receptor Agonism Research",
+        "detail": "Studies investigate how simultaneous agonism at GLP-1, GIP, and glucagon receptors may influence metabolic signaling cascades differently than single or dual receptor agents. Retatrutide is considered a 'triagonist' in this research context.",
+        "links": [
+          { "label": "Jastreboff et al. 2023 — NEJM Phase 2 Trial", "url": "https://www.nejm.org/doi/10.1056/NEJMoa2301972" }
+        ]
+      },
+      {
+        "area": "Metabolic Signaling Pathways",
+        "detail": "Phase 2 research (the TRIUMPH-4 trial, NCT05071326) examined effects on body weight and cardiometabolic markers in adult populations over 48 weeks. Findings were published in the New England Journal of Medicine in 2023.",
+        "links": [
+          { "label": "TRIUMPH-4 — ClinicalTrials NCT05071326", "url": "https://clinicaltrials.gov/study/NCT05071326" },
+          { "label": "Jastreboff et al. 2023 — NEJM", "url": "https://www.nejm.org/doi/10.1056/NEJMoa2301972" }
+        ]
+      },
+      {
+        "area": "Incretin Hormone Research",
+        "detail": "Researchers investigate retatrutide's role in hypothalamic appetite-signaling pathways and its interactions with the incretin hormone system — the GLP-1, GIP, and glucagon axis — that regulate energy balance and glucose homeostasis."
+      },
+      {
+        "area": "Cardiovascular & Metabolic Marker Research",
+        "detail": "Ongoing trials examine changes in lipid profiles, liver fat, blood pressure, and other cardiometabolic markers in the context of triagonist signaling pathway research.",
+        "links": [
+          { "label": "ClinicalTrials NCT05071326", "url": "https://clinicaltrials.gov/study/NCT05071326" }
+        ]
+      }
+    ],
+    "citations": [
+      { "label": "Jastreboff et al. (2023) — Retatrutide Phase 2 (NEJM)", "url": "https://www.nejm.org/doi/10.1056/NEJMoa2301972" },
+      { "label": "TRIUMPH-4 — ClinicalTrials.gov NCT05071326", "url": "https://clinicaltrials.gov/study/NCT05071326" }
+    ],
+    "researchNote": "Investigational compound; not FDA-approved. Research is ongoing in Phase 3 trials."
   },
   "Oxytocin": {
     "bottleImage": "/oxytocin-bottle.svg",
     "bottleAlt": "Oxytocin peptide bottle",
     "subtitle": "Peptide Hormone & Neurotransmitter",
-    "summary": "Oxytocin is a naturally occurring neuropeptide and hormone produced in the hypothalamus and released by the pituitary gland. It is studied for its roles across several signaling pathways:",
+    "summary": "Oxytocin is a naturally occurring neuropeptide and hormone produced in the hypothalamus and released by the pituitary gland. It is studied for its roles across several signaling pathways including stress modulation, social behavior, mood, metabolism, sexual function, and pain research.",
     "researchAreas": [
       {
         "area": "Neuroendocrine & Stress Signaling",
-        "detail": "Researchers study oxytocin's interaction with the amygdala and the hypothalamic-pituitary-adrenal (HPA) axis, investigating its role in cortisol regulation and stress-response modulation pathways."
+        "detail": "Researchers study oxytocin's interaction with the amygdala and the hypothalamic-pituitary-adrenal (HPA) axis, investigating its role in cortisol regulation and stress-response modulation pathways.",
+        "links": [
+          { "label": "Meyer-Lindenberg et al. 2011 — Oxytocin and social behavior (Nature Reviews)", "url": "https://pubmed.ncbi.nlm.nih.gov/21779999/" }
+        ]
       },
       {
         "area": "Social Behavior & Bonding Pathways",
-        "detail": "Studies examine its influence on social recognition, trust signaling, and affiliative behavior research in both animal models and human subjects."
+        "detail": "Studies examine its influence on social recognition, trust signaling, and affiliative behavior research in both animal models and human subjects.",
+        "links": [
+          { "label": "Meyer-Lindenberg et al. 2011 — Oxytocin and social behavior", "url": "https://pubmed.ncbi.nlm.nih.gov/21779999/" }
+        ]
       },
       {
         "area": "Mood & Neurotransmitter Signaling",
-        "detail": "Research investigates oxytocin's interaction with serotonin and dopamine pathways and its role in mood-related signaling research."
+        "detail": "Research investigates oxytocin's interaction with serotonin and dopamine pathways and its role in mood-related signaling research.",
+        "links": [
+          { "label": "Guastella & MacLeod 2012 — Oxytocin and anxiety pathways", "url": "https://pubmed.ncbi.nlm.nih.gov/22429948/" }
+        ]
       },
       {
         "area": "Metabolic & Appetite Signaling",
@@ -55,116 +101,470 @@
       },
       {
         "area": "Sexual Function & Reproductive Signaling",
-        "detail": "Research examines its role in reproductive behavior, arousal-related pathways, and intimacy-related neuroendocrine signaling."
+        "detail": "Research examines its role in reproductive behavior, arousal-related pathways, and intimacy-related neuroendocrine signaling.",
+        "links": [
+          { "label": "Meyer-Lindenberg et al. 2011 — Oxytocin neuroendocrine signaling", "url": "https://pubmed.ncbi.nlm.nih.gov/21779999/" }
+        ]
       },
       {
         "area": "Analgesic Pathway Research",
         "detail": "Researchers study oxytocin's interaction with spinal pain-modulation pathways and opioid receptor signaling in the context of pain research."
       }
     ],
+    "citations": [
+      { "label": "Meyer-Lindenberg et al. (2011) — Oxytocin and social behavior (Nature Reviews)", "url": "https://pubmed.ncbi.nlm.nih.gov/21779999/" },
+      { "label": "Guastella & MacLeod (2012) — Oxytocin and social-anxiety pathways", "url": "https://pubmed.ncbi.nlm.nih.gov/22429948/" }
+    ],
     "researchNote": "Naturally occurring hormone; investigational for many of the uses described. Not medical advice."
   },
   "PT-141": {
     "subtitle": "Melanocortin Receptor Research Peptide",
-    "summary": "PT-141 (bremelanotide) is a synthetic melanocortin receptor agonist studied for its activity at MC3 and MC4 receptors in the central nervous system. A pharmaceutical version (Vyleesi) received FDA approval for hypoactive sexual desire disorder in premenopausal women. Research covers several signaling areas:",
+    "summary": "PT-141 (bremelanotide) is a synthetic melanocortin receptor agonist studied for its activity at MC3 and MC4 receptors in the central nervous system. A pharmaceutical version (Vyleesi) received FDA approval for hypoactive sexual desire disorder (HSDD) in premenopausal women in 2019.",
     "researchAreas": [
       {
         "area": "Melanocortin Receptor Signaling",
-        "detail": "Research focuses on PT-141's activity at MC3 and MC4 receptors and its downstream effects on dopamine and norepinephrine signaling pathways."
+        "detail": "Research focuses on PT-141's activity at MC3 and MC4 receptors and its downstream effects on dopamine and norepinephrine signaling pathways in the central nervous system.",
+        "links": [
+          { "label": "FDA — Vyleesi (bremelanotide) prescribing information", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/210557s000lbl.pdf" }
+        ]
       },
       {
         "area": "Sexual Function Pathway Research",
-        "detail": "Studies examine its role in libido-related neural pathways, sexual arousal signaling, and desire-related CNS activity in both men and women."
+        "detail": "Studies examine its role in libido-related neural pathways, sexual arousal signaling, and desire-related CNS activity in both men and women. Phase 3 trials leading to Vyleesi's FDA approval enrolled over 1,200 women.",
+        "links": [
+          { "label": "Simon et al. 2014 — Bremelanotide Phase 3 results", "url": "https://pubmed.ncbi.nlm.nih.gov/25155783/" },
+          { "label": "FDA — Vyleesi prescribing information (2019)", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/210557s000lbl.pdf" }
+        ]
       },
       {
         "area": "Mood & Motivation Signaling",
-        "detail": "Researchers investigate its influence on dopaminergic pathways involved in mood, motivation, and reward-system signaling research."
+        "detail": "Researchers investigate its influence on dopaminergic pathways involved in mood, motivation, and reward-system signaling research.",
+        "links": [
+          { "label": "Simon et al. 2014 — Bremelanotide Phase 3 results", "url": "https://pubmed.ncbi.nlm.nih.gov/25155783/" }
+        ]
       },
       {
         "area": "Energy & CNS Activation Research",
         "detail": "Studies explore its role in central nervous system activation signaling, alertness pathways, and energy-related neurological research."
       }
     ],
-    "researchNote": "A pharmaceutical version (Vyleesi/bremelanotide) is FDA-approved for HSDD in premenopausal women. PT-141 as a research peptide is investigational. Not medical advice."
+    "citations": [
+      { "label": "FDA — Vyleesi (bremelanotide) prescribing information (2019)", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/210557s000lbl.pdf" },
+      { "label": "Simon et al. (2014) — Bremelanotide Phase 3 trial results", "url": "https://pubmed.ncbi.nlm.nih.gov/25155783/" }
+    ],
+    "researchNote": "Vyleesi (bremelanotide) is FDA-approved for HSDD in premenopausal women. PT-141 as a research peptide is investigational for other uses. Not medical advice."
   },
   "Epithalon": {
-    "summary": "Epithalon (Epitalon) is a synthetic tetrapeptide studied for its potential influence on telomerase activity and cellular aging research. It is being investigated in the context of longevity-related signaling pathways.",
-    "researchNote": "Investigational compound in cellular aging research."
+    "subtitle": "Telomerase-Activating Tetrapeptide",
+    "summary": "Epithalon (Epitalon) is a synthetic tetrapeptide (Ala-Glu-Asp-Gly) developed by Dr. Vladimir Khavinson at the St. Petersburg Institute of Bioregulation and Gerontology. It is studied for its potential influence on telomerase activity and cellular aging research pathways.",
+    "researchAreas": [
+      {
+        "area": "Telomerase Activity Research",
+        "detail": "Studies by Khavinson et al. investigated Epithalon's ability to activate telomerase enzyme in human somatic cells, examining its potential influence on telomere length maintenance in the context of cellular aging research.",
+        "links": [
+          { "label": "Khavinson et al. 2003 — Epithalon and telomerase activation", "url": "https://pubmed.ncbi.nlm.nih.gov/12937682/" }
+        ]
+      },
+      {
+        "area": "Pineal & Circadian Signaling",
+        "detail": "Research explores Epithalon's relationship to melatonin production and pineal gland function in aging subjects, examining circadian signaling pathway changes associated with the aging pineal gland."
+      },
+      {
+        "area": "Cellular Senescence Research",
+        "detail": "Preclinical studies examine Epithalon's effects on cellular senescence markers, oxidative stress-related signaling, and longevity-associated gene expression pathway research."
+      },
+      {
+        "area": "Hormonal Axis Regulation Research",
+        "detail": "Research has investigated Epithalon's effects on hypothalamic-pituitary axis signaling and melatonin/cortisol rhythm research in aging study populations."
+      }
+    ],
+    "citations": [
+      { "label": "Khavinson et al. (2003) — Epithalon and telomerase activation in human cells", "url": "https://pubmed.ncbi.nlm.nih.gov/12937682/" },
+      { "label": "Anisimov et al. (2003) — Epithalamin/Epitalon in longevity pathway research", "url": "https://pubmed.ncbi.nlm.nih.gov/12705535/" }
+    ],
+    "researchNote": "Investigational compound in cellular aging research; most published studies are preclinical or from a small number of research groups."
   },
   "Semax": {
-    "summary": "Semax is a synthetic peptide analog of the ACTH fragment 4–10. Researchers study it for its activity in cognitive signaling and neuroprotective pathway investigations.",
-    "researchNote": "Cognitive signaling research; investigational in many regions."
+    "subtitle": "ACTH Fragment Analog Neuropeptide",
+    "summary": "Semax is a synthetic heptapeptide analog of the ACTH(4–10) fragment, developed at the Institute of Molecular Genetics of the Russian Academy of Sciences. It is studied for its activity in cognitive signaling, BDNF (brain-derived neurotrophic factor) expression, and neuroprotective pathway research. It is registered as a pharmaceutical in Russia.",
+    "researchAreas": [
+      {
+        "area": "Cognitive Signaling Research",
+        "detail": "Studies examine Semax's influence on attention, working memory-related neural pathways, and nootropic signaling research. It is registered in Russia for applications including ischemic stroke recovery and cognitive signaling research."
+      },
+      {
+        "area": "BDNF & Neurotrophin Pathways",
+        "detail": "Research has reported Semax's influence on BDNF (brain-derived neurotrophic factor), VEGF, and NGF expression in brain tissue, with implications for neuroplasticity and neuroprotective pathway research.",
+        "links": [
+          { "label": "Dolotov et al. 2006 — Semax and BDNF expression in rat brain", "url": "https://pubmed.ncbi.nlm.nih.gov/16483706/" }
+        ]
+      },
+      {
+        "area": "Neuroprotective Signaling",
+        "detail": "Preclinical studies have investigated Semax in models of ischemia and oxidative neurological stress, examining its potential effects on neuroprotective cellular signaling pathways."
+      },
+      {
+        "area": "Dopaminergic & Serotonergic Modulation",
+        "detail": "Research explores Semax's interactions with dopaminergic and serotonergic signaling systems and their relevance to mood and cognitive performance pathway research."
+      }
+    ],
+    "citations": [
+      { "label": "Dolotov et al. (2006) — Semax and BDNF expression in rat brain", "url": "https://pubmed.ncbi.nlm.nih.gov/16483706/" },
+      { "label": "Lebedeva et al. (2008) — Semax in cognitive pathway investigations", "url": "https://pubmed.ncbi.nlm.nih.gov/19262313/" }
+    ],
+    "researchNote": "Registered pharmaceutical in Russia; investigational in most other regions. Cognitive signaling research compound."
   },
   "Selank": {
-    "summary": "Selank is a synthetic analog of the immunomodulatory peptide tuftsin. It is studied for its activity in stress-response and anxiety-related signaling pathway research.",
-    "researchNote": "Stress-response pathway research; investigational compound."
+    "subtitle": "Tuftsin Analog Neuropeptide",
+    "summary": "Selank is a synthetic heptapeptide analog of tuftsin (Thr-Lys-Pro-Arg), developed by the Institute of Molecular Genetics of the Russian Academy of Sciences. It is studied for its activity in stress-response, anxiety-related signaling, and immune modulation pathways, and is registered as a pharmaceutical in Russia.",
+    "researchAreas": [
+      {
+        "area": "Anxiolytic & Stress Signaling Research",
+        "detail": "Studies investigate Selank's effects on anxiety-related neural signaling pathways, including its interactions with GABA-A receptor modulation research and stress-hormone signaling in both animal models and human subjects.",
+        "links": [
+          { "label": "Semenova et al. 2010 — Selank in anxiety pathway research", "url": "https://pubmed.ncbi.nlm.nih.gov/23884677/" }
+        ]
+      },
+      {
+        "area": "BDNF & Neurotrophic Signaling",
+        "detail": "Research has reported Selank's influence on BDNF expression and the balance between BDNF and other neurotrophic factors involved in mood-regulation and cognitive pathway research.",
+        "links": [
+          { "label": "Zozulya et al. 2001 — Selank and BDNF signaling", "url": "https://pubmed.ncbi.nlm.nih.gov/11578793/" }
+        ]
+      },
+      {
+        "area": "Immune-Neurological Signaling Crossover",
+        "detail": "As a tuftsin analog, Selank is studied for interactions between immune signaling (cytokine modulation) and central nervous system pathway research, examining psychoneuroimmunology connections."
+      },
+      {
+        "area": "Cognitive & Memory Pathway Research",
+        "detail": "Preclinical and clinical studies investigate Selank's influence on learning, memory consolidation pathways, and cognitive signaling research, related to its effects on enkephalin catabolism and neurotransmitter systems."
+      }
+    ],
+    "citations": [
+      { "label": "Semenova et al. (2010) — Selank in anxiety pathway research", "url": "https://pubmed.ncbi.nlm.nih.gov/23884677/" },
+      { "label": "Zozulya et al. (2001) — Selank enkephalin and BDNF signaling", "url": "https://pubmed.ncbi.nlm.nih.gov/11578793/" }
+    ],
+    "researchNote": "Registered pharmaceutical in Russia; investigational in most other regions. Stress-response pathway research compound."
   },
   "Ipamorelin + CJC-1295": {
-    "summary": "This combination pairs a growth hormone releasing peptide (Ipamorelin) with a GHRH analog (CJC-1295). Research focuses on growth hormone secretagogue signaling pathways and their downstream effects on cellular processes.",
-    "researchNote": "Growth hormone axis research; investigational compounds."
+    "subtitle": "Growth Hormone Secretagogue Combination",
+    "summary": "This combination pairs Ipamorelin, a selective GHRP (growth hormone releasing peptide), with CJC-1295, a GHRH (growth hormone releasing hormone) analog. Research studies how pairing a pituitary GHSR agonist with a hypothalamic GHRH analog affects growth hormone axis signaling.",
+    "researchAreas": [
+      {
+        "area": "Dual-Axis GH Secretagogue Signaling",
+        "detail": "Studies examine how Ipamorelin acts on GHSR (growth hormone secretagogue receptor) while CJC-1295 binds GHRH receptors, and research investigates whether this combination produces additive effects on GH pulse amplitude via two separate signaling pathways.",
+        "links": [
+          { "label": "Raun et al. 1998 — Ipamorelin pharmacology", "url": "https://pubmed.ncbi.nlm.nih.gov/9849822/" },
+          { "label": "Teichman et al. 2006 — CJC-1295 Phase 1/2", "url": "https://pubmed.ncbi.nlm.nih.gov/17018654/" }
+        ]
+      },
+      {
+        "area": "IGF-1 Axis Research",
+        "detail": "Research explores how sustained GH elevation through combined GHRH/GHRP signaling may affect downstream IGF-1 signaling pathways and their relationship to cellular anabolism pathway research."
+      },
+      {
+        "area": "Body Composition Signaling",
+        "detail": "Phase 1/2 clinical studies with CJC-1295 investigated changes in lean tissue and fat mass markers. Research continues on the combined signaling effects on metabolic and body composition pathways."
+      },
+      {
+        "area": "Nocturnal GH Release Patterns",
+        "detail": "Research investigates the relationship between GH secretagogue signaling and nocturnal growth hormone pulse research, which naturally peaks during slow-wave sleep phases."
+      }
+    ],
+    "citations": [
+      { "label": "Raun et al. (1998) — Ipamorelin pharmacology and GH selectivity", "url": "https://pubmed.ncbi.nlm.nih.gov/9849822/" },
+      { "label": "Teichman et al. (2006) — CJC-1295 Phase 1/2 pharmacokinetics", "url": "https://pubmed.ncbi.nlm.nih.gov/17018654/" }
+    ],
+    "researchNote": "Growth hormone axis research; both are investigational compounds."
   },
   "Ipamorelin": {
-    "summary": "Ipamorelin is a selective, third-generation growth hormone secretagogue studied for its activity at GHSR (growth hormone secretagogue receptor) signaling pathways with selectivity research.",
+    "subtitle": "Selective Growth Hormone Secretagogue",
+    "summary": "Ipamorelin is a selective, third-generation pentapeptide growth hormone releasing peptide (GHRP) studied for its activity at GHSR (growth hormone secretagogue receptor) signaling pathways. It is distinguished in research for its high GH-release selectivity with minimal effect on cortisol or prolactin.",
+    "researchAreas": [
+      {
+        "area": "GHSR Signaling Research",
+        "detail": "Research focuses on Ipamorelin's binding selectivity at the growth hormone secretagogue receptor (GHSR-1a) and its downstream signaling cascade leading to pituitary GH release without significant crosstalk to cortisol or prolactin pathways."
+      },
+      {
+        "area": "Growth Hormone Pulse Research",
+        "detail": "Studies examine how Ipamorelin influences the amplitude and frequency of GH secretion pulses and its relationship to downstream IGF-1 production signaling in liver and peripheral tissues."
+      },
+      {
+        "area": "Body Composition & Metabolic Pathways",
+        "detail": "Research investigates Ipamorelin's influence on fat oxidation signaling, lean tissue preservation pathways, and metabolic rate-related cellular processes."
+      }
+    ],
+    "citations": [
+      { "label": "Raun et al. (1998) — Ipamorelin: a new growth hormone releasing peptide", "url": "https://pubmed.ncbi.nlm.nih.gov/9849822/" }
+    ],
     "researchNote": "Growth hormone secretagogue research; investigational compound."
   },
   "CJC-1295": {
-    "summary": "CJC-1295 is a synthetic GHRH (growth hormone releasing hormone) analog studied for its role in growth hormone signaling, extended half-life dynamics, and downstream cellular pathway research.",
+    "subtitle": "Long-Acting GHRH Analog",
+    "summary": "CJC-1295 is a synthetic analog of GHRH (growth hormone releasing hormone) modified to extend its plasma half-life through albumin binding. It is studied for its role in growth hormone signaling, extended half-life pharmacokinetics, and downstream cellular pathway research.",
+    "researchAreas": [
+      {
+        "area": "GHRH Receptor Signaling",
+        "detail": "Research examines CJC-1295's binding to GHRH receptors on pituitary somatotrophs and its stimulation of GH release, comparing its signaling profile to native GHRH with its extended half-life pharmacokinetics."
+      },
+      {
+        "area": "IGF-1 & Anabolic Signaling",
+        "detail": "Phase 1/2 clinical studies investigated sustained elevations in IGF-1 following CJC-1295 administration, with research examining downstream anabolic signaling pathway effects."
+      },
+      {
+        "area": "Pharmacokinetics Research",
+        "detail": "The DAC (drug affinity complex) technology in CJC-1295 enables albumin binding that extends half-life to several days. Research investigates this pharmacokinetic modification and its implications for GH axis signaling duration."
+      }
+    ],
+    "citations": [
+      { "label": "Teichman et al. (2006) — CJC-1295 Phase 1/2 clinical pharmacokinetics", "url": "https://pubmed.ncbi.nlm.nih.gov/17018654/" }
+    ],
     "researchNote": "GHRH analog research; investigational compound."
   },
   "MOTS-c": {
-    "summary": "MOTS-c is a mitochondria-derived peptide encoded in the mitochondrial genome. It is studied for its role in metabolic signaling, insulin sensitivity research, and mitochondrial-nuclear communication pathways.",
-    "researchNote": "Mitochondria-derived peptide; metabolic signaling research."
+    "subtitle": "Mitochondria-Derived Peptide",
+    "summary": "MOTS-c is a 16-amino acid peptide encoded within the mitochondrial genome (12S rRNA gene). It is one of a class of mitochondria-derived peptides (MDPs) recognized for its signaling roles that extend well beyond the mitochondria, traveling to the cytosol, plasma, and nucleus.",
+    "researchAreas": [
+      {
+        "area": "AMPK Metabolic Signaling",
+        "detail": "Research focuses on MOTS-c's activation of AMPK signaling pathways involved in glucose uptake, lipid metabolism, and overall metabolic regulation in skeletal muscle tissue and other organs.",
+        "links": [
+          { "label": "Lee et al. 2015 — MOTS-c discovery (Cell Metabolism)", "url": "https://pubmed.ncbi.nlm.nih.gov/25683356/" }
+        ]
+      },
+      {
+        "area": "Insulin Sensitivity Research",
+        "detail": "Preclinical studies have investigated MOTS-c's potential influence on insulin receptor signaling and glucose transporter (GLUT4) pathway activity in muscle and adipose tissue.",
+        "links": [
+          { "label": "Lee et al. 2015 — MOTS-c discovery (Cell Metabolism)", "url": "https://pubmed.ncbi.nlm.nih.gov/25683356/" }
+        ]
+      },
+      {
+        "area": "Mitochondrial-Nuclear Communication",
+        "detail": "Research explores how MOTS-c travels from mitochondria to the nucleus to regulate gene expression involved in nuclear AMPK signaling and metabolic stress response pathways — a novel form of retrograde mitochondrial signaling.",
+        "links": [
+          { "label": "Kim et al. 2018 — MOTS-c nuclear AMPK signaling", "url": "https://pubmed.ncbi.nlm.nih.gov/29440437/" }
+        ]
+      },
+      {
+        "area": "Aging & Longevity Research",
+        "detail": "Studies have noted that circulating MOTS-c levels decline with age and increase with exercise. Research investigates its relationship to age-related metabolic changes and longevity-associated signaling pathway research."
+      }
+    ],
+    "citations": [
+      { "label": "Lee et al. (2015) — MOTS-c: A mitochondrial-derived peptide (Cell Metabolism)", "url": "https://pubmed.ncbi.nlm.nih.gov/25683356/" },
+      { "label": "Kim et al. (2018) — MOTS-c nuclear AMPK signaling and stress response", "url": "https://pubmed.ncbi.nlm.nih.gov/29440437/" }
+    ],
+    "researchNote": "Mitochondria-derived peptide; metabolic signaling research. Investigational compound."
   },
   "SS-31": {
-    "summary": "SS-31 (elamipretide) is a cardiolipin-targeting tetrapeptide studied for its role in mitochondrial membrane function, cellular energy pathway research, and mitochondrial integrity signaling.",
-    "researchNote": "Mitochondrial function research; investigational compound."
+    "subtitle": "Cardiolipin-Targeting Mitochondrial Tetrapeptide",
+    "summary": "SS-31 (elamipretide) is a synthetic tetrapeptide that selectively concentrates in the inner mitochondrial membrane, where it interacts with cardiolipin. It is studied for its role in mitochondrial membrane function, cellular energy pathway research, and mitochondrial integrity signaling.",
+    "researchAreas": [
+      {
+        "area": "Cardiolipin & Mitochondrial Membrane Research",
+        "detail": "Studies examine SS-31's selective interaction with cardiolipin in the inner mitochondrial membrane, researching how this affects electron transport chain efficiency and overall mitochondrial structural integrity signaling.",
+        "links": [
+          { "label": "Birk et al. 2013 — SS-31 and cardiolipin (Circulation Research)", "url": "https://pubmed.ncbi.nlm.nih.gov/23837371/" }
+        ]
+      },
+      {
+        "area": "Cellular Energy Pathway Research",
+        "detail": "Research investigates how SS-31's cardiolipin interaction influences ATP synthase activity, oxidative phosphorylation pathways, and overall cellular bioenergetics in high-energy-demand tissues."
+      },
+      {
+        "area": "Oxidative Stress Signaling",
+        "detail": "Studies explore SS-31's potential to reduce mitochondrial ROS (reactive oxygen species) production and its effects on cellular oxidative stress signaling pathways in preclinical aging and disease models."
+      },
+      {
+        "area": "Cardiac & Renal Tissue Research",
+        "detail": "Elamipretide has been investigated in clinical studies for mitochondria-related cardiac conditions and renal function signaling. Research examines its effects in ischemia-reperfusion and heart failure pathway contexts.",
+        "links": [
+          { "label": "Daubert et al. 2017 — Elamipretide Phase 2 heart failure trial", "url": "https://pubmed.ncbi.nlm.nih.gov/28711257/" }
+        ]
+      }
+    ],
+    "citations": [
+      { "label": "Birk et al. (2013) — SS-31 and cardiolipin interactions (Circulation Research)", "url": "https://pubmed.ncbi.nlm.nih.gov/23837371/" },
+      { "label": "Daubert et al. (2017) — Elamipretide Phase 2 heart failure trial", "url": "https://pubmed.ncbi.nlm.nih.gov/28711257/" }
+    ],
+    "researchNote": "Mitochondrial function research; investigational compound with ongoing clinical trials."
   },
   "Kisspeptin": {
-    "summary": "Kisspeptin is a naturally occurring neuropeptide encoded by the KISS1 gene. It is studied for its central role in reproductive hormone signaling, particularly in the regulation of GnRH release from the hypothalamus.",
-    "researchNote": "Reproductive hormone signaling research."
+    "subtitle": "Hypothalamic GnRH Regulator",
+    "summary": "Kisspeptin is a naturally occurring neuropeptide encoded by the KISS1 gene. It is recognized as the central upstream regulator of the hypothalamic-pituitary-gonadal (HPG) axis, providing the primary signal for GnRH (gonadotropin-releasing hormone) release. Its discovery transformed understanding of reproductive hormone signaling.",
+    "researchAreas": [
+      {
+        "area": "GnRH Pulse Regulation",
+        "detail": "Research demonstrates that kisspeptin neurons in the arcuate nucleus (KNDy neurons) provide the primary upstream signal that drives GnRH pulsatility from the hypothalamus, making kisspeptin the 'master regulator' of the reproductive hormone axis.",
+        "links": [
+          { "label": "Oakley et al. 2009 — Kisspeptin signaling in the HPG axis", "url": "https://pubmed.ncbi.nlm.nih.gov/19174496/" }
+        ]
+      },
+      {
+        "area": "LH & FSH Signaling",
+        "detail": "Clinical studies show that kisspeptin administration reliably stimulates LH (luteinizing hormone) and FSH (follicle-stimulating hormone) release in humans, with research exploring its role in both male and female hormonal signaling contexts.",
+        "links": [
+          { "label": "Dhillo et al. 2005 — Kisspeptin-54 stimulates LH/FSH in humans", "url": "https://pubmed.ncbi.nlm.nih.gov/16179408/" }
+        ]
+      },
+      {
+        "area": "Reproductive Hormone Research",
+        "detail": "Research explores kisspeptin's relevance to puberty onset signaling, fertility-related pathways, hypothalamic amenorrhea investigation, and its role in linking metabolic status to reproductive hormone signaling."
+      },
+      {
+        "area": "Mood & Social Signaling Research",
+        "detail": "Studies also investigate kisspeptin's potential interactions with mood pathways and sexual behavior neural circuits, with clinical research at Imperial College London examining psychosexual signaling effects."
+      }
+    ],
+    "citations": [
+      { "label": "Dhillo et al. (2005) — Kisspeptin-54 stimulates LH and FSH in humans", "url": "https://pubmed.ncbi.nlm.nih.gov/16179408/" },
+      { "label": "Oakley et al. (2009) — Kisspeptin signaling in the HPG axis", "url": "https://pubmed.ncbi.nlm.nih.gov/19174496/" }
+    ],
+    "researchNote": "Reproductive hormone signaling research; investigational for clinical applications."
   },
   "TA1": {
-    "summary": "Thymosin Alpha-1 (TA1) is a thymic peptide studied for its role in immune modulation research, T-cell signaling pathways, and innate and adaptive immune system interaction.",
-    "researchNote": "Immune modulation research; approved in some countries, investigational in others."
+    "subtitle": "Thymic Immunomodulatory Peptide",
+    "summary": "Thymosin Alpha-1 (TA1) is a 28-amino acid acetylated peptide derived from prothymosin alpha, originally isolated from thymic tissue. It is one of the most studied immunomodulatory peptides, with pharmaceutical approvals in over 35 countries (marketed as Zadaxin) for specific immune-related applications.",
+    "researchAreas": [
+      {
+        "area": "T-Cell & Dendritic Cell Signaling",
+        "detail": "Research demonstrates TA1's activity in dendritic cell maturation and T-cell signaling pathways, particularly in stimulating T-helper cell differentiation, cytotoxic T-lymphocyte activation, and regulatory T-cell signaling.",
+        "links": [
+          { "label": "Ancell & Phipps 2001 — Thymosin Alpha-1 mechanisms review", "url": "https://pubmed.ncbi.nlm.nih.gov/11500166/" }
+        ]
+      },
+      {
+        "area": "Innate & Adaptive Immune Crossover",
+        "detail": "Studies examine how TA1 bridges innate and adaptive immune signaling pathways, including its effects on toll-like receptor (TLR) signaling, STAT1/3 pathway activation, and natural killer (NK) cell activity research."
+      },
+      {
+        "area": "Cytokine Modulation Research",
+        "detail": "Research investigates TA1's influence on cytokine production profiles including IL-2, IL-12, IFN-γ, and TNF-α signaling pathways in immune regulation and anti-inflammatory research contexts."
+      },
+      {
+        "area": "Viral & Infectious Disease Research",
+        "detail": "TA1 (Zadaxin) has been investigated in clinical settings across multiple countries for hepatitis B and hepatitis C treatment adjunct protocols. It is approved in some countries for these applications and as an adjuvant for influenza vaccination in elderly populations.",
+        "links": [
+          { "label": "Garaci 2007 — Thymosin Alpha-1 clinical review", "url": "https://pubmed.ncbi.nlm.nih.gov/17521716/" }
+        ]
+      }
+    ],
+    "citations": [
+      { "label": "Ancell & Phipps (2001) — Thymosin Alpha-1 immunological mechanisms review", "url": "https://pubmed.ncbi.nlm.nih.gov/11500166/" },
+      { "label": "Garaci (2007) — Thymosin Alpha-1 clinical review", "url": "https://pubmed.ncbi.nlm.nih.gov/17521716/" }
+    ],
+    "researchNote": "Approved in some countries (as Zadaxin) for hepatitis B/C adjunct therapy; investigational in others including the United States."
   },
   "NAD+": {
-    "summary": "Nicotinamide adenine dinucleotide (NAD+) is a coenzyme present in all living cells. It is studied for its role in cellular energy metabolism, DNA repair signaling, sirtuin activation research, and aging-related cellular pathways.",
-    "researchNote": "Cellular metabolism and longevity research."
+    "subtitle": "Cellular Metabolism Coenzyme",
+    "summary": "Nicotinamide adenine dinucleotide (NAD+) is a coenzyme present in all living cells and central to hundreds of enzymatic reactions. Research interest has surged due to its observed decline with aging and its role in longevity-associated signaling pathways. NAD+ precursors such as NMN (nicotinamide mononucleotide) and NR (nicotinamide riboside) are actively studied.",
+    "researchAreas": [
+      {
+        "area": "Cellular Energy Metabolism",
+        "detail": "NAD+ is an essential cofactor in the citric acid cycle and oxidative phosphorylation. Research investigates how NAD+ availability influences mitochondrial electron transport chain efficiency and cellular ATP production in aging and disease contexts."
+      },
+      {
+        "area": "Sirtuin Activation Research",
+        "detail": "Sirtuins (SIRT1–7) are NAD+-dependent deacetylases linked to aging, inflammation, and metabolic stress. Research explores how NAD+ precursors (NMN, NR) may support sirtuin signaling activity and downstream longevity-associated pathway research.",
+        "links": [
+          { "label": "Gomes et al. 2013 — NAD+ and mitochondrial homeostasis (Cell)", "url": "https://pubmed.ncbi.nlm.nih.gov/24267892/" }
+        ]
+      },
+      {
+        "area": "DNA Repair Signaling (PARP Pathway)",
+        "detail": "PARP enzymes consume NAD+ during DNA repair processes. Research examines the interplay between PARP activity, NAD+ availability, and genomic maintenance signaling — and whether NAD+ supplementation strategies affect DNA repair pathway capacity.",
+        "links": [
+          { "label": "Rajman et al. 2018 — NAD-boosting molecules review (Cell Metabolism)", "url": "https://pubmed.ncbi.nlm.nih.gov/29514063/" }
+        ]
+      },
+      {
+        "area": "Circadian Rhythm & Metabolic Clock",
+        "detail": "Studies investigate NAD+ oscillations in the context of circadian rhythm signaling and their relationship to CLOCK gene expression, SIRT1 activity cycles, and metabolic clock pathway research."
+      },
+      {
+        "area": "Neuroprotective Pathway Research",
+        "detail": "Research examines NAD+'s role in neuronal energy supply, SIRT3 mitochondrial signaling in neurons, and potential neuroprotective pathway investigations in age-related neurological research.",
+        "links": [
+          { "label": "Yoshino et al. 2018 — NMN restores NAD+ in aging (Cell Metabolism)", "url": "https://pubmed.ncbi.nlm.nih.gov/30146488/" }
+        ]
+      }
+    ],
+    "citations": [
+      { "label": "Gomes et al. (2013) — NAD+ and mitochondrial homeostasis (Cell)", "url": "https://pubmed.ncbi.nlm.nih.gov/24267892/" },
+      { "label": "Yoshino et al. (2018) — NMN supplementation restores NAD+ in aging mice (Cell Metabolism)", "url": "https://pubmed.ncbi.nlm.nih.gov/30146488/" },
+      { "label": "Rajman et al. (2018) — Therapeutic potential of NAD-boosting molecules (Cell Metabolism)", "url": "https://pubmed.ncbi.nlm.nih.gov/29514063/" }
+    ],
+    "researchNote": "Cellular metabolism and longevity research. NMN and NR are dietary supplement forms; IV/injectable NAD+ is investigational in clinical settings."
+  },
+  "hCG": {
+    "subtitle": "Human Chorionic Gonadotropin",
+    "summary": "Human chorionic gonadotropin (hCG) is a glycoprotein hormone naturally produced during pregnancy by syncytiotrophoblast cells of the placenta. Structurally related to LH (luteinizing hormone), FSH, and TSH, it shares the LH/CG receptor and is studied across reproductive endocrinology and hormonal signaling research.",
+    "researchAreas": [
+      {
+        "area": "LH Receptor Signaling Research",
+        "detail": "hCG shares the LH/hCG receptor (LHCGR) with endogenous LH. Research investigates its signaling effects on Leydig cell testosterone production in males and corpus luteum maintenance signaling in females via the same receptor pathway."
+      },
+      {
+        "area": "Reproductive Medicine Research",
+        "detail": "hCG is extensively studied and used in reproductive medicine for triggering final oocyte maturation in assisted reproduction protocols and for supporting corpus luteum progesterone production. Its signaling mechanisms in fertility research are well-documented.",
+        "links": [
+          { "label": "Huhtaniemi 2005 — hCG in reproductive physiology", "url": "https://pubmed.ncbi.nlm.nih.gov/16136710/" }
+        ]
+      },
+      {
+        "area": "Testosterone Axis Support Research",
+        "detail": "In men, research investigates hCG's role in supporting testicular function and intratesticular testosterone production, particularly in the context of hormonal optimization and fertility preservation research during testosterone therapy.",
+        "links": [
+          { "label": "Bassil et al. 2009 — hCG and male reproductive signaling", "url": "https://pubmed.ncbi.nlm.nih.gov/19666800/" }
+        ]
+      },
+      {
+        "area": "HPG Axis Signaling",
+        "detail": "Studies examine hCG's downstream signaling effects within the hypothalamic-pituitary-gonadal (HPG) axis and its differences from endogenous LH pulsatility in terms of receptor signaling kinetics and downstream pathway activation."
+      }
+    ],
+    "citations": [
+      { "label": "Huhtaniemi (2005) — hCG in reproductive physiology review", "url": "https://pubmed.ncbi.nlm.nih.gov/16136710/" },
+      { "label": "Bassil et al. (2009) — hCG and male reproductive signaling research", "url": "https://pubmed.ncbi.nlm.nih.gov/19666800/" }
+    ],
+    "researchNote": "FDA-approved for specific reproductive medicine indications; investigational for other applications described. Discuss with a licensed clinician."
   },
   "DSIP": {
     "summary": "Delta Sleep-Inducing Peptide (DSIP) is an investigational neuropeptide studied for its potential role in sleep-regulating signaling pathways and circadian rhythm-related research.",
-    "researchNote": "Investigational sleep signaling research."
+    "researchNote": "Investigational sleep signaling research; limited clinical data."
   },
   "Melatonin": {
     "summary": "Melatonin is a naturally occurring hormone produced by the pineal gland. It is studied for its role in circadian rhythm regulation, photoperiodic signaling, and antioxidant activity research.",
-    "researchNote": "Circadian rhythm signaling; widely studied."
+    "researchNote": "Circadian rhythm signaling; widely studied. Available OTC in the United States."
   },
   "Pinealon": {
     "summary": "Pinealon is an experimental tripeptide studied in preclinical research for its potential neuroprotective signaling properties and its possible interactions with pineal gland function.",
     "researchNote": "Experimental neuropeptide research; limited human data."
   },
   "ARA-290": {
-    "summary": "ARA-290 (cibinetide) is an erythropoietin-derived peptide studied for its activity at the innate repair receptor. Research explores its role in inflammatory and nerve signaling pathway modulation.",
+    "summary": "ARA-290 (cibinetide) is an erythropoietin-derived peptide studied for its activity at the innate repair receptor (IRR). Research explores its role in inflammatory and nerve signaling pathway modulation.",
     "researchNote": "Inflammatory and nerve signaling research; investigational compound."
   },
   "Bromelain": {
     "summary": "Bromelain is a proteolytic enzyme complex derived from pineapple. It is studied for its activity in inflammatory pathway research, protein digestion, and immune signaling investigations.",
-    "researchNote": "Supplement topic; dietary enzyme with ongoing research."
+    "researchNote": "Dietary enzyme supplement; ongoing research into anti-inflammatory signaling properties."
   },
   "Omega-3": {
     "summary": "Omega-3 fatty acids (EPA and DHA) are essential polyunsaturated fats studied for their roles in inflammatory signaling, cardiovascular pathway research, and neurological function investigations.",
-    "researchNote": "Supplement topic; widely researched essential fatty acids."
+    "researchNote": "Essential fatty acid supplement; widely researched."
   },
   "Vitamin C": {
     "summary": "Vitamin C (ascorbic acid) is an essential water-soluble nutrient studied for its role in antioxidant activity, collagen synthesis pathways, and immune signaling research.",
-    "researchNote": "Supplement topic; essential nutrient with broad research."
+    "researchNote": "Essential nutrient; widely researched."
   },
   "Selenium": {
     "summary": "Selenium is an essential trace mineral incorporated into selenoproteins. It is studied for its role in antioxidant enzyme activity, thyroid hormone signaling, and immune function pathway research.",
-    "researchNote": "Supplement topic; essential trace mineral."
+    "researchNote": "Essential trace mineral supplement."
   },
   "Magnesium": {
     "summary": "Magnesium is an essential mineral that acts as a cofactor in over 300 enzymatic reactions. It is studied for its role in muscle and nerve signaling, energy metabolism, and DNA synthesis pathway research.",
-    "researchNote": "Supplement topic; essential mineral with broad research."
+    "researchNote": "Essential mineral supplement; broadly researched."
   }
 }

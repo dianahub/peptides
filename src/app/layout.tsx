@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/lib/config";
 
-const geist = Geist({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: "500",
+  variable: "--font-fraunces",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -36,11 +41,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={geist.className}>
-      <body className="bg-stone-50 text-stone-800 antialiased min-h-screen flex flex-col">
+    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
+      <body className="bg-paper text-ink antialiased min-h-screen flex flex-col">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-teal-600 text-white px-4 py-2 rounded z-50"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-navy text-white px-4 py-2 rounded z-50"
         >
           Skip to main content
         </a>

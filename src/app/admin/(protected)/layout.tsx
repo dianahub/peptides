@@ -24,7 +24,7 @@ export default async function AdminLayout({
         <form action="/api/admin/logout" method="POST">
           <button
             type="submit"
-            className="text-sm text-stone-500 hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 rounded px-2 py-1"
+            className="text-sm text-stone-500 hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded px-2 py-1"
           >
             Sign out
           </button>

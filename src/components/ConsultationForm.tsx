@@ -26,10 +26,10 @@ export function ConsultationForm({ defaultTopic }: Props) {
       <div
         role="alert"
         aria-live="polite"
-        className="bg-teal-50 border border-teal-200 rounded-xl p-8 text-center"
+        className="bg-sky-50 border border-sky-200 rounded-xl p-8 text-center"
       >
         <svg
-          className="mx-auto h-12 w-12 text-teal-500 mb-4"
+          className="mx-auto h-12 w-12 text-sky-500 mb-4"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -42,7 +42,7 @@ export function ConsultationForm({ defaultTopic }: Props) {
             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
           />
         </svg>
-        <h2 className="text-xl font-semibold text-teal-800 mb-2">
+        <h2 className="text-xl font-semibold text-sky-800 mb-2">
           Request received — thank you!
         </h2>
         <p className="text-stone-600">
@@ -92,7 +92,7 @@ export function ConsultationForm({ defaultTopic }: Props) {
           name="name"
           required
           autoComplete="name"
-          className="w-full border border-stone-300 rounded-md px-3 py-2 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          className="w-full border border-stone-300 rounded-md px-3 py-2 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
           placeholder="Your name"
           aria-required="true"
           aria-describedby={state?.fieldErrors?.name ? "name-error" : undefined}
@@ -117,7 +117,7 @@ export function ConsultationForm({ defaultTopic }: Props) {
           name="email"
           required
           autoComplete="email"
-          className="w-full border border-stone-300 rounded-md px-3 py-2 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          className="w-full border border-stone-300 rounded-md px-3 py-2 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
           placeholder="you@example.com"
           aria-required="true"
           aria-describedby={state?.fieldErrors?.email ? "email-error" : undefined}
@@ -130,7 +130,7 @@ export function ConsultationForm({ defaultTopic }: Props) {
       </div>
 
       {defaultTopic && (
-        <div className="bg-teal-50 border border-teal-200 rounded-md px-4 py-3 text-sm text-teal-800">
+        <div className="bg-sky-50 border border-sky-200 rounded-md px-4 py-3 text-sm text-sky-800">
           Topic of interest: <strong>{defaultTopic}</strong>
         </div>
       )}
@@ -148,7 +148,7 @@ export function ConsultationForm({ defaultTopic }: Props) {
           name="message"
           rows={4}
           maxLength={1000}
-          className="w-full border border-stone-300 rounded-md px-3 py-2 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-y"
+          className="w-full border border-stone-300 rounded-md px-3 py-2 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent resize-y"
           placeholder="Any questions or context you'd like to share…"
           aria-describedby="message-note"
         />
@@ -166,7 +166,7 @@ export function ConsultationForm({ defaultTopic }: Props) {
           id="consent"
           name="consent"
           required
-          className="mt-0.5 h-4 w-4 rounded border-stone-300 text-teal-600 focus:ring-teal-500"
+          className="mt-0.5 h-4 w-4 rounded border-stone-300 text-sky-600 focus:ring-sky-500"
           aria-required="true"
           aria-describedby={state?.fieldErrors?.consent ? "consent-error" : "consent-label"}
         />
@@ -187,7 +187,7 @@ export function ConsultationForm({ defaultTopic }: Props) {
       <button
         type="submit"
         disabled={pending}
-        className="w-full bg-teal-600 text-white font-medium rounded-md px-6 py-3 hover:bg-teal-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+        className="w-full bg-sky-600 text-white font-medium rounded-md px-6 py-3 hover:bg-sky-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
         aria-busy={pending}
       >
         {pending ? "Submitting…" : "Request free consultation"}

@@ -44,7 +44,7 @@ export function AdminRequestRow({ request }: { request: ConsultationRequest }) {
           <p className="font-semibold text-stone-800">{request.name}</p>
           <p className="text-sm text-stone-500">{request.email}</p>
           {request.topic && (
-            <p className="text-xs text-teal-700 mt-0.5">
+            <p className="text-xs text-sky-700 mt-0.5">
               Topic: {request.topic}
             </p>
           )}
@@ -63,7 +63,7 @@ export function AdminRequestRow({ request }: { request: ConsultationRequest }) {
             defaultValue={request.status}
             onChange={handleStatusChange}
             disabled={isPending}
-            className="text-sm border border-stone-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="text-sm border border-stone-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-sky-500"
             aria-label="Change status"
           >
             {Object.entries(STATUS_LABELS).map(([v, l]) => (
@@ -72,7 +72,7 @@ export function AdminRequestRow({ request }: { request: ConsultationRequest }) {
           </select>
           <button
             onClick={() => setExpanded((v) => !v)}
-            className="text-sm text-stone-500 hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 rounded px-2 py-1"
+            className="text-sm text-stone-500 hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded px-2 py-1"
             aria-expanded={expanded}
           >
             {expanded ? "Less" : "More"}
@@ -102,14 +102,14 @@ export function AdminRequestRow({ request }: { request: ConsultationRequest }) {
               rows={3}
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="w-full text-sm border border-stone-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500 resize-y"
+              className="w-full text-sm border border-stone-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-500 resize-y"
             />
           </div>
           <div className="flex gap-3">
             <button
               onClick={handleNotesSave}
               disabled={isPending}
-              className="text-sm bg-teal-600 text-white px-4 py-1.5 rounded hover:bg-teal-700 disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+              className="text-sm bg-sky-600 text-white px-4 py-1.5 rounded hover:bg-sky-700 disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
             >
               Save notes
             </button>

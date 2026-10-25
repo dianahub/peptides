@@ -14,10 +14,10 @@
     "featured": true
   },
   {
-    "id": "placeholder-3",
-    "title": "Educational Video — Coming Soon",
-    "description": "Additional educational content will be added here. Replace this entry in src/data/videos.json.",
-    "url": "https://www.youtube.com/watch?v=PLACEHOLDER3",
+    "id": "jt5hHb6kzYM",
+    "title": "Peptide and Longevity Education",
+    "description": "Educational content on peptide research and longevity science.",
+    "url": "https://youtu.be/jt5hHb6kzYM",
     "featured": false
   }
 ]

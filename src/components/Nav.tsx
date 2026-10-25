@@ -18,70 +18,78 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="bg-white border-b border-stone-200 sticky top-0 z-40">
+    <header
+      className="sticky top-0 z-40"
+      style={{
+        background: "linear-gradient(115deg, #10263c 0%, #1c3f63 55%, #2b5f8c 100%)",
+        borderBottom: "1px solid rgba(207,159,63,0.5)",
+        boxShadow: "0 10px 30px -14px rgba(16,38,60,0.65)",
+      }}
+    >
       <nav
-        className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16"
+        className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 gap-6"
         aria-label="Main navigation"
       >
-        <Link
-          href="/"
-          className="font-semibold text-lg text-teal-700 tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 rounded"
+        <div className="flex items-center gap-4 flex-shrink-0">
+          <a
+            href="https://futurotekhealth.com"
+            className="text-xs text-white/50 hover:text-white/80 transition-colors hidden sm:block whitespace-nowrap"
+          >
+            ← Futurotek Health
+          </a>
+          <Link
+            href="/"
+            className="font-serif font-medium text-lg text-white tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
+          >
+            {SITE_NAME}
+          </Link>
+        </div>
+
+        <a
+          href="tel:+12026400054"
+          className="hidden lg:flex flex-col items-end text-white/80 hover:text-white transition-colors"
         >
-          {SITE_NAME}
-        </Link>
+          <span className="text-[11px] uppercase tracking-[0.12em] text-white/60">Referral line</span>
+          <span className="text-sm tabular-nums">+1 (202) 640-0054</span>
+        </a>
 
         {/* Desktop */}
         <ul className="hidden md:flex gap-1" role="list">
-          {links.map(({ href, label }) => (
-            <li key={href}>
-              <Link
-                href={href}
-                aria-current={pathname === href ? "page" : undefined}
-                className={`px-3 py-2 rounded text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 ${
-                  pathname === href
-                    ? "bg-teal-50 text-teal-700"
-                    : "text-stone-600 hover:text-teal-700 hover:bg-stone-50"
-                } ${
-                  href === "/consultation"
-                    ? "bg-teal-600 text-white hover:bg-teal-700 hover:text-white ml-2"
-                    : ""
-                }`}
-              >
-                {label}
-              </Link>
-            </li>
-          ))}
+          {links.map(({ href, label }) => {
+            const isActive = pathname === href;
+            const isCta = href === "/consultation";
+            const className = isCta
+              ? "px-3 py-1.5 rounded-full text-sm font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold text-gold hover:text-amber-300 ml-2"
+              : `px-3 py-2 rounded text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold ${
+                  isActive ? "text-white" : "text-white/80 hover:text-white"
+                }`;
+            return (
+              <li key={href}>
+                <Link
+                  href={href}
+                  aria-current={isActive ? "page" : undefined}
+                  className={className}
+                >
+                  {label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Mobile burger */}
         <button
-          className="md:hidden p-2 rounded text-stone-600 hover:text-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+          className="md:hidden p-2 rounded text-white/80 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
         >
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             {open ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             )}
           </svg>
         </button>
@@ -89,10 +97,14 @@ export function Nav() {
 
       {/* Mobile menu */}
       {open && (
-        <div
-          id="mobile-menu"
-          className="md:hidden border-t border-stone-100 bg-white px-4 pb-4"
-        >
+        <div id="mobile-menu" className="md:hidden border-t border-white/10 px-4 pb-4" style={{ background: "#10263c" }}>
+          <a
+            href="tel:+12026400054"
+            className="flex items-center gap-2 py-3 border-b border-white/10 text-white/70 hover:text-white text-sm transition-colors"
+          >
+            <span className="text-[11px] uppercase tracking-wider text-white/50">Referral line</span>
+            <span className="tabular-nums">+1 (202) 640-0054</span>
+          </a>
           <ul className="flex flex-col gap-1 pt-2" role="list">
             {links.map(({ href, label }) => (
               <li key={href}>
@@ -100,10 +112,8 @@ export function Nav() {
                   href={href}
                   aria-current={pathname === href ? "page" : undefined}
                   onClick={() => setOpen(false)}
-                  className={`block px-3 py-2 rounded text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 ${
-                    pathname === href
-                      ? "bg-teal-50 text-teal-700"
-                      : "text-stone-600 hover:text-teal-700 hover:bg-stone-50"
+                  className={`block px-3 py-2 rounded text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold ${
+                    pathname === href ? "text-white" : "text-white/80 hover:text-white"
                   }`}
                 >
                   {label}

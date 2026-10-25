@@ -38,7 +38,7 @@ export function KlowModal({ group }: { group: string }) {
           <div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6">
             <button
               onClick={() => setOpen(false)}
-              className="absolute top-4 right-4 text-stone-400 hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 rounded"
+              className="absolute top-4 right-4 text-stone-400 hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded"
               aria-label="Close"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -97,7 +97,7 @@ export function KlowModal({ group }: { group: string }) {
             <Link
               href={`/consultation?${params.toString()}`}
               onClick={() => setOpen(false)}
-              className="block w-full bg-teal-600 text-white font-semibold text-center rounded-md px-4 py-3 hover:bg-teal-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+              className="block w-full bg-sky-600 text-white font-semibold text-center rounded-md px-4 py-3 hover:bg-sky-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
             >
               Ask about KLOW — free consultation
             </Link>
