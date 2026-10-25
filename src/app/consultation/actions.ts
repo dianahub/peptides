@@ -9,6 +9,7 @@ const CONSENT_TEXT =
 const schema = z.object({
   name: z.string().min(1, "Name is required").max(200),
   email: z.string().email("Enter a valid email address"),
+  phone: z.string().max(30).optional(),
   message: z.string().max(1000, "Message must be 1000 characters or fewer").optional(),
   topic: z.string().max(500).optional(),
   consent: z.literal("on", {
@@ -32,6 +33,7 @@ export async function submitConsultation(
   const raw = {
     name: formData.get("name"),
     email: formData.get("email"),
+    phone: formData.get("phone") || undefined,
     message: formData.get("message") || undefined,
     topic: formData.get("topic") || undefined,
     consent: formData.get("consent"),
@@ -68,7 +70,9 @@ export async function submitConsultation(
       body: JSON.stringify({
         name: parsed.data.name,
         email: parsed.data.email,
+        phone: parsed.data.phone ?? undefined,
         interest: parsed.data.topic ?? "Peptides",
+        message: parsed.data.message ?? undefined,
         source: "peptides",
       }),
     });

@@ -62,7 +62,7 @@ export function ConsultationForm({ defaultTopic }: Props) {
         <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <input type="hidden" name="topic" value={defaultTopic ?? ""} />
+      <input type="hidden" name="topic" value={defaultTopic ?? "Peptides"} />
 
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
@@ -109,11 +109,19 @@ export function ConsultationForm({ defaultTopic }: Props) {
         </div>
       </div>
 
-      {defaultTopic && (
-        <div className="bg-sage border border-[rgba(20,48,77,0.2)] rounded px-4 py-3 text-sm text-navy">
-          Topic of interest: <strong>{defaultTopic}</strong>
-        </div>
-      )}
+      <div>
+        <label htmlFor="phone" className="block text-sm font-medium text-navy mb-1">
+          Phone <span className="text-navy-soft font-normal">(optional)</span>
+        </label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          autoComplete="tel"
+          placeholder="+1 (555) 000-0000"
+          className="w-full rounded border border-[rgba(20,48,77,0.2)] bg-paper px-4 py-2.5 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-navy-soft focus:border-transparent"
+        />
+      </div>
 
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-navy mb-1">
