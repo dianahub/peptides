@@ -15,7 +15,7 @@ export async function sendAdminNotification(params: {
       : "http://localhost:3000";
 
     await resend.emails.send({
-      from: "Futurotek <noreply@futurotek.com>",
+      from: "Futurotek <noreply@futurotekhealth.com>",
       to: adminEmail,
       subject: "New consultation request",
       text: [
