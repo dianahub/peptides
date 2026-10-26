@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import { headers } from "next/headers";
+import { sendAdminNotification } from "@/lib/email";
 
 const CONSENT_TEXT =
   "My name, email, and topic of interest will be shared with The Longevity Consultants so they can contact me about a consultation.";
@@ -87,6 +88,15 @@ export async function submitConsultation(
     console.error("[submitConsultation] fetch error:", err);
     return { error: "Could not submit your request. Please try again." };
   }
+
+  sendAdminNotification({
+    name: parsed.data.name,
+    email: parsed.data.email,
+    phone: parsed.data.phone,
+    interest: parsed.data.topic,
+    message: parsed.data.message,
+    source: "peptides",
+  });
 
   return { success: true };
 }
