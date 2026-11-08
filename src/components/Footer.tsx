@@ -1,47 +1,47 @@
-import Link from "next/link";
+"use client";
+
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { SITE_NAME } from "@/lib/config";
 
 export function Footer() {
+  const t = useTranslations("footer");
+
+  const navLinks = [
+    { href: "/" as const, label: t("home") },
+    { href: "/videos" as const, label: t("videos") },
+    { href: "/topics" as const, label: t("topics") },
+    { href: "/consultation" as const, label: t("consultation") },
+    { href: "/about" as const, label: t("about") },
+    { href: "/disclaimer" as const, label: t("disclaimerLink") },
+    { href: "/privacy" as const, label: t("privacy") },
+    { href: "/terms" as const, label: t("terms") },
+  ];
+
   return (
     <footer
       className="mt-16 border-t"
       style={{ background: "#d6e0ec", borderColor: "rgba(20,48,77,0.16)" }}
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
-        {/* Affiliate disclosure */}
         <p className="text-xs text-navy-soft mb-4">
-          <strong className="text-navy">Affiliate disclosure:</strong> I am an independent affiliate
-          of The Longevity Consultants and may receive compensation if you
-          request a consultation through me.
+          <strong className="text-navy">{t("affiliateDisclosure")}</strong>{" "}
+          {t("affiliateText")}
         </p>
 
-        {/* Site-wide disclaimer */}
         <p className="text-sm text-navy-soft mb-6">
-          The content on this site is for educational purposes only. It is not
-          medical advice and does not diagnose, treat, cure, or prevent any
-          condition. Always speak with a licensed healthcare professional before
-          making health decisions.{" "}
+          {t("disclaimer")}{" "}
           <Link
             href="/disclaimer"
             className="underline hover:text-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded transition-colors"
           >
-            Full disclaimer
+            {t("fullDisclaimer")}
           </Link>
         </p>
 
-        {/* Footer nav */}
         <nav aria-label="Footer navigation">
           <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-navy-soft">
-            {[
-              { href: "/", label: "Home" },
-              { href: "/videos", label: "Videos" },
-              { href: "/topics", label: "Topics" },
-              { href: "/consultation", label: "Free Consultation" },
-              { href: "/about", label: "About" },
-              { href: "/disclaimer", label: "Disclaimer" },
-              { href: "/privacy", label: "Privacy Policy" },
-              { href: "/terms", label: "Terms" },
-            ].map(({ href, label }) => (
+            {navLinks.map(({ href, label }) => (
               <li key={href}>
                 <Link
                   href={href}
@@ -55,8 +55,7 @@ export function Footer() {
         </nav>
 
         <p className="text-xs text-navy-soft/70 mt-6">
-          © 2026 {SITE_NAME}. Independent affiliate site.
-          Not affiliated with or endorsed by The Longevity Consultants.
+          {t("copyright", { siteName: SITE_NAME })}
         </p>
       </div>
     </footer>

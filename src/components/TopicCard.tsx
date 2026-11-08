@@ -1,4 +1,7 @@
-import Link from "next/link";
+"use client";
+
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { TopicDetailModal } from "./TopicDetailModal";
 import topicDetails from "@/data/topicDetails.json";
 import { slugify } from "@/lib/slugify";
@@ -10,6 +13,7 @@ interface TopicCardProps {
 }
 
 export function TopicCard({ title, researchArea, group }: TopicCardProps) {
+  const t = useTranslations("topics");
   const consultationParams = new URLSearchParams({ topic: `${title} (${group})` });
   const hasDetail = title in topicDetails;
   const isKlow = title === "KLOW";
@@ -34,14 +38,14 @@ export function TopicCard({ title, researchArea, group }: TopicCardProps) {
             href={`/consultation?${consultationParams.toString()}`}
             className="text-sm font-medium text-sky-700 border border-sky-300 rounded px-3 py-1.5 hover:bg-sky-50 transition-colors text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
           >
-            Ask about this topic
+            {t("askTopic")}
           </Link>
         )}
         <Link
           href={`/topics/${slug}`}
           className="text-xs text-stone-400 hover:text-sky-600 text-center transition-colors"
         >
-          Full research page →
+          {t("learnMore")}
         </Link>
       </div>
     </div>

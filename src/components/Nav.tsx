@@ -1,21 +1,24 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { SITE_NAME } from "@/lib/config";
-
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/videos", label: "Videos" },
-  { href: "/topics", label: "Topics" },
-  { href: "/consultation", label: "Free Consultation" },
-  { href: "/about", label: "About" },
-];
+import { LocaleSwitcher } from "./LocaleSwitcher";
 
 export function Nav() {
+  const t = useTranslations("nav");
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  const links = [
+    { href: "/" as const, label: t("home") },
+    { href: "/videos" as const, label: t("videos") },
+    { href: "/topics" as const, label: t("topics") },
+    { href: "/consultation" as const, label: t("consultation") },
+    { href: "/about" as const, label: t("about") },
+  ];
 
   return (
     <header
@@ -41,7 +44,7 @@ export function Nav() {
             href="https://futurotekhealth.com"
             className="text-xs text-white/50 hover:text-white/80 transition-colors hidden sm:block whitespace-nowrap"
           >
-            ← Main site
+            {t("mainSite")}
           </a>
         </div>
 
@@ -49,12 +52,14 @@ export function Nav() {
           href="tel:+12026400054"
           className="hidden lg:flex flex-col items-end text-white/80 hover:text-white transition-colors"
         >
-          <span className="text-[11px] uppercase tracking-[0.12em] text-white/60">Referral line</span>
+          <span className="text-[11px] uppercase tracking-[0.12em] text-white/60">
+            {t("referralLine")}
+          </span>
           <span className="text-sm tabular-nums">+1 (202) 640-0054</span>
         </a>
 
-        {/* Desktop */}
-        <ul className="hidden md:flex gap-1" role="list">
+        {/* Desktop nav */}
+        <ul className="hidden md:flex gap-1 items-center" role="list">
           {links.map(({ href, label }) => {
             const isActive = pathname === href;
             const isCta = href === "/consultation";
@@ -75,24 +80,30 @@ export function Nav() {
               </li>
             );
           })}
+          <li className="ml-3">
+            <LocaleSwitcher />
+          </li>
         </ul>
 
         {/* Mobile burger */}
-        <button
-          className="md:hidden p-2 rounded text-white/80 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          onClick={() => setOpen((v) => !v)}
-        >
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            {open ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+        <div className="md:hidden flex items-center gap-3">
+          <LocaleSwitcher />
+          <button
+            className="p-2 rounded text-white/80 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+            aria-label={open ? t("closeMenu") : t("openMenu")}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              {open ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}
@@ -102,7 +113,7 @@ export function Nav() {
             href="tel:+12026400054"
             className="flex items-center gap-2 py-3 border-b border-white/10 text-white/70 hover:text-white text-sm transition-colors"
           >
-            <span className="text-[11px] uppercase tracking-wider text-white/50">Referral line</span>
+            <span className="text-[11px] uppercase tracking-wider text-white/50">{t("referralLine")}</span>
             <span className="tabular-nums">+1 (202) 640-0054</span>
           </a>
           <ul className="flex flex-col gap-1 pt-2" role="list">

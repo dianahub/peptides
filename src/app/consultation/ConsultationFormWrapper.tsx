@@ -1,10 +1,5 @@
 "use client";
-
-import { useSearchParams } from "next/navigation";
-import { ConsultationForm } from "@/components/ConsultationForm";
-
+// Unused — middleware redirects /consultation → /en/consultation
 export function ConsultationFormWrapper() {
-  const params = useSearchParams();
-  const topic = params.get("topic") ?? undefined;
-  return <ConsultationForm defaultTopic={topic} />;
+  return null;
 }

@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import topicDetails from "@/data/topicDetails.json";
 
 type TopicDetail = {
@@ -23,6 +24,7 @@ interface Props {
 }
 
 export function TopicDetailModal({ title, group }: Props) {
+  const t = useTranslations("topics");
   const [open, setOpen] = useState(false);
   const detail = (topicDetails as Record<string, TopicDetail>)[title];
   const params = new URLSearchParams({ topic: `${title} (${group})` });
@@ -43,7 +45,7 @@ export function TopicDetailModal({ title, group }: Props) {
             : "text-sky-700 border border-sky-300 hover:bg-sky-50 focus-visible:ring-sky-500"
         }`}
       >
-        Learn about {title}
+        {t("learnAbout", { title })}
       </button>
 
       {open && (
@@ -63,14 +65,13 @@ export function TopicDetailModal({ title, group }: Props) {
             <button
               onClick={() => setOpen(false)}
               className="absolute top-4 right-4 text-stone-400 hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded"
-              aria-label="Close"
+              aria-label={t("close")}
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
 
-            {/* Header */}
             <div className="flex items-center gap-4 mb-5">
               {bottleImage && (
                 <Image
@@ -96,19 +97,16 @@ export function TopicDetailModal({ title, group }: Props) {
               </div>
             </div>
 
-            {/* Disclaimer */}
             <div className="bg-amber-50 border border-amber-200 rounded px-3 py-2 text-xs text-stone-600 mb-4">
-              Educational information only. Investigational uses may lack FDA approval. Not medical advice.
+              {t("modalDisclaimer")}
             </div>
 
-            {/* Summary */}
             <p className="text-sm text-stone-700 mb-4 leading-relaxed">{detail.summary}</p>
 
-            {/* Research areas list */}
             {detail.researchAreas && detail.researchAreas.length > 0 && (
               <>
                 <h3 className="font-semibold text-stone-800 mb-3 text-sm uppercase tracking-wide">
-                  Research areas
+                  {t("modalResearchAreas")}
                 </h3>
                 <div className="space-y-3 mb-4">
                   {detail.researchAreas.map((ra) => (
@@ -136,11 +134,10 @@ export function TopicDetailModal({ title, group }: Props) {
               </>
             )}
 
-            {/* KLOW ingredient breakdown */}
             {isKlow && detail.ingredients && (
               <>
                 <h3 className="font-semibold text-stone-800 mb-3 text-sm uppercase tracking-wide">
-                  Blend ingredients
+                  {t("modalBlendIngredients")}
                 </h3>
                 <div className="space-y-3 mb-4">
                   {detail.ingredients.map((ing) => (
@@ -156,20 +153,18 @@ export function TopicDetailModal({ title, group }: Props) {
               </>
             )}
 
-            {/* Research / consultation note */}
             {(detail.researchNote || detail.consultationNote) && (
               <p className="text-xs text-stone-500 italic mb-5 border-t border-stone-100 pt-4">
                 {detail.consultationNote ?? detail.researchNote}
               </p>
             )}
 
-            {/* CTA */}
             <Link
               href={`/consultation?${params.toString()}`}
               onClick={() => setOpen(false)}
               className="block w-full bg-sky-600 text-white font-semibold text-center rounded-md px-4 py-3 hover:bg-sky-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
             >
-              Ask about {title} — free consultation
+              {t("askAboutCta", { title })}
             </Link>
           </div>
         </div>
