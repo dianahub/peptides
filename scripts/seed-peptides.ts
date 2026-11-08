@@ -1,5 +1,5 @@
 import postgres from "postgres";
-import { PEPTIDES } from "@/lib/peptides/data";
+import { PEPTIDES } from "../src/lib/peptides/data";
 
 async function main() {
   const url = process.env.DATABASE_URL;
@@ -13,7 +13,7 @@ async function main() {
       VALUES (
         gen_random_uuid(),
         ${p.canonicalName},
-        ${sql.array(p.synonyms)},
+        ${p.synonyms},
         ${p.category},
         ${p.fdaStatus}
       )
