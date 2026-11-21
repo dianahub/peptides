@@ -8,18 +8,15 @@ async function main() {
   const sql = postgres(url, { ssl: "require", max: 1 });
 
   for (const p of PEPTIDES) {
-    await sql`
+    const result = await sql`
       INSERT INTO peptides (id, canonical_name, synonyms, category, fda_status)
-      VALUES (
-        gen_random_uuid(),
-        ${p.canonicalName},
-        ${p.synonyms},
-        ${p.category},
-        ${p.fdaStatus}
+      SELECT gen_random_uuid(), ${p.canonicalName}, ${p.synonyms}, ${p.category}, ${p.fdaStatus}
+      WHERE NOT EXISTS (
+        SELECT 1 FROM peptides WHERE canonical_name = ${p.canonicalName}
       )
-      ON CONFLICT DO NOTHING
+      RETURNING id
     `;
-    console.log(`Seeded: ${p.canonicalName}`);
+    console.log(result.length ? `Inserted: ${p.canonicalName}` : `Exists:   ${p.canonicalName}`);
   }
 
   await sql.end();
