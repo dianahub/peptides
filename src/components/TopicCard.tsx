@@ -1,10 +1,12 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { TopicDetailModal } from "./TopicDetailModal";
+import { PeptideVideos } from "./PeptideVideos";
 import topicDetails from "@/data/topicDetails.json";
 import { slugify } from "@/lib/slugify";
+import { videosForTopic, youtubeSearchUrl } from "@/lib/videos/for-peptide";
 
 interface TopicCardProps {
   title: string;
@@ -14,10 +16,13 @@ interface TopicCardProps {
 
 export function TopicCard({ title, researchArea, group }: TopicCardProps) {
   const t = useTranslations("topics");
+  const locale = useLocale();
   const consultationParams = new URLSearchParams({ topic: `${title} (${group})` });
   const hasDetail = title in topicDetails;
   const isKlow = title === "KLOW";
   const slug = slugify(title);
+  const ourVideos = videosForTopic(title, slug);
+  const youtubeUrl = youtubeSearchUrl(title, locale === "es" ? "es" : "en");
 
   return (
     <div className={`bg-white border rounded-lg p-4 flex flex-col gap-3 shadow-sm ${isKlow ? "border-blue-200" : "border-stone-200"}`}>
@@ -47,6 +52,13 @@ export function TopicCard({ title, researchArea, group }: TopicCardProps) {
         >
           {t("learnMore")}
         </Link>
+      </div>
+      <div className="border-t border-stone-100 pt-3">
+        <PeptideVideos
+          canonicalName={title}
+          ourVideos={ourVideos}
+          youtubeUrl={youtubeUrl}
+        />
       </div>
     </div>
   );

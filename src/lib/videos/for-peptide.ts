@@ -14,31 +14,43 @@ function norm(s: string): string {
 }
 
 /**
- * Match videos to a peptide by any of:
- *   - explicit `peptide` field equal to canonical name or any synonym
- *   - explicit `topic` field equal to a provided topic slug
- *   - any `tags` entry equal to canonical name or synonym
- *   - canonical name appearing as a whole word in title or description
- * Generic/featured videos with no identifying field are not returned.
+ * Core matcher: finds videos whose explicit fields, tags, or title/description
+ * reference any of the provided names, or whose explicit `topic` matches
+ * `topicSlug`. Generic/featured videos with no identifying field are skipped.
  */
-export function videosForPeptide(
-  peptide: PeptideEntry,
-  topicSlug?: string | null,
-): VideoEntry[] {
-  const names = [peptide.canonicalName, ...peptide.synonyms].map(norm);
-  const nameSet = new Set(names);
-
+function videosByNames(names: string[], topicSlug?: string | null): VideoEntry[] {
+  const normed = names.map(norm);
+  const nameSet = new Set(normed);
   return videos.filter((v) => {
     if (v.peptide && nameSet.has(norm(v.peptide))) return true;
     if (topicSlug && v.topic && norm(v.topic) === norm(topicSlug)) return true;
     if (v.tags?.some((t) => nameSet.has(norm(t)))) return true;
     const haystack = norm(`${v.title} ${v.description}`);
-    return names.some((n) => {
+    return normed.some((n) => {
       if (!n) return false;
       const pattern = new RegExp(`(^|\\s)${n.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\$&")}(\\s|$)`);
       return pattern.test(haystack);
     });
   });
+}
+
+/**
+ * Match videos to a peptide using its canonical name + synonyms +
+ * (optional) topic slug.
+ */
+export function videosForPeptide(
+  peptide: PeptideEntry,
+  topicSlug?: string | null,
+): VideoEntry[] {
+  return videosByNames([peptide.canonicalName, ...peptide.synonyms], topicSlug);
+}
+
+/**
+ * Match videos to a topic by its title + topic slug (no peptide lookup
+ * required). Use for non-peptide topics like NAD+, Oxytocin, PT-141.
+ */
+export function videosForTopic(title: string, topicSlug: string): VideoEntry[] {
+  return videosByNames([title], topicSlug);
 }
 
 /** Build the "Videos on YouTube" external search URL. */

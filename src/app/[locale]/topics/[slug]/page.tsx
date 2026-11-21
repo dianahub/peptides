@@ -10,7 +10,7 @@ import { TopicDetailBody } from "@/components/TopicDetailBody";
 import { getTopicDetailByTitle, type Locale } from "@/lib/peptides/topic-map";
 import { PeptideVideos } from "@/components/PeptideVideos";
 import { PEPTIDES } from "@/lib/peptides/data";
-import { videosForPeptide, youtubeSearchUrl } from "@/lib/videos/for-peptide";
+import { videosForPeptide, videosForTopic, youtubeSearchUrl } from "@/lib/videos/for-peptide";
 
 interface TopicGroup {
   group: string;
@@ -142,19 +142,22 @@ export default async function TopicPage({
         </p>
       )}
 
-      {/* Videos (our matches first, then external YouTube search) */}
+      {/* Videos (our matches first, then external YouTube search). Falls back
+          to a topic-only match for non-seeded topics like NAD+ or Oxytocin. */}
       {(() => {
         const peptide = PEPTIDES.find((p) => {
           const names = [p.canonicalName, ...p.synonyms].map((n) => slugify(n));
           return names.includes(slug) || slugify(topic.title).includes(slugify(p.canonicalName));
         });
-        if (!peptide) return null;
-        const ourVideos = videosForPeptide(peptide, slug);
-        const youtubeUrl = youtubeSearchUrl(peptide.canonicalName, locale === "es" ? "es" : "en");
+        const displayName = peptide?.canonicalName ?? topic.title;
+        const ourVideos = peptide
+          ? videosForPeptide(peptide, slug)
+          : videosForTopic(topic.title, slug);
+        const youtubeUrl = youtubeSearchUrl(displayName, locale === "es" ? "es" : "en");
         return (
           <div className="mb-8 border-t border-stone-200 pt-6">
             <PeptideVideos
-              canonicalName={peptide.canonicalName}
+              canonicalName={displayName}
               ourVideos={ourVideos}
               youtubeUrl={youtubeUrl}
             />
