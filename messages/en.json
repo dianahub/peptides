@@ -12,7 +12,10 @@
     "mainSite": "← Main site",
     "referralLine": "Referral line",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "searchLabel": "Search research",
+    "searchPlaceholder": "Search peptides or goals (e.g. weight loss)",
+    "searchSubmit": "Submit search"
   },
   "localeSwitcher": {
     "label": "Language",

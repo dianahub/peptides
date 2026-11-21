@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { SITE_NAME } from "@/lib/config";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { NavSearch } from "./NavSearch";
 
 export function Nav() {
   const t = useTranslations("nav");
@@ -81,6 +82,9 @@ export function Nav() {
               </li>
             );
           })}
+          <li className="hidden lg:block ml-3">
+            <NavSearch variant="desktop" />
+          </li>
           <li className="ml-3">
             <LocaleSwitcher />
           </li>
@@ -117,6 +121,9 @@ export function Nav() {
             <span className="text-[11px] uppercase tracking-wider text-white/50">{t("referralLine")}</span>
             <span className="tabular-nums">+1 (202) 640-0054</span>
           </a>
+          <div className="pt-3 pb-1 border-b border-white/10">
+            <NavSearch variant="mobile" onNavigate={() => setOpen(false)} />
+          </div>
           <ul className="flex flex-col gap-1 pt-2" role="list">
             {links.map(({ href, label }) => (
               <li key={href}>

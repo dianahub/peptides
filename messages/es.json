@@ -12,7 +12,10 @@
     "mainSite": "← Sitio principal",
     "referralLine": "Línea de referidos",
     "openMenu": "Abrir menú",
-    "closeMenu": "Cerrar menú"
+    "closeMenu": "Cerrar menú",
+    "searchLabel": "Buscar investigación",
+    "searchPlaceholder": "Busca péptidos u objetivos (ej. bajar de peso)",
+    "searchSubmit": "Enviar búsqueda"
   },
   "localeSwitcher": {
     "label": "Idioma",
