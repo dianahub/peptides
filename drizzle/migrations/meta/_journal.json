@@ -15,6 +15,13 @@
       "when": 1794110697882,
       "tag": "0001_robust_bishop",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795287871966,
+      "tag": "0002_goals",
+      "breakpoints": true
     }
   ]
 }

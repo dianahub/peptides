@@ -8,6 +8,7 @@ import {
   integer,
   bigserial,
   customType,
+  primaryKey,
 } from "drizzle-orm/pg-core";
 
 const vector = (name: string, dimensions: number) =>
@@ -100,9 +101,36 @@ export const chunks = pgTable("chunks", {
   embedding: vector("embedding", 1024),
 });
 
+export const goals = pgTable("goals", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  slug: text("slug").notNull().unique(),
+  nameEn: text("name_en").notNull(),
+  nameEs: text("name_es").notNull(),
+  synonymsEn: text("synonyms_en").array().notNull().default([]),
+  synonymsEs: text("synonyms_es").array().notNull().default([]),
+  conditionTerms: text("condition_terms").array().notNull().default([]),
+});
+
+export const peptideGoals = pgTable(
+  "peptide_goals",
+  {
+    peptideId: uuid("peptide_id")
+      .notNull()
+      .references(() => peptides.id, { onDelete: "cascade" }),
+    goalId: uuid("goal_id")
+      .notNull()
+      .references(() => goals.id, { onDelete: "cascade" }),
+  },
+  (t) => [primaryKey({ columns: [t.peptideId, t.goalId] })],
+);
+
 export type Peptide = typeof peptides.$inferSelect;
 export type NewPeptide = typeof peptides.$inferInsert;
 export type Paper = typeof papers.$inferSelect;
 export type NewPaper = typeof papers.$inferInsert;
 export type Chunk = typeof chunks.$inferSelect;
 export type NewChunk = typeof chunks.$inferInsert;
+export type Goal = typeof goals.$inferSelect;
+export type NewGoal = typeof goals.$inferInsert;
+export type PeptideGoal = typeof peptideGoals.$inferSelect;
+export type NewPeptideGoal = typeof peptideGoals.$inferInsert;
