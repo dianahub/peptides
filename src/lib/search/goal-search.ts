@@ -217,7 +217,9 @@ export async function searchByGoalOrPeptide(
   query: string,
   lang?: Lang,
 ): Promise<SearchResult> {
-  const trimmed = query.trim();
+  // NFC-normalize to canonicalize any decomposed input from browsers/URL layer
+  // before trimming; normalize lib already NFD-strips combining marks internally.
+  const trimmed = query.normalize("NFC").trim();
   if (!trimmed) {
     return { query, matched: null, didYouMean: null, peptides: [] };
   }
