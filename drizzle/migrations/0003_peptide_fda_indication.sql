@@ -1,0 +1,1 @@
+ALTER TABLE "peptides" ADD COLUMN "fda_indication" text;

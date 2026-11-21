@@ -62,6 +62,7 @@ export const peptides = pgTable("peptides", {
   synonyms: text("synonyms").array().notNull().default([]),
   category: text("category"),
   fdaStatus: text("fda_status"),
+  fdaIndication: text("fda_indication"),
 });
 
 export const studyTypeEnum = pgEnum("study_type", [

@@ -8,15 +8,33 @@ async function main() {
   const sql = postgres(url, { ssl: "require", max: 1 });
 
   for (const p of PEPTIDES) {
-    const result = await sql`
-      INSERT INTO peptides (id, canonical_name, synonyms, category, fda_status)
-      SELECT gen_random_uuid(), ${p.canonicalName}, ${p.synonyms}, ${p.category}, ${p.fdaStatus}
-      WHERE NOT EXISTS (
-        SELECT 1 FROM peptides WHERE canonical_name = ${p.canonicalName}
-      )
+    const updated = await sql`
+      UPDATE peptides
+      SET synonyms = ${p.synonyms},
+          category = ${p.category},
+          fda_status = ${p.fdaStatus},
+          fda_indication = ${p.fdaIndication}
+      WHERE canonical_name = ${p.canonicalName}
       RETURNING id
     `;
-    console.log(result.length ? `Inserted: ${p.canonicalName}` : `Exists:   ${p.canonicalName}`);
+    if (updated.length) {
+      console.log(`Updated: ${p.canonicalName}`);
+      continue;
+    }
+    await sql`
+      INSERT INTO peptides (
+        id, canonical_name, synonyms, category, fda_status, fda_indication
+      )
+      VALUES (
+        gen_random_uuid(),
+        ${p.canonicalName},
+        ${p.synonyms},
+        ${p.category},
+        ${p.fdaStatus},
+        ${p.fdaIndication}
+      )
+    `;
+    console.log(`Inserted: ${p.canonicalName}`);
   }
 
   await sql.end();

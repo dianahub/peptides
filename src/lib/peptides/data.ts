@@ -4,6 +4,7 @@ export interface PeptideEntry {
   synonyms: string[];
   category: string;
   fdaStatus: string;
+  fdaIndication: string | null;
   goals: string[];
 }
 
@@ -20,6 +21,7 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "healing",
     fdaStatus: "research_only",
+    fdaIndication: null,
     goals: ["healing"],
   },
   {
@@ -34,6 +36,7 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "healing",
     fdaStatus: "research_only",
+    fdaIndication: null,
     goals: ["healing"],
   },
   {
@@ -48,6 +51,7 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "healing",
     fdaStatus: "cosmetic_use",
+    fdaIndication: null,
     goals: ["healing", "skin-beauty"],
   },
   {
@@ -61,6 +65,7 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "healing",
     fdaStatus: "research_only",
+    fdaIndication: null,
     goals: ["healing"],
   },
   {
@@ -74,6 +79,7 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "healing",
     fdaStatus: "investigational",
+    fdaIndication: null,
     goals: ["healing"],
   },
   {
@@ -88,6 +94,7 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "weight-loss",
     fdaStatus: "approved",
+    fdaIndication: "type 2 diabetes; chronic weight management",
     goals: ["weight-loss"],
   },
   {
@@ -101,6 +108,7 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "weight-loss",
     fdaStatus: "approved",
+    fdaIndication: "type 2 diabetes; chronic weight management",
     goals: ["weight-loss"],
   },
   {
@@ -114,6 +122,7 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "weight-loss",
     fdaStatus: "investigational",
+    fdaIndication: null,
     goals: ["weight-loss"],
   },
   {
@@ -126,6 +135,7 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "weight-loss",
     fdaStatus: "approved",
+    fdaIndication: "HIV-associated abdominal fat (lipodystrophy)",
     goals: ["weight-loss"],
   },
   {
@@ -139,6 +149,7 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "skin-beauty",
     fdaStatus: "cosmetic_use",
+    fdaIndication: null,
     goals: ["skin-beauty"],
   },
   {
@@ -152,6 +163,7 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "skin-beauty",
     fdaStatus: "cosmetic_use",
+    fdaIndication: null,
     goals: ["skin-beauty"],
   },
   {
@@ -164,7 +176,8 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "anxiety-mood",
     fdaStatus: "research_only",
-    goals: ["anxiety-mood"],
+    fdaIndication: null,
+    goals: ["anxiety-mood", "cognition"],
   },
   {
     id: "semax",
@@ -176,7 +189,8 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "anxiety-mood",
     fdaStatus: "research_only",
-    goals: ["anxiety-mood"],
+    fdaIndication: null,
+    goals: ["anxiety-mood", "cognition"],
   },
   {
     id: "epitalon",
@@ -189,6 +203,7 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "longevity",
     fdaStatus: "research_only",
+    fdaIndication: null,
     goals: ["longevity"],
   },
   {
@@ -201,6 +216,7 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "longevity",
     fdaStatus: "research_only",
+    fdaIndication: null,
     goals: ["longevity"],
   },
   {
@@ -213,7 +229,8 @@ export const PEPTIDES: PeptideEntry[] = [
       "D-Arg-Dmt-Lys-Phe-NH2",
     ],
     category: "longevity",
-    fdaStatus: "investigational",
+    fdaStatus: "approved",
+    fdaIndication: "Barth syndrome (accelerated approval, 2025)",
     goals: ["longevity"],
   },
 ];
