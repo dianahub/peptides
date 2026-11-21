@@ -112,6 +112,19 @@ export const PEPTIDES: PeptideEntry[] = [
     goals: ["weight-loss"],
   },
   {
+    id: "retatrutide",
+    canonicalName: "Retatrutide",
+    synonyms: [
+      "LY3437943",
+      "GGG tri-agonist",
+      "triple agonist",
+    ],
+    category: "metabolic",
+    fdaStatus: "investigational",
+    fdaIndication: null,
+    goals: ["weight-loss"],
+  },
+  {
     id: "aod-9604",
     canonicalName: "AOD-9604",
     synonyms: [
