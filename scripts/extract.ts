@@ -2,7 +2,11 @@
  * Extracts structured study metadata from paper title + abstract via Claude.
  *
  * Usage:
- *   npx tsx --env-file=.env.local scripts/extract.ts [--limit N] [--peptide ID]
+ *   npx tsx --env-file=.env.local scripts/extract.ts [--limit N] [--pmids p1,p2,...]
+ *
+ * Default scope: WHERE extraction IS NULL ORDER BY pmid ASC LIMIT N.
+ * --pmids overrides that filter and processes exactly the provided PMIDs,
+ * regardless of whether they already have an extraction.
  *
  * Env vars:
  *   ANTHROPIC_API_KEY  — required
@@ -172,16 +176,21 @@ function logFailure(pmid: string, reason: string, detail: unknown) {
 
 interface CLIArgs {
   limit: number;
+  pmids: string[] | null;
 }
 
 function parseArgs(argv: string[]): CLIArgs {
   let limit = 20;
+  let pmids: string[] | null = null;
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === "--limit") {
       limit = parseInt(argv[++i] ?? "20", 10);
+    } else if (argv[i] === "--pmids") {
+      const raw = argv[++i] ?? "";
+      pmids = raw.split(",").map((s) => s.trim()).filter(Boolean);
     }
   }
-  return { limit };
+  return { limit, pmids };
 }
 
 async function main() {
@@ -194,7 +203,7 @@ async function main() {
     process.exit(1);
   }
 
-  const { limit } = parseArgs(process.argv.slice(2));
+  const { limit, pmids } = parseArgs(process.argv.slice(2));
 
   console.log(`Model: ${MODEL}`);
   await preflightModel();
@@ -206,15 +215,24 @@ async function main() {
   const goalSlugs = goals.map((g) => g.slug);
   console.log(`Known goals: ${goalSlugs.join(", ")}`);
 
-  const papers = await sql<
-    { id: string; pmid: string | null; title: string | null; abstract: string | null }[]
-  >`
-    SELECT id, pmid, title, abstract
-    FROM papers
-    WHERE extraction IS NULL AND pmid IS NOT NULL
-    ORDER BY pmid ASC
-    LIMIT ${limit}
-  `;
+  const papers = pmids
+    ? await sql<
+        { id: string; pmid: string | null; title: string | null; abstract: string | null }[]
+      >`
+        SELECT id, pmid, title, abstract
+        FROM papers
+        WHERE pmid = ANY(${pmids})
+        ORDER BY pmid ASC
+      `
+    : await sql<
+        { id: string; pmid: string | null; title: string | null; abstract: string | null }[]
+      >`
+        SELECT id, pmid, title, abstract
+        FROM papers
+        WHERE extraction IS NULL AND pmid IS NOT NULL
+        ORDER BY pmid ASC
+        LIMIT ${limit}
+      `;
   console.log(`Papers to process: ${papers.length}`);
   if (papers.length === 0) {
     await sql.end();
