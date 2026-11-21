@@ -9,6 +9,7 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "migrate": "npx tsx --env-file=.env.local scripts/migrate.ts",
+    "migrate:staging": "npx tsx --env-file=.env.local scripts/migrate-staging.ts",
     "generate": "npx drizzle-kit generate",
     "hash-password": "npx tsx scripts/generate-password-hash.ts",
     "test": "vitest run",
