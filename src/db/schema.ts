@@ -9,6 +9,7 @@ import {
   bigserial,
   customType,
   primaryKey,
+  jsonb,
 } from "drizzle-orm/pg-core";
 
 const vector = (name: string, dimensions: number) =>
@@ -93,6 +94,8 @@ export const papers = pgTable("papers", {
   retracted: boolean("retracted").notNull().default(false),
   r2Key: text("r2_key"),
   goals: text("goals").array(),
+  abstract: text("abstract"),
+  extraction: jsonb("extraction"),
 });
 
 export const chunks = pgTable("chunks", {

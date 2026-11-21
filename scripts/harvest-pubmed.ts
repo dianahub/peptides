@@ -72,6 +72,7 @@ interface ParsedArticle {
   title: string | null;
   journal: string | null;
   pubYear: number | null;
+  abstract: string | null;
 }
 
 const xmlParser = new XMLParser({
@@ -143,7 +144,27 @@ function parseArticles(xml: string): ParsedArticle[] {
       if (type === "pmc") pmcid = val;
     }
 
-    results.push({ pmid, doi, pmcid, title, journal, pubYear });
+    // Abstract — sections joined with their labels when present.
+    const abstractBlock = articleBlock?.["Abstract"] as
+      | Record<string, unknown>
+      | undefined;
+    const abstractNodes = (abstractBlock?.["AbstractText"] as unknown[]) ?? [];
+    const abstractParts: string[] = [];
+    for (const node of abstractNodes) {
+      if (typeof node === "string") {
+        abstractParts.push(node.trim());
+      } else if (typeof node === "object" && node) {
+        const rec = node as Record<string, unknown>;
+        const label = rec["@_Label"];
+        const text = rec["#text"] ?? "";
+        const textStr = typeof text === "string" ? text.trim() : String(text).trim();
+        if (!textStr) continue;
+        abstractParts.push(label ? `${String(label)}: ${textStr}` : textStr);
+      }
+    }
+    const abstract = abstractParts.join("\n").trim() || null;
+
+    results.push({ pmid, doi, pmcid, title, journal, pubYear, abstract });
   }
 
   return results;
@@ -192,6 +213,7 @@ async function upsert(articles: ParsedArticle[]): Promise<number> {
         title: a.title ?? undefined,
         journal: a.journal ?? undefined,
         pubYear: a.pubYear ?? undefined,
+        abstract: a.abstract ?? undefined,
       })
       .onConflictDoUpdate({
         target: a.doi ? papers.doi : papers.pmid,
@@ -202,6 +224,7 @@ async function upsert(articles: ParsedArticle[]): Promise<number> {
           title: sql`excluded.title`,
           journal: sql`excluded.journal`,
           pubYear: sql`excluded.pub_year`,
+          abstract: sql`excluded.abstract`,
         },
       });
     count++;

@@ -7,21 +7,17 @@
  * Env vars:
  *   ANTHROPIC_API_KEY  — required
  *   EXTRACTION_MODEL   — default "claude-haiku-5-5"
- *   NCBI_API_KEY       — optional; raises PubMed rate limit
- *   DATABASE_URL       — the DB to update (set this to STAGING_DATABASE_URL
- *                        for staging runs)
+ *   DATABASE_URL       — target DB (use npm run extract:staging for staging)
  */
 
-import { XMLParser } from "fast-xml-parser";
 import postgres from "postgres";
 import { z } from "zod";
-import { writeFileSync, mkdirSync, appendFileSync } from "node:fs";
+import { mkdirSync, appendFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
+import { evidenceScore } from "../src/lib/evidence/score";
 
 const MODEL = process.env.EXTRACTION_MODEL ?? "claude-haiku-5-5";
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY;
-const NCBI_KEY = process.env.NCBI_API_KEY;
-const NCBI_EMAIL = process.env.NCBI_EMAIL ?? "dianahelene@gmail.com";
 const DB_URL = process.env.DATABASE_URL;
 
 const FAILURES_FILE = resolve(process.cwd(), "logs/extract-failures.log");
@@ -63,70 +59,6 @@ const ExtractionSchema = z.object({
 
 type Extraction = z.infer<typeof ExtractionSchema>;
 
-// ─── PubMed abstract fetch ──────────────────────────────────────────────────
-
-const xmlParser = new XMLParser({
-  ignoreAttributes: false,
-  attributeNamePrefix: "@_",
-  isArray: (name) => ["PubmedArticle", "AbstractText"].includes(name),
-});
-
-function coerceString(v: unknown): string {
-  if (v == null) return "";
-  if (typeof v === "string") return v;
-  if (typeof v === "number") return String(v);
-  if (typeof v === "object" && "#text" in (v as object))
-    return String((v as Record<string, unknown>)["#text"]);
-  return "";
-}
-
-async function fetchAbstracts(pmids: string[]): Promise<Record<string, string>> {
-  if (pmids.length === 0) return {};
-  const params = new URLSearchParams({
-    tool: "futurotek-peptide-extract",
-    email: NCBI_EMAIL,
-    db: "pubmed",
-    rettype: "abstract",
-    retmode: "xml",
-    id: pmids.join(","),
-    ...(NCBI_KEY ? { api_key: NCBI_KEY } : {}),
-  });
-  const url = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?${params}`;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`efetch HTTP ${res.status}`);
-  const xml = await res.text();
-
-  const root = xmlParser.parse(xml) as Record<string, unknown>;
-  const set = root["PubmedArticleSet"] as Record<string, unknown> | undefined;
-  const articles = (set?.["PubmedArticle"] as unknown[]) ?? [];
-  const out: Record<string, string> = {};
-
-  for (const raw of articles) {
-    const article = raw as Record<string, unknown>;
-    const citation = article["MedlineCitation"] as Record<string, unknown>;
-    const pmid = coerceString(citation?.["PMID"]).trim();
-    if (!pmid) continue;
-
-    const articleBlock = citation?.["Article"] as Record<string, unknown> | undefined;
-    const abstractBlock = articleBlock?.["Abstract"] as
-      | Record<string, unknown>
-      | undefined;
-    const abstractTexts = (abstractBlock?.["AbstractText"] as unknown[]) ?? [];
-
-    const parts: string[] = [];
-    for (const node of abstractTexts) {
-      if (typeof node === "string") parts.push(node);
-      else if (typeof node === "object" && node) {
-        const label = coerceString((node as Record<string, unknown>)["@_Label"]);
-        const text = coerceString((node as Record<string, unknown>)["#text"]);
-        parts.push(label ? `${label}: ${text}` : text);
-      }
-    }
-    out[pmid] = parts.join("\n").trim();
-  }
-  return out;
-}
-
 // ─── Claude API ──────────────────────────────────────────────────────────────
 
 interface ClaudeResponse {
@@ -145,7 +77,7 @@ Available goal slugs (map "condition" to the applicable subset): ${goalSlugs.joi
 
 Output ONLY JSON matching this shape (no prose, no code fences):
 {
-  "species": ["rat" | "mouse" | "human" | "in_vitro" | "pig" | "dog" | "other"],
+  "species": ["human" | "rat" | "mouse" | "rabbit" | "dog" | "pig" | "sheep" | "horse" | "primate" | "in_vitro" | "other"],
   "study_type": "rct" | "cohort" | "case_series" | "in_vitro" | "animal" | "review" | "meta_analysis" | "other",
   "sample_size": <int or null>,
   "peptide": "<canonical name or null>",
@@ -275,11 +207,11 @@ async function main() {
   console.log(`Known goals: ${goalSlugs.join(", ")}`);
 
   const papers = await sql<
-    { id: string; pmid: string | null; title: string | null }[]
+    { id: string; pmid: string | null; title: string | null; abstract: string | null }[]
   >`
-    SELECT id, pmid, title
+    SELECT id, pmid, title, abstract
     FROM papers
-    WHERE study_type IS NULL AND pmid IS NOT NULL
+    WHERE extraction IS NULL AND pmid IS NOT NULL
     ORDER BY pmid ASC
     LIMIT ${limit}
   `;
@@ -289,18 +221,21 @@ async function main() {
     return;
   }
 
-  const pmids = papers.map((p) => p.pmid!).filter(Boolean);
-  console.log("Fetching abstracts…");
-  const abstracts = await fetchAbstracts(pmids);
-
   let ok = 0;
   let failed = 0;
-  const samples: Array<{ pmid: string; title: string; extraction: Extraction }> = [];
+  let noAbstract = 0;
+  const samples: Array<{
+    pmid: string;
+    title: string;
+    extraction: Extraction;
+    evidence_score: number;
+  }> = [];
 
   for (const paper of papers) {
     const pmid = paper.pmid!;
     const title = paper.title ?? "";
-    const abstract = abstracts[pmid] ?? "";
+    const abstract = paper.abstract ?? "";
+    if (!abstract) noAbstract++;
     try {
       const raw = await callClaude(title, abstract, goalSlugs);
       const parsed = ExtractionSchema.safeParse(raw);
@@ -314,6 +249,13 @@ async function main() {
 
       // Drop unknown goal slugs rather than failing the whole row.
       const validGoals = e.goals.filter((g) => goalSlugs.includes(g));
+      const cleaned: Extraction = { ...e, goals: validGoals };
+
+      const score = evidenceScore({
+        studyType: e.study_type,
+        sampleSize: e.sample_size,
+        retracted: e.retracted,
+      });
 
       await sql`
         UPDATE papers
@@ -321,11 +263,13 @@ async function main() {
             study_type = ${e.study_type}::study_type,
             sample_size = ${e.sample_size},
             retracted = ${e.retracted},
-            goals = ${validGoals.length ? validGoals : null}
+            goals = ${validGoals.length ? validGoals : null},
+            evidence_score = ${score},
+            extraction = ${sql.json(cleaned)}
         WHERE id = ${paper.id}
       `;
       ok++;
-      if (samples.length < 3) samples.push({ pmid, title, extraction: { ...e, goals: validGoals } });
+      if (samples.length < 3) samples.push({ pmid, title, extraction: cleaned, evidence_score: score });
     } catch (err) {
       failed++;
       logFailure(pmid, "api_or_parse", err);
@@ -341,11 +285,12 @@ async function main() {
 
   await sql.end();
 
-  console.log(`\nDone. ok=${ok}, failed=${failed}`);
+  console.log(`\nDone. ok=${ok}, failed=${failed}, missing_abstract=${noAbstract}`);
   if (failed > 0) console.log(`Failures logged to ${FAILURES_FILE}`);
   console.log("\n--- Sample extractions ---");
   for (const s of samples) {
     console.log(`\nPMID ${s.pmid}: ${s.title.slice(0, 100)}`);
+    console.log(`evidence_score: ${s.evidence_score}`);
     console.log(JSON.stringify(s.extraction, null, 2));
   }
 }
