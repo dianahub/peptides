@@ -9,6 +9,7 @@ import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { TopicDetailBody } from "@/components/TopicDetailBody";
 import { getTopicDetailByTitle, type Locale } from "@/lib/peptides/topic-map";
 import { PeptideVideos } from "@/components/PeptideVideos";
+import { YouTubeButton } from "@/components/YouTubeButton";
 import { PEPTIDES } from "@/lib/peptides/data";
 import { videosForPeptide, videosForTopic, youtubeSearchUrl } from "@/lib/videos/for-peptide";
 
@@ -83,6 +84,19 @@ export default async function TopicPage({
   const bottleImage = topic.title === "KLOW" ? "/klow-bottle.svg" : detail?.bottleImage;
   const bottleAlt = topic.title === "KLOW" ? "KLOW peptide blend bottle" : detail?.bottleAlt;
 
+  // Resolve videos + YouTube link once; used in the header and in the
+  // "Our videos" block below. Falls back to a topic-only match for
+  // non-seeded topics like NAD+ or Oxytocin.
+  const peptide = PEPTIDES.find((p) => {
+    const names = [p.canonicalName, ...p.synonyms].map((n) => slugify(n));
+    return names.includes(slug) || slugify(topic.title).includes(slugify(p.canonicalName));
+  });
+  const videoDisplayName = peptide?.canonicalName ?? topic.title;
+  const ourVideos = peptide
+    ? videosForPeptide(peptide, slug)
+    : videosForTopic(topic.title, slug);
+  const youtubeUrl = youtubeSearchUrl(videoDisplayName, localeKey);
+
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
       {/* Breadcrumb */}
@@ -106,13 +120,20 @@ export default async function TopicPage({
             priority
           />
         )}
-        <div>
-          <h1 className="text-3xl font-bold text-stone-900 leading-tight">
-            {t("topicResearch", { title: topic.title })}
-          </h1>
-          {detail?.subtitle && (
-            <p className="text-sky-700 font-medium mt-1">{detail.subtitle}</p>
-          )}
+        <div className="flex-1 min-w-0">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+            <div className="flex-1 min-w-0">
+              <h1 className="text-3xl font-bold text-stone-900 leading-tight">
+                {t("topicResearch", { title: topic.title })}
+              </h1>
+              {detail?.subtitle && (
+                <p className="text-sky-700 font-medium mt-1">{detail.subtitle}</p>
+              )}
+            </div>
+            <div className="sm:flex-shrink-0 sm:pt-1">
+              <YouTubeButton href={youtubeUrl} />
+            </div>
+          </div>
           <p className="text-sm text-stone-500 mt-2">
             {t("researchArea")} {topic.researchArea}
           </p>
@@ -142,28 +163,12 @@ export default async function TopicPage({
         </p>
       )}
 
-      {/* Videos (our matches first, then external YouTube search). Falls back
-          to a topic-only match for non-seeded topics like NAD+ or Oxytocin. */}
-      {(() => {
-        const peptide = PEPTIDES.find((p) => {
-          const names = [p.canonicalName, ...p.synonyms].map((n) => slugify(n));
-          return names.includes(slug) || slugify(topic.title).includes(slugify(p.canonicalName));
-        });
-        const displayName = peptide?.canonicalName ?? topic.title;
-        const ourVideos = peptide
-          ? videosForPeptide(peptide, slug)
-          : videosForTopic(topic.title, slug);
-        const youtubeUrl = youtubeSearchUrl(displayName, locale === "es" ? "es" : "en");
-        return (
-          <div className="mb-8 border-t border-stone-200 pt-6">
-            <PeptideVideos
-              canonicalName={displayName}
-              ourVideos={ourVideos}
-              youtubeUrl={youtubeUrl}
-            />
-          </div>
-        );
-      })()}
+      {/* Our videos (external YouTube link lives in the header, top-right) */}
+      {ourVideos.length > 0 && (
+        <div className="mb-8 border-t border-stone-200 pt-6">
+          <PeptideVideos ourVideos={ourVideos} />
+        </div>
+      )}
 
       {/* CTA */}
       <div className="bg-sky-50 border border-sky-200 rounded-xl p-6">

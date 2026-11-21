@@ -6,6 +6,7 @@ import type { PeptideCard as CardData } from "@/lib/search/goal-search";
 import { evidenceTier, type EvidenceLabel } from "@/lib/evidence/label";
 import { TopicDetailBody } from "@/components/TopicDetailBody";
 import { PeptideVideos } from "@/components/PeptideVideos";
+import { YouTubeButton } from "@/components/YouTubeButton";
 import { Link } from "@/i18n/navigation";
 
 const TIER_CLASSES: Record<ReturnType<typeof evidenceTier>, string> = {
@@ -66,7 +67,7 @@ export function PeptideCard({ card }: { card: CardData }) {
     <article className="rounded-lg border border-navy/15 bg-white shadow-sm overflow-hidden">
       <div className="p-5">
         <div className="flex items-start justify-between gap-4 flex-wrap">
-          <div>
+          <div className="flex-1 min-w-0">
             <h3 className="font-serif text-xl text-navy">{card.canonicalName}</h3>
             {card.synonyms.length > 0 && (
               <p className="text-xs text-ink/60 mt-1">
@@ -74,11 +75,17 @@ export function PeptideCard({ card }: { card: CardData }) {
               </p>
             )}
           </div>
-          <span
-            className={`inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-semibold ${TIER_CLASSES[tier]}`}
-          >
-            {badgeText}
-          </span>
+          <div className="flex items-center gap-2 flex-wrap justify-end">
+            <YouTubeButton
+              href={locale === "es" ? card.youtubeUrlEs : card.youtubeUrlEn}
+              size="sm"
+            />
+            <span
+              className={`inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-semibold ${TIER_CLASSES[tier]}`}
+            >
+              {badgeText}
+            </span>
+          </div>
         </div>
 
         <p className="mt-3 text-sm">
@@ -108,14 +115,12 @@ export function PeptideCard({ card }: { card: CardData }) {
           </p>
         )}
 
-        {/* Videos (our matches, then YouTube search) */}
-        <div className="mt-4 border-t border-navy/10 pt-4">
-          <PeptideVideos
-            canonicalName={card.canonicalName}
-            ourVideos={card.ourVideos}
-            youtubeUrl={locale === "es" ? card.youtubeUrlEs : card.youtubeUrlEn}
-          />
-        </div>
+        {/* Our videos (external YouTube link is in the header top-right) */}
+        {card.ourVideos.length > 0 && (
+          <div className="mt-4 border-t border-navy/10 pt-4">
+            <PeptideVideos ourVideos={card.ourVideos} />
+          </div>
+        )}
 
         {/* Research papers (collapsible) */}
         <div className="mt-4 border-t border-navy/10 pt-4">
