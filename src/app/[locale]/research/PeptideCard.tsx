@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import type { PeptideCard as CardData } from "@/lib/search/goal-search";
 import { evidenceTier, type EvidenceLabel } from "@/lib/evidence/label";
+import { TopicDetailBody } from "@/components/TopicDetailBody";
+import { Link } from "@/i18n/navigation";
 
 const TIER_CLASSES: Record<ReturnType<typeof evidenceTier>, string> = {
   green: "bg-emerald-100 text-emerald-900 border-emerald-300",
@@ -39,7 +41,7 @@ export function PeptideCard({ card }: { card: CardData }) {
   const t = useTranslations("research");
   const tEv = useTranslations("evidence");
   const tStudy = useTranslations("studyTypes");
-  const [expanded, setExpanded] = useState(false);
+  const [papersOpen, setPapersOpen] = useState(false);
 
   const fdaLine =
     card.fdaStatus === "approved" && card.fdaIndication
@@ -70,13 +72,11 @@ export function PeptideCard({ card }: { card: CardData }) {
               </p>
             )}
           </div>
-          {badgeText && (
-            <span
-              className={`inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-semibold ${TIER_CLASSES[tier]}`}
-            >
-              {badgeText}
-            </span>
-          )}
+          <span
+            className={`inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-semibold ${TIER_CLASSES[tier]}`}
+          >
+            {badgeText}
+          </span>
         </div>
 
         <p className="mt-3 text-sm">
@@ -85,25 +85,48 @@ export function PeptideCard({ card }: { card: CardData }) {
           </span>
         </p>
 
-        <p className="mt-2 text-sm text-ink/70">
-          {t("paperCount", { count: card.paperCount })}
-        </p>
-
-        {card.topPapers.length > 0 ? (
-          <button
-            type="button"
-            onClick={() => setExpanded((v) => !v)}
-            className="mt-3 text-sm font-semibold text-navy hover:underline focus:outline-none focus-visible:underline"
-            aria-expanded={expanded}
-          >
-            {t("topPapersHeading")} {expanded ? "▴" : "▾"}
-          </button>
+        {/* Topic body or placeholder */}
+        {card.topicDetail ? (
+          <div className="mt-4 border-t border-navy/10 pt-4">
+            <TopicDetailBody detail={card.topicDetail} compact />
+            {card.topicSlug && (
+              <p className="mt-2">
+                <Link
+                  href={`/topics/${card.topicSlug}` as "/topics/[slug]"}
+                  className="text-sm font-semibold text-navy hover:underline"
+                >
+                  {t("readFullPage")} →
+                </Link>
+              </p>
+            )}
+          </div>
         ) : (
-          <p className="mt-3 text-sm text-ink/60">{t("noPapers")}</p>
+          <p className="mt-4 text-sm text-ink/60 italic border-t border-navy/10 pt-4">
+            {t("fullPageComingSoon")}
+          </p>
         )}
+
+        {/* Research papers (collapsible) */}
+        <div className="mt-4 border-t border-navy/10 pt-4">
+          <p className="text-sm text-ink/70 mb-2">
+            {t("paperCount", { count: card.paperCount })}
+          </p>
+          {hasPapers ? (
+            <button
+              type="button"
+              onClick={() => setPapersOpen((v) => !v)}
+              className="text-sm font-semibold text-navy hover:underline focus:outline-none focus-visible:underline"
+              aria-expanded={papersOpen}
+            >
+              {t("researchSection")} {papersOpen ? "▴" : "▾"}
+            </button>
+          ) : (
+            <p className="text-sm text-ink/60">{t("noPapers")}</p>
+          )}
+        </div>
       </div>
 
-      {expanded && card.topPapers.length > 0 && (
+      {papersOpen && hasPapers && (
         <ul className="divide-y divide-navy/10 border-t border-navy/10 bg-paper/40">
           {card.topPapers.map((p, i) => (
             <li key={p.pmid ?? i} className="p-4 text-sm">

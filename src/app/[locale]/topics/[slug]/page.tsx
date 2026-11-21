@@ -7,19 +7,8 @@ import topicsData from "@/data/topics.json";
 import topicDetails from "@/data/topicDetails.json";
 import { slugify } from "@/lib/slugify";
 import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
-
-type TopicDetail = {
-  isBlend?: boolean;
-  subtitle?: string;
-  bottleImage?: string;
-  bottleAlt?: string;
-  summary: string;
-  researchNote?: string;
-  consultationNote?: string;
-  ingredients?: { name: string; label: string; researchArea: string }[];
-  researchAreas?: { area: string; detail: string; links?: { label: string; url: string }[] }[];
-  citations?: { label: string; url: string }[];
-};
+import { TopicDetailBody } from "@/components/TopicDetailBody";
+import type { TopicDetail } from "@/lib/peptides/topic-map";
 
 interface TopicGroup {
   group: string;
@@ -143,83 +132,7 @@ export default async function TopicPage({
 
       {/* Summary */}
       {detail ? (
-        <div className="prose prose-stone max-w-none">
-          <p className="text-stone-700 leading-relaxed text-base mb-8">{detail.summary}</p>
-
-          {detail.researchAreas && detail.researchAreas.length > 0 && (
-            <section className="mb-8">
-              <h2 className="text-xl font-bold text-stone-800 mb-4">{t("researchAreas")}</h2>
-              <div className="space-y-4 not-prose">
-                {detail.researchAreas.map((ra) => (
-                  <div key={ra.area} className="bg-stone-50 border border-stone-200 rounded-lg px-5 py-4">
-                    <h3 className="font-semibold text-stone-800 mb-1">{ra.area}</h3>
-                    <p className="text-sm text-stone-600 leading-relaxed">{ra.detail}</p>
-                    {ra.links && ra.links.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mt-2">
-                        {ra.links.map((link) => (
-                          <a
-                            key={link.url}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-xs text-sky-700 bg-sky-50 border border-sky-200 rounded px-2 py-0.5 hover:bg-sky-100 transition-colors"
-                          >
-                            <span>↗</span> {link.label}
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {detail.isBlend && detail.ingredients && (
-            <section className="mb-8">
-              <h2 className="text-xl font-bold text-stone-800 mb-4">{t("blendIngredients")}</h2>
-              <div className="space-y-4 not-prose">
-                {detail.ingredients.map((ing) => (
-                  <div key={ing.name} className="bg-blue-50 border border-blue-100 rounded-lg px-5 py-4">
-                    <div className="flex items-baseline gap-2 mb-1">
-                      <h3 className="font-bold text-blue-900">{ing.name}</h3>
-                      <span className="text-xs text-blue-500">{ing.label}</span>
-                    </div>
-                    <p className="text-sm text-stone-600">{ing.researchArea}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {(detail.researchNote || detail.consultationNote) && (
-            <p className="text-sm text-stone-500 italic border-t border-stone-200 pt-4 mb-4">
-              {detail.consultationNote ?? detail.researchNote}
-            </p>
-          )}
-
-          {detail.citations && detail.citations.length > 0 && (
-            <section className="mb-8">
-              <h2 className="text-base font-semibold text-stone-700 mb-2">
-                {t("researchReferences")}
-              </h2>
-              <ul className="space-y-1 not-prose">
-                {detail.citations.map((c) => (
-                  <li key={c.url} className="text-sm">
-                    <a
-                      href={c.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sky-700 hover:underline"
-                    >
-                      {c.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-        </div>
+        <TopicDetailBody detail={detail} />
       ) : (
         <p className="text-stone-600 mb-8">
           {t("noDetailText", { title: topic.title, researchArea: topic.researchArea })}

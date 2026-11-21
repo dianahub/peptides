@@ -5,6 +5,7 @@ import { GOALS } from "@/lib/goals/data";
 import { lookup as lookupPeptide, didYouMean as peptideDidYouMean } from "@/lib/peptides/normalize";
 import { lookupGoal, type Lang } from "@/lib/goals/normalize";
 import { evidenceLabel, type EvidenceLabel } from "@/lib/evidence/label";
+import { peptideTopic, type TopicDetail } from "@/lib/peptides/topic-map";
 
 export interface TopPaper {
   pmid: string | null;
@@ -26,6 +27,9 @@ export interface PeptideCard {
   paperCount: number;
   bestEvidence: EvidenceLabel | null;
   topPapers: TopPaper[];
+  topicSlug: string | null;
+  topicTitle: string | null;
+  topicDetail: TopicDetail | null;
 }
 
 export type Matched =
@@ -148,6 +152,7 @@ function toCard(
         sampleSize: rows[0].sample_size,
       })
     : null;
+  const topic = peptideTopic(entry);
   return {
     id: entry.id,
     canonicalName: entry.canonicalName,
@@ -157,6 +162,9 @@ function toCard(
     paperCount,
     bestEvidence,
     topPapers,
+    topicSlug: topic?.slug ?? null,
+    topicTitle: topic?.title ?? null,
+    topicDetail: topic?.detail ?? null,
   };
 }
 
