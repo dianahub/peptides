@@ -16,6 +16,7 @@ export function Nav() {
     { href: "/" as const, label: t("home") },
     { href: "/videos" as const, label: t("videos") },
     { href: "/topics" as const, label: t("topics") },
+    { href: "/research" as const, label: t("research") },
     { href: "/consultation" as const, label: t("consultation") },
     { href: "/about" as const, label: t("about") },
   ];
