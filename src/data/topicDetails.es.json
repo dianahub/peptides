@@ -1,4 +1,62 @@
 {
+  "BPC-157": {
+    "subtitle": "Pentapéptido de 15 aminoácidos derivado del jugo gástrico (PL 14736 / Body Protection Compound 157)",
+    "summary": "BPC-157 es un péptido sintético de 15 aminoácidos derivado de un fragmento citoprotector del jugo gástrico humano. El registro de BPC-157 indexado en esta base de datos es casi en su totalidad preclínico: 14 estudios en ratas, 5 en ratones y uno en conejos, todos con dosificación intraperitoneal en el rango de microgramos o nanogramos por kilogramo. El trabajo publicado se concentra fuertemente en un único grupo de investigación con base en Zagreb (Sikiric, Seiwerth y colaboradores); la replicación independiente fuera de ese grupo es limitada. La cicatrización de tendones y ligamentos — una de las áreas de investigación más discutidas sobre BPC-157 — no está representada en los artículos actualmente indexados aquí.",
+    "researchAreas": [
+      {
+        "area": "Modelos de lesión gastrointestinal",
+        "detail": "El mayor grupo de investigación indexada sobre BPC-157 examina modelos de lesión gástrica, duodenal, colónica y esofágica en ratas y ratones, con dosificación de 10 µg/kg o 10 ng/kg por vía intraperitoneal (o intragástrica/intrarrectal en algunos estudios de colon). En lesiones de colon y duodeno inducidas por cisteamina, lesiones gástricas inducidas por haloperidol y reserpina, lesiones gástricas inducidas por aloxano, hemorragia gástrica por etanol, modelos de consumo crónico de alcohol y esofagitis por reflujo, los resúmenes reportan atenuación del daño mucoso y de la infiltración de células inflamatorias. Los tamaños de muestra no se reportaron en los resúmenes.",
+        "links": [
+          { "label": "PMID 11595448 (2001) — lesiones de colon y duodeno inducidas por cisteamina en ratas", "url": "https://pubmed.ncbi.nlm.nih.gov/11595448/" },
+          { "label": "PMID 11595451 (2001) — terapia de lesión crónica de colon por cisteamina en ratas", "url": "https://pubmed.ncbi.nlm.nih.gov/11595451/" },
+          { "label": "PMID 10672991 (1999) — citoprotección en esofagitis por reflujo en ratas", "url": "https://pubmed.ncbi.nlm.nih.gov/10672991/" },
+          { "label": "PMID 10672996 (1999) — lesiones gástricas inducidas por aloxano en ratas y ratones", "url": "https://pubmed.ncbi.nlm.nih.gov/10672996/" },
+          { "label": "PMID 10791690 (2000) — lesiones gástricas por falla del sistema dopaminérgico en ratas", "url": "https://pubmed.ncbi.nlm.nih.gov/10791690/" }
+        ]
+      },
+      {
+        "area": "Investigación hepática y vascular",
+        "detail": "Ratas con consumo crónico de alcohol mostraron atenuación de la hipertensión portal y mejora de los parámetros histométricos hepáticos tras BPC-157 intraperitoneal o intragástrico a 10 µg/kg o 10 ng/kg. Un estudio separado de implante subcutáneo de esponja en rata reportó un mayor número de espacios endoteliales recién formados y mayor formación de tejido de granulación, interpretado en el artículo como una señal de angiogénesis. Ambos son trabajos preclínicos de un solo grupo de investigación.",
+        "links": [
+          { "label": "PMID 11595456 (2001) — hipertensión portal y lesiones hepáticas en ratas con alcohol crónico", "url": "https://pubmed.ncbi.nlm.nih.gov/11595456/" },
+          { "label": "PMID 10672992 (1999) — angiogénesis y tejido de granulación en implantes de esponja en ratas", "url": "https://pubmed.ncbi.nlm.nih.gov/10672992/" }
+        ]
+      },
+      {
+        "area": "Cicatrización de heridas y quemaduras",
+        "detail": "Un estudio indexado de quemaduras de espesor parcial profundo en ratones reportó mejora de la reepitelización, de la resistencia a la rotura y elongación relativa de la piel quemada (tensiometría) y de la formación de colágeno/reticulina tras aplicación tópica (crema con 50 µg a 5 ng de BPC-157 por 50 g de crema) más BPC-157 intraperitoneal. No aparece ningún estudio de cicatrización de tendones o ligamentos en el conjunto extraído.",
+        "links": [
+          { "label": "PMID 11718984 (2001) — crema de BPC-157 en quemaduras de espesor parcial profundo en ratones", "url": "https://pubmed.ncbi.nlm.nih.gov/11718984/" }
+        ]
+      },
+      {
+        "area": "Cicatrización ósea (modelo en conejo)",
+        "detail": "Un único estudio de defecto óseo segmentario en conejo (defecto osteoperióstico de 0,8 cm en el radio) comparó BPC-157 con médula ósea y con implantación de hueso cortical autólogo, con dosificación de 10 µg/kg por inyección local o intramuscular. La superficie de callo radiográfica, la microfotodensitometría y la histomorfometría cuantitativa se reportaron como mejoradas; más animales en los grupos tratados con BPC-157 alcanzaron continuidad ósea. El tamaño de muestra no se reportó en el resumen.",
+        "links": [
+          { "label": "PMID 10071911 (1999) — cicatrización de defecto óseo segmentario en conejos", "url": "https://pubmed.ncbi.nlm.nih.gov/10071911/" }
+        ]
+      },
+      {
+        "area": "Modelos del SNC y neuroconductuales",
+        "detail": "Varios estudios indexados en ratas y ratones examinan BPC-157 en paradigmas conductuales: efectos tipo antidepresivo en la prueba de nado forzado y en el estrés crónico imprevisible; señal ansiolítica en una prueba de enterramiento con sonda de descarga; atenuación de la catalepsia inducida por neurolépticos; protección en modelos de Parkinson por MPTP y reserpina; y atenuación de la tolerancia y abstinencia por diazepam. Todos son preclínicos; no hay ningún ensayo humano del SNC indexado aquí.",
+        "links": [
+          { "label": "PMID 10791689 (2000) — efecto antidepresivo en ratas (Porsolt y estrés crónico)", "url": "https://pubmed.ncbi.nlm.nih.gov/10791689/" },
+          { "label": "PMID 11742568 (2001) — efecto ansiolítico (rata, ratón) — pruebas de sonda de descarga y luz/oscuridad", "url": "https://pubmed.ncbi.nlm.nih.gov/11742568/" },
+          { "label": "PMID 10499368 (1999) — atenuación de la catalepsia (neuroléptico, rata y ratón)", "url": "https://pubmed.ncbi.nlm.nih.gov/10499368/" },
+          { "label": "PMID 10672997 (1999) — modelos de Parkinson por MPTP y reserpina en ratones", "url": "https://pubmed.ncbi.nlm.nih.gov/10672997/" },
+          { "label": "PMID 10707891 (1999) — tolerancia y abstinencia al diazepam (ratón)", "url": "https://pubmed.ncbi.nlm.nih.gov/10707891/" }
+        ]
+      }
+    ],
+    "citations": [
+      { "label": "PMID 11595448 (2001) — lesiones de colon y duodeno inducidas por cisteamina en ratas", "url": "https://pubmed.ncbi.nlm.nih.gov/11595448/" },
+      { "label": "PMID 11595456 (2001) — atenuación de hipertensión portal y lesiones hepáticas en ratas con alcohol crónico", "url": "https://pubmed.ncbi.nlm.nih.gov/11595456/" },
+      { "label": "PMID 11718984 (2001) — crema de BPC-157 en cicatrización de quemaduras en ratones", "url": "https://pubmed.ncbi.nlm.nih.gov/11718984/" },
+      { "label": "PMID 10071911 (1999) — cicatrización de defecto óseo segmentario en conejos", "url": "https://pubmed.ncbi.nlm.nih.gov/10071911/" },
+      { "label": "PMID 11742568 (2001) — efecto ansiolítico en roedores", "url": "https://pubmed.ncbi.nlm.nih.gov/11742568/" }
+    ],
+    "researchNote": "El registro de BPC-157 indexado aquí es casi en su totalidad preclínico (rata, ratón, conejo) con dosificación intraperitoneal de 10 µg/kg o 10 ng/kg. La evidencia clínica en humanos es muy limitada y no está representada en los artículos extraídos. Una fracción grande de la literatura publicada sobre BPC-157 proviene de un único grupo de investigación con base en Zagreb; la replicación independiente es escasa."
+  },
   "KLOW": {
     "isBlend": true,
     "subtitle": "La mezcla KLOW",
