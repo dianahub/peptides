@@ -4,7 +4,6 @@ import { usePathname } from "@/i18n/navigation";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { SITE_NAME } from "@/lib/config";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { NavSearch } from "./NavSearch";
 
@@ -13,14 +12,16 @@ export function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
+  // Primary links excluding the CTA, which renders as a gold pill at the end.
   const links = [
     { href: "/" as const, label: t("home") },
     { href: "/videos" as const, label: t("videos") },
     { href: "/topics" as const, label: t("topics") },
     { href: "/research" as const, label: t("research") },
-    { href: "/consultation" as const, label: t("consultation") },
     { href: "/about" as const, label: t("about") },
   ];
+  const ctaHref = "/consultation" as const;
+  const ctaLabel = t("consultation");
 
   return (
     <header
@@ -31,68 +32,79 @@ export function Nav() {
         boxShadow: "0 10px 30px -14px rgba(16,38,60,0.65)",
       }}
     >
+      {/* Utility row (desktop only) */}
+      <div className="hidden md:block border-b border-white/5">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-end gap-5 h-8">
+          <a
+            href="https://futurotekhealth.com"
+            className="text-xs text-white/55 hover:text-white/85 transition-colors whitespace-nowrap"
+          >
+            {t("mainSite")}
+          </a>
+          <a
+            href="tel:+12026400054"
+            className="flex items-center gap-2 text-white/70 hover:text-white transition-colors whitespace-nowrap"
+          >
+            <span className="text-[10px] uppercase tracking-[0.14em] text-white/55">
+              {t("referralLine")}
+            </span>
+            <span className="text-xs tabular-nums">+1 (202) 640-0054</span>
+          </a>
+          <LocaleSwitcher />
+        </div>
+      </div>
+
+      {/* Main bar */}
       <nav
-        className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 gap-6"
+        className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-6 h-20 md:h-[5.25rem]"
         aria-label="Main navigation"
       >
         <div className="flex items-center gap-4 flex-shrink-0">
           <Link
             href="/"
-            className="font-serif font-medium text-2xl text-white tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
+            className="font-serif font-medium text-2xl text-white tracking-tight whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
           >
             Futurotek Health
           </Link>
-          <a
-            href="https://futurotekhealth.com"
-            className="text-xs text-white/50 hover:text-white/80 transition-colors hidden sm:block whitespace-nowrap"
-          >
-            {t("mainSite")}
-          </a>
         </div>
 
-        <a
-          href="tel:+12026400054"
-          className="hidden lg:flex flex-col items-end text-white/80 hover:text-white transition-colors"
-        >
-          <span className="text-[11px] uppercase tracking-[0.12em] text-white/60">
-            {t("referralLine")}
-          </span>
-          <span className="text-sm tabular-nums">+1 (202) 640-0054</span>
-        </a>
-
-        {/* Desktop nav */}
-        <ul className="hidden md:flex gap-1 items-center" role="list">
+        {/* Desktop links + search + CTA (visible xl and up to avoid wrapping) */}
+        <ul className="hidden xl:flex gap-1 items-center flex-1 justify-end" role="list">
           {links.map(({ href, label }) => {
             const isActive = pathname === href;
-            const isCta = href === "/consultation";
-            const className = isCta
-              ? "px-3 py-1.5 rounded-full text-sm font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold text-gold hover:text-amber-300 ml-2"
-              : `px-3 py-2 rounded text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold ${
-                  isActive ? "text-white" : "text-white/80 hover:text-white"
-                }`;
             return (
               <li key={href}>
                 <Link
                   href={href}
                   aria-current={isActive ? "page" : undefined}
-                  className={className}
+                  className={`px-3 py-2 rounded text-sm font-medium whitespace-nowrap transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold ${
+                    isActive ? "text-white" : "text-white/80 hover:text-white"
+                  }`}
                 >
                   {label}
                 </Link>
               </li>
             );
           })}
-          <li className="hidden lg:block ml-3">
+          <li className="ml-3">
             <NavSearch variant="desktop" />
           </li>
           <li className="ml-3">
-            <LocaleSwitcher />
+            <Link
+              href={ctaHref}
+              aria-current={pathname === ctaHref ? "page" : undefined}
+              className="inline-block px-4 py-2 rounded-full bg-gold text-navy text-sm font-semibold whitespace-nowrap hover:bg-amber-300 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
+              {ctaLabel}
+            </Link>
           </li>
         </ul>
 
-        {/* Mobile burger */}
-        <div className="md:hidden flex items-center gap-3">
-          <LocaleSwitcher />
+        {/* Below xl (≈1280px): everything collapses into the hamburger. */}
+        <div className="xl:hidden flex items-center gap-3">
+          <div className="md:hidden">
+            <LocaleSwitcher />
+          </div>
           <button
             className="p-2 rounded text-white/80 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
             aria-label={open ? t("closeMenu") : t("openMenu")}
@@ -111,12 +123,12 @@ export function Nav() {
         </div>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Collapsed menu: shown below xl */}
       {open && (
-        <div id="mobile-menu" className="md:hidden border-t border-white/10 px-4 pb-4" style={{ background: "#10263c" }}>
+        <div id="mobile-menu" className="xl:hidden border-t border-white/10 px-4 pb-4" style={{ background: "#10263c" }}>
           <a
             href="tel:+12026400054"
-            className="flex items-center gap-2 py-3 border-b border-white/10 text-white/70 hover:text-white text-sm transition-colors"
+            className="flex items-center gap-2 py-3 border-b border-white/10 text-white/70 hover:text-white text-sm transition-colors whitespace-nowrap md:hidden"
           >
             <span className="text-[11px] uppercase tracking-wider text-white/50">{t("referralLine")}</span>
             <span className="tabular-nums">+1 (202) 640-0054</span>
@@ -131,7 +143,7 @@ export function Nav() {
                   href={href}
                   aria-current={pathname === href ? "page" : undefined}
                   onClick={() => setOpen(false)}
-                  className={`block px-3 py-2 rounded text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold ${
+                  className={`block px-3 py-2 rounded text-sm font-medium whitespace-nowrap transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold ${
                     pathname === href ? "text-white" : "text-white/80 hover:text-white"
                   }`}
                 >
@@ -139,6 +151,16 @@ export function Nav() {
                 </Link>
               </li>
             ))}
+            <li className="pt-2">
+              <Link
+                href={ctaHref}
+                aria-current={pathname === ctaHref ? "page" : undefined}
+                onClick={() => setOpen(false)}
+                className="inline-block px-4 py-2 rounded-full bg-gold text-navy text-sm font-semibold whitespace-nowrap hover:bg-amber-300 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                {ctaLabel}
+              </Link>
+            </li>
           </ul>
         </div>
       )}

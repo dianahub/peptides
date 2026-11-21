@@ -14,7 +14,7 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "searchLabel": "Search research",
-    "searchPlaceholder": "Search peptides or goals (e.g. weight loss)",
+    "searchPlaceholder": "Search peptides or goals",
     "searchSubmit": "Submit search"
   },
   "localeSwitcher": {
