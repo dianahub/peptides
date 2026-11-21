@@ -1,6 +1,7 @@
 import { db } from "@/db";
 import { sql } from "drizzle-orm";
 import { PEPTIDES } from "@/lib/peptides/data";
+import { GOALS } from "@/lib/goals/data";
 import { lookup as lookupPeptide, didYouMean as peptideDidYouMean } from "@/lib/peptides/normalize";
 import { lookupGoal, type Lang } from "@/lib/goals/normalize";
 import { evidenceLabel, type EvidenceLabel } from "@/lib/evidence/label";
@@ -210,6 +211,34 @@ async function cardForPeptide(peptideId: string): Promise<PeptideCard | null> {
     paperCountForPeptide(entry.id, null),
   ]);
   return toCard(entry, papers, paperCount);
+}
+
+/**
+ * Direct slug lookup — bypasses all text normalization. Used by the
+ * research-page goal buttons so clicks never depend on the current
+ * locale's label rendering.
+ */
+export async function searchByGoalSlug(
+  slug: string,
+  lang: Lang = "en",
+): Promise<SearchResult> {
+  const trimmed = slug.trim();
+  if (!trimmed) {
+    return { query: slug, matched: null, didYouMean: null, peptides: [] };
+  }
+  // Validate against the static GOALS list so an unknown slug returns
+  // "not matched" rather than hitting the DB for nothing.
+  const known = GOALS.find((g) => g.slug === trimmed);
+  if (!known) {
+    return { query: slug, matched: null, didYouMean: null, peptides: [] };
+  }
+  const peptides = await peptidesForGoal(trimmed);
+  return {
+    query: slug,
+    matched: { kind: "goal", slug: trimmed, matchedTerm: trimmed, lang },
+    didYouMean: null,
+    peptides,
+  };
 }
 
 /** Core search: goal → peptide fallback → empty with didYouMean. */

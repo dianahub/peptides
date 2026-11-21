@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import {
   searchByGoalOrPeptide,
+  searchByGoalSlug,
   listGoalsWithPeptides,
 } from "@/lib/search/goal-search";
 import { SearchForm } from "./SearchForm";
@@ -28,10 +29,10 @@ export default async function ResearchPage({
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; goal?: string }>;
 }) {
   const { locale } = await params;
-  const { q = "" } = await searchParams;
+  const { q = "", goal = "" } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "research" });
   const tGoals = await getTranslations({ locale, namespace: "goals" });
@@ -40,7 +41,11 @@ export default async function ResearchPage({
 
   const [goals, result] = await Promise.all([
     listGoalsWithPeptides(),
-    q.trim() ? searchByGoalOrPeptide(q, lang) : null,
+    goal.trim()
+      ? searchByGoalSlug(goal, lang)
+      : q.trim()
+      ? searchByGoalOrPeptide(q, lang)
+      : null,
   ]);
 
   const matchedGoalSlug =
@@ -67,7 +72,7 @@ export default async function ResearchPage({
             return (
               <li key={g.slug}>
                 <Link
-                  href={{ pathname: "/research", query: { q: g.slug } }}
+                  href={{ pathname: "/research", query: { goal: g.slug } }}
                   className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold ${
                     active
                       ? "border-navy bg-navy text-white"
