@@ -92,6 +92,7 @@ export const papers = pgTable("papers", {
   evidenceScore: integer("evidence_score"),
   retracted: boolean("retracted").notNull().default(false),
   r2Key: text("r2_key"),
+  goals: text("goals").array(),
 });
 
 export const chunks = pgTable("chunks", {
