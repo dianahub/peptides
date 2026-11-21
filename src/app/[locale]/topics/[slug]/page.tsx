@@ -9,6 +9,9 @@ import { slugify } from "@/lib/slugify";
 import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { TopicDetailBody } from "@/components/TopicDetailBody";
 import type { TopicDetail } from "@/lib/peptides/topic-map";
+import { PeptideVideos } from "@/components/PeptideVideos";
+import { PEPTIDES } from "@/lib/peptides/data";
+import { videosForPeptide, youtubeSearchUrl } from "@/lib/videos/for-peptide";
 
 interface TopicGroup {
   group: string;
@@ -138,6 +141,26 @@ export default async function TopicPage({
           {t("noDetailText", { title: topic.title, researchArea: topic.researchArea })}
         </p>
       )}
+
+      {/* Videos (our matches first, then external YouTube search) */}
+      {(() => {
+        const peptide = PEPTIDES.find((p) => {
+          const names = [p.canonicalName, ...p.synonyms].map((n) => slugify(n));
+          return names.includes(slug) || slugify(topic.title).includes(slugify(p.canonicalName));
+        });
+        if (!peptide) return null;
+        const ourVideos = videosForPeptide(peptide, slug);
+        const youtubeUrl = youtubeSearchUrl(peptide.canonicalName, locale === "es" ? "es" : "en");
+        return (
+          <div className="mb-8 border-t border-stone-200 pt-6">
+            <PeptideVideos
+              canonicalName={peptide.canonicalName}
+              ourVideos={ourVideos}
+              youtubeUrl={youtubeUrl}
+            />
+          </div>
+        );
+      })()}
 
       {/* CTA */}
       <div className="bg-sky-50 border border-sky-200 rounded-xl p-6">

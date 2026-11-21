@@ -6,6 +6,8 @@ import { lookup as lookupPeptide, didYouMean as peptideDidYouMean } from "@/lib/
 import { lookupGoal, type Lang } from "@/lib/goals/normalize";
 import { evidenceLabel, type EvidenceLabel } from "@/lib/evidence/label";
 import { peptideTopic, type TopicDetail } from "@/lib/peptides/topic-map";
+import { videosForPeptide, youtubeSearchUrl } from "@/lib/videos/for-peptide";
+import type { VideoEntry } from "@/types/videos";
 
 export interface TopPaper {
   pmid: string | null;
@@ -30,6 +32,9 @@ export interface PeptideCard {
   topicSlug: string | null;
   topicTitle: string | null;
   topicDetail: TopicDetail | null;
+  ourVideos: VideoEntry[];
+  youtubeUrlEn: string;
+  youtubeUrlEs: string;
 }
 
 export type Matched =
@@ -165,6 +170,9 @@ function toCard(
     topicSlug: topic?.slug ?? null,
     topicTitle: topic?.title ?? null,
     topicDetail: topic?.detail ?? null,
+    ourVideos: videosForPeptide(entry, topic?.slug ?? null),
+    youtubeUrlEn: youtubeSearchUrl(entry.canonicalName, "en"),
+    youtubeUrlEs: youtubeSearchUrl(entry.canonicalName, "es"),
   };
 }
 

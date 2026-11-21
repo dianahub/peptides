@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import type { PeptideCard as CardData } from "@/lib/search/goal-search";
 import { evidenceTier, type EvidenceLabel } from "@/lib/evidence/label";
 import { TopicDetailBody } from "@/components/TopicDetailBody";
+import { PeptideVideos } from "@/components/PeptideVideos";
 import { Link } from "@/i18n/navigation";
 
 const TIER_CLASSES: Record<ReturnType<typeof evidenceTier>, string> = {
@@ -41,6 +42,7 @@ export function PeptideCard({ card }: { card: CardData }) {
   const t = useTranslations("research");
   const tEv = useTranslations("evidence");
   const tStudy = useTranslations("studyTypes");
+  const locale = useLocale();
   const [papersOpen, setPapersOpen] = useState(false);
 
   const fdaLine =
@@ -105,6 +107,15 @@ export function PeptideCard({ card }: { card: CardData }) {
             {t("fullPageComingSoon")}
           </p>
         )}
+
+        {/* Videos (our matches, then YouTube search) */}
+        <div className="mt-4 border-t border-navy/10 pt-4">
+          <PeptideVideos
+            canonicalName={card.canonicalName}
+            ourVideos={card.ourVideos}
+            youtubeUrl={locale === "es" ? card.youtubeUrlEs : card.youtubeUrlEn}
+          />
+        </div>
 
         {/* Research papers (collapsible) */}
         <div className="mt-4 border-t border-navy/10 pt-4">
