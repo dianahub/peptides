@@ -4,6 +4,8 @@ export interface PeptideEntry {
   synonyms: string[];
   category: string;
   fdaStatus: string;
+  fdaIndication: string | null;
+  goals: string[];
 }
 
 export const PEPTIDES: PeptideEntry[] = [
@@ -19,6 +21,8 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "healing",
     fdaStatus: "research_only",
+    fdaIndication: null,
+    goals: ["healing"],
   },
   {
     id: "tb-500",
@@ -32,6 +36,8 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "healing",
     fdaStatus: "research_only",
+    fdaIndication: null,
+    goals: ["healing"],
   },
   {
     id: "ghk-cu",
@@ -45,6 +51,8 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "healing",
     fdaStatus: "cosmetic_use",
+    fdaIndication: null,
+    goals: ["healing", "skin-beauty"],
   },
   {
     id: "kpv",
@@ -57,6 +65,8 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "healing",
     fdaStatus: "research_only",
+    fdaIndication: null,
+    goals: ["healing"],
   },
   {
     id: "ara-290",
@@ -69,5 +79,171 @@ export const PEPTIDES: PeptideEntry[] = [
     ],
     category: "healing",
     fdaStatus: "investigational",
+    fdaIndication: null,
+    goals: ["healing"],
+  },
+  {
+    id: "semaglutide",
+    canonicalName: "Semaglutide",
+    synonyms: [
+      "Ozempic",
+      "Wegovy",
+      "Rybelsus",
+      "NN9924",
+      "GLP-1 receptor agonist",
+    ],
+    category: "weight-loss",
+    fdaStatus: "approved",
+    fdaIndication: "type 2 diabetes; chronic weight management",
+    goals: ["weight-loss"],
+  },
+  {
+    id: "tirzepatide",
+    canonicalName: "Tirzepatide",
+    synonyms: [
+      "Mounjaro",
+      "Zepbound",
+      "LY3298176",
+      "GIP/GLP-1 receptor agonist",
+    ],
+    category: "weight-loss",
+    fdaStatus: "approved",
+    fdaIndication: "type 2 diabetes; chronic weight management",
+    goals: ["weight-loss"],
+  },
+  {
+    id: "retatrutide",
+    canonicalName: "Retatrutide",
+    synonyms: [
+      "LY3437943",
+      "GGG tri-agonist",
+      "triple agonist",
+    ],
+    category: "metabolic",
+    fdaStatus: "investigational",
+    fdaIndication: null,
+    goals: ["weight-loss"],
+  },
+  {
+    id: "aod-9604",
+    canonicalName: "AOD-9604",
+    synonyms: [
+      "AOD9604",
+      "HGH fragment 176-191",
+      "hGH 177-191",
+      "Advanced Obesity Drug 9604",
+    ],
+    category: "weight-loss",
+    fdaStatus: "investigational",
+    fdaIndication: null,
+    goals: ["weight-loss"],
+  },
+  {
+    id: "tesamorelin",
+    canonicalName: "Tesamorelin",
+    synonyms: [
+      "Egrifta",
+      "TH9507",
+      "GHRH analog",
+    ],
+    category: "weight-loss",
+    fdaStatus: "approved",
+    fdaIndication: "HIV-associated abdominal fat (lipodystrophy)",
+    goals: ["weight-loss"],
+  },
+  {
+    id: "matrixyl",
+    canonicalName: "Palmitoyl Pentapeptide-4",
+    synonyms: [
+      "Matrixyl",
+      "Pal-KTTKS",
+      "Palmitoyl-Lysyl-Threonyl-Threonyl-Lysyl-Serine",
+      "Pal-Lys-Thr-Thr-Lys-Ser",
+    ],
+    category: "skin-beauty",
+    fdaStatus: "cosmetic_use",
+    fdaIndication: null,
+    goals: ["skin-beauty"],
+  },
+  {
+    id: "argireline",
+    canonicalName: "Acetyl Hexapeptide-3",
+    synonyms: [
+      "Argireline",
+      "Acetyl Hexapeptide-8",
+      "Ac-EEMQRR",
+      "Ac-Glu-Glu-Met-Gln-Arg-Arg",
+    ],
+    category: "skin-beauty",
+    fdaStatus: "cosmetic_use",
+    fdaIndication: null,
+    goals: ["skin-beauty"],
+  },
+  {
+    id: "selank",
+    canonicalName: "Selank",
+    synonyms: [
+      "TP-7",
+      "Thr-Lys-Pro-Arg-Pro-Gly-Pro",
+      "Threonyl-Lysyl-Prolyl-Arginyl-Prolyl-Glycyl-Prolyl",
+    ],
+    category: "anxiety-mood",
+    fdaStatus: "research_only",
+    fdaIndication: null,
+    goals: ["anxiety-mood", "cognition"],
+  },
+  {
+    id: "semax",
+    canonicalName: "Semax",
+    synonyms: [
+      "Met-Glu-His-Phe-Pro-Gly-Pro",
+      "N-acetyl Semax",
+      "ACTH (4-7) analog",
+    ],
+    category: "anxiety-mood",
+    fdaStatus: "research_only",
+    fdaIndication: null,
+    goals: ["anxiety-mood", "cognition"],
+  },
+  {
+    id: "epitalon",
+    canonicalName: "Epitalon",
+    synonyms: [
+      "Epithalon",
+      "Ala-Glu-Asp-Gly",
+      "Alanyl-Glutamyl-Aspartyl-Glycine",
+      "AEDG",
+    ],
+    category: "longevity",
+    fdaStatus: "research_only",
+    fdaIndication: null,
+    goals: ["longevity"],
+  },
+  {
+    id: "mots-c",
+    canonicalName: "MOTS-c",
+    synonyms: [
+      "MOTSc",
+      "MOTS c",
+      "Mitochondrial ORF of 12S rRNA-c",
+    ],
+    category: "longevity",
+    fdaStatus: "research_only",
+    fdaIndication: null,
+    goals: ["longevity"],
+  },
+  {
+    id: "ss-31",
+    canonicalName: "SS-31",
+    synonyms: [
+      "Elamipretide",
+      "Bendavia",
+      "MTP-131",
+      "D-Arg-Dmt-Lys-Phe-NH2",
+    ],
+    category: "longevity",
+    fdaStatus: "approved",
+    fdaIndication: "Barth syndrome (accelerated approval, 2025)",
+    goals: ["longevity"],
   },
 ];

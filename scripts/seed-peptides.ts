@@ -8,18 +8,33 @@ async function main() {
   const sql = postgres(url, { ssl: "require", max: 1 });
 
   for (const p of PEPTIDES) {
+    const updated = await sql`
+      UPDATE peptides
+      SET synonyms = ${p.synonyms},
+          category = ${p.category},
+          fda_status = ${p.fdaStatus},
+          fda_indication = ${p.fdaIndication}
+      WHERE canonical_name = ${p.canonicalName}
+      RETURNING id
+    `;
+    if (updated.length) {
+      console.log(`Updated: ${p.canonicalName}`);
+      continue;
+    }
     await sql`
-      INSERT INTO peptides (id, canonical_name, synonyms, category, fda_status)
+      INSERT INTO peptides (
+        id, canonical_name, synonyms, category, fda_status, fda_indication
+      )
       VALUES (
         gen_random_uuid(),
         ${p.canonicalName},
         ${p.synonyms},
         ${p.category},
-        ${p.fdaStatus}
+        ${p.fdaStatus},
+        ${p.fdaIndication}
       )
-      ON CONFLICT DO NOTHING
     `;
-    console.log(`Seeded: ${p.canonicalName}`);
+    console.log(`Inserted: ${p.canonicalName}`);
   }
 
   await sql.end();

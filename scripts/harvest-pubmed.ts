@@ -2,7 +2,10 @@
  * Harvests PubMed papers for a peptide ID, upserts into the papers table.
  *
  * Usage:
- *   npx tsx --env-file=.env.local scripts/harvest-pubmed.ts <peptide-id>
+ *   npx tsx --env-file=.env.local scripts/harvest-pubmed.ts <peptide-id> [--limit N]
+ *
+ * --limit caps the number of PMIDs fetched (default 10000). PubMed's default
+ * sort returns most-recent first, so --limit 20 means "the 20 newest papers".
  *
  * Env vars (optional but recommended):
  *   NCBI_API_KEY   — raises rate limit from 3 to 10 req/sec
@@ -47,11 +50,11 @@ function buildQuery(canonicalName: string, synonyms: string[]): string {
 
 // ─── esearch ────────────────────────────────────────────────────────────────
 
-async function esearch(query: string): Promise<string[]> {
+async function esearch(query: string, retmax: number): Promise<string[]> {
   const params = ncbiParams({
     db: "pubmed",
     term: query,
-    retmax: "10000",
+    retmax: String(retmax),
     usehistory: "n",
   });
   const url = `${BASE}/esearch.fcgi?${params}`;
@@ -72,6 +75,7 @@ interface ParsedArticle {
   title: string | null;
   journal: string | null;
   pubYear: number | null;
+  abstract: string | null;
 }
 
 const xmlParser = new XMLParser({
@@ -143,7 +147,27 @@ function parseArticles(xml: string): ParsedArticle[] {
       if (type === "pmc") pmcid = val;
     }
 
-    results.push({ pmid, doi, pmcid, title, journal, pubYear });
+    // Abstract — sections joined with their labels when present.
+    const abstractBlock = articleBlock?.["Abstract"] as
+      | Record<string, unknown>
+      | undefined;
+    const abstractNodes = (abstractBlock?.["AbstractText"] as unknown[]) ?? [];
+    const abstractParts: string[] = [];
+    for (const node of abstractNodes) {
+      if (typeof node === "string") {
+        abstractParts.push(node.trim());
+      } else if (typeof node === "object" && node) {
+        const rec = node as Record<string, unknown>;
+        const label = rec["@_Label"];
+        const text = rec["#text"] ?? "";
+        const textStr = typeof text === "string" ? text.trim() : String(text).trim();
+        if (!textStr) continue;
+        abstractParts.push(label ? `${String(label)}: ${textStr}` : textStr);
+      }
+    }
+    const abstract = abstractParts.join("\n").trim() || null;
+
+    results.push({ pmid, doi, pmcid, title, journal, pubYear, abstract });
   }
 
   return results;
@@ -192,6 +216,7 @@ async function upsert(articles: ParsedArticle[]): Promise<number> {
         title: a.title ?? undefined,
         journal: a.journal ?? undefined,
         pubYear: a.pubYear ?? undefined,
+        abstract: a.abstract ?? undefined,
       })
       .onConflictDoUpdate({
         target: a.doi ? papers.doi : papers.pmid,
@@ -202,6 +227,7 @@ async function upsert(articles: ParsedArticle[]): Promise<number> {
           title: sql`excluded.title`,
           journal: sql`excluded.journal`,
           pubYear: sql`excluded.pub_year`,
+          abstract: sql`excluded.abstract`,
         },
       });
     count++;
@@ -211,12 +237,37 @@ async function upsert(articles: ParsedArticle[]): Promise<number> {
 
 // ─── main ────────────────────────────────────────────────────────────────────
 
-async function main() {
-  const peptideId = process.argv[2];
+interface CLI {
+  peptideId: string;
+  limit: number;
+}
+
+function parseArgs(argv: string[]): CLI {
+  let peptideId: string | null = null;
+  let limit = 10000;
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === "--limit") {
+      const next = argv[++i];
+      const n = parseInt(next ?? "", 10);
+      if (!Number.isFinite(n) || n <= 0) {
+        console.error(`Invalid --limit value: ${next}`);
+        process.exit(1);
+      }
+      limit = n;
+    } else if (!a.startsWith("--") && !peptideId) {
+      peptideId = a;
+    }
+  }
   if (!peptideId) {
-    console.error("Usage: harvest-pubmed.ts <peptide-id>");
+    console.error("Usage: harvest-pubmed.ts <peptide-id> [--limit N]");
     process.exit(1);
   }
+  return { peptideId, limit };
+}
+
+async function main() {
+  const { peptideId, limit } = parseArgs(process.argv.slice(2));
 
   const entry = PEPTIDES.find((p) => p.id === peptideId);
   if (!entry) {
@@ -228,11 +279,15 @@ async function main() {
   const query = buildQuery(entry.canonicalName, entry.synonyms);
   console.log("Query:", query);
   console.log(`Rate limit: ${API_KEY ? "10" : "3"} req/sec`);
+  console.log(`Limit: ${limit}`);
 
   console.log("esearch…");
-  const pmids = await esearch(query);
+  const pmids = await esearch(query, limit);
   console.log(`Found ${pmids.length} PMIDs`);
-  if (pmids.length === 0) return;
+  if (pmids.length === 0) {
+    console.log("PMIDS=");
+    return;
+  }
 
   await sleep(DELAY_MS);
 
@@ -243,6 +298,7 @@ async function main() {
   console.log("Upserting…");
   const count = await upsert(articles);
   console.log(`Done — ${count} papers upserted for ${entry.canonicalName}`);
+  console.log(`PMIDS=${pmids.join(",")}`);
 }
 
 main().catch((err) => {

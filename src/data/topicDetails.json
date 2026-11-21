@@ -1,4 +1,62 @@
 {
+  "BPC-157": {
+    "subtitle": "Pentadecapeptide Derived from Gastric Juice (PL 14736 / Body Protection Compound 157)",
+    "summary": "BPC-157 is a synthetic 15-amino-acid peptide derived from a cytoprotective fragment of human gastric juice. The BPC-157 record indexed in this database is almost entirely preclinical: 14 rat studies, 5 mouse studies, and one rabbit study, all at microgram- or nanogram-per-kilogram intraperitoneal dosing. The published work is heavily concentrated in a single Zagreb-based research group (Sikiric, Seiwerth and colleagues); independent replication outside that group is limited. Tendon and ligament healing — one of the most widely discussed BPC-157 research areas — is not represented in the papers currently indexed here.",
+    "researchAreas": [
+      {
+        "area": "Gastrointestinal Lesion Models",
+        "detail": "The largest cluster of indexed BPC-157 research examines gastric, duodenal, colonic, and esophageal lesion models in rats and mice, dosed at 10 µg/kg or 10 ng/kg intraperitoneally (or intragastrically/intrarectally for some colon studies). Across cysteamine-induced colon and duodenum lesions, haloperidol- and reserpine-induced gastric lesions, alloxan-induced gastric lesions, ethanol gastric hemorrhage, chronic alcohol drinking models, and reflux oesophagitis, abstracts report attenuation of mucosal damage and inflammatory cell infiltration. Sample sizes were not reported in the abstracts.",
+        "links": [
+          { "label": "PMID 11595448 (2001) — cysteamine colon and duodenum lesions in rats", "url": "https://pubmed.ncbi.nlm.nih.gov/11595448/" },
+          { "label": "PMID 11595451 (2001) — chronic cysteamine colon lesion therapy in rats", "url": "https://pubmed.ncbi.nlm.nih.gov/11595451/" },
+          { "label": "PMID 10672991 (1999) — reflux oesophagitis cytoprotection in rats", "url": "https://pubmed.ncbi.nlm.nih.gov/10672991/" },
+          { "label": "PMID 10672996 (1999) — alloxan-induced gastric lesions in rats and mice", "url": "https://pubmed.ncbi.nlm.nih.gov/10672996/" },
+          { "label": "PMID 10791690 (2000) — dopamine-system-failure gastric lesions in rats", "url": "https://pubmed.ncbi.nlm.nih.gov/10791690/" }
+        ]
+      },
+      {
+        "area": "Liver and Vascular Research",
+        "detail": "Chronic-alcohol-drinking rats showed attenuated portal hypertension and improved histometric liver parameters after intraperitoneal or intragastric BPC-157 at 10 µg/kg or 10 ng/kg. A separate rat subcutaneous-sponge implant study reported increased numbers of newly formed endothelial spaces and increased granulation tissue, interpreted in the paper as an angiogenesis signal. Both studies are single-group preclinical work.",
+        "links": [
+          { "label": "PMID 11595456 (2001) — portal hypertension and liver lesions in chronic-alcohol rats", "url": "https://pubmed.ncbi.nlm.nih.gov/11595456/" },
+          { "label": "PMID 10672992 (1999) — angiogenesis and granulation tissue in rat sponge implants", "url": "https://pubmed.ncbi.nlm.nih.gov/10672992/" }
+        ]
+      },
+      {
+        "area": "Wound and Burn Healing",
+        "detail": "One indexed study of deep partial-thickness burn wounds in mice reported improved re-epithelialization, breaking strength and relative elongation of burned skin (tensiometry), and collagen/reticulin formation after topical cream (50 µg to 5 ng BPC-157 per 50 g cream) plus intraperitoneal BPC-157. No tendon or ligament healing study appears in the extracted set.",
+        "links": [
+          { "label": "PMID 11718984 (2001) — BPC-157 cream in deep partial-thickness burn wounds in mice", "url": "https://pubmed.ncbi.nlm.nih.gov/11718984/" }
+        ]
+      },
+      {
+        "area": "Bone Healing (Rabbit Model)",
+        "detail": "A single rabbit segmental bone defect study (0.8 cm osteoperiosteal defect in the radius) compared BPC-157 against bone marrow and autologous cortical bone implantation, dosed at 10 µg/kg by local or intramuscular injection. Radiographic callus surface, microphotodensitometry and quantitative histomorphometry were reported as improved; more animals in the BPC-157 arms reached bony continuity. Sample sizes were not reported in the abstract.",
+        "links": [
+          { "label": "PMID 10071911 (1999) — segmental bone defect healing in rabbits", "url": "https://pubmed.ncbi.nlm.nih.gov/10071911/" }
+        ]
+      },
+      {
+        "area": "CNS and Neurobehavioral Models",
+        "detail": "Several indexed rat and mouse studies examine BPC-157 in behavioral paradigms: antidepressant-like effects in the forced swimming test and chronic unpredictable stress; anxiolytic signal in a shock-probe burying test; attenuation of neuroleptic-induced catalepsy; protection in MPTP and reserpine Parkinson's models; and attenuation of diazepam tolerance and withdrawal. All are preclinical; no human CNS trial is indexed here.",
+        "links": [
+          { "label": "PMID 10791689 (2000) — antidepressant effect in rats (Porsolt and chronic stress)", "url": "https://pubmed.ncbi.nlm.nih.gov/10791689/" },
+          { "label": "PMID 11742568 (2001) — anxiolytic effect (rat, mouse) — shock probe and light/dark tests", "url": "https://pubmed.ncbi.nlm.nih.gov/11742568/" },
+          { "label": "PMID 10499368 (1999) — catalepsy attenuation (neuroleptic, rat and mouse)", "url": "https://pubmed.ncbi.nlm.nih.gov/10499368/" },
+          { "label": "PMID 10672997 (1999) — MPTP and reserpine Parkinson's models in mice", "url": "https://pubmed.ncbi.nlm.nih.gov/10672997/" },
+          { "label": "PMID 10707891 (1999) — diazepam tolerance and withdrawal (mouse)", "url": "https://pubmed.ncbi.nlm.nih.gov/10707891/" }
+        ]
+      }
+    ],
+    "citations": [
+      { "label": "PMID 11595448 (2001) — cysteamine colon and duodenum lesions in rats", "url": "https://pubmed.ncbi.nlm.nih.gov/11595448/" },
+      { "label": "PMID 11595456 (2001) — portal hypertension and liver lesion attenuation in chronic-alcohol rats", "url": "https://pubmed.ncbi.nlm.nih.gov/11595456/" },
+      { "label": "PMID 11718984 (2001) — BPC-157 cream in mouse burn-wound healing", "url": "https://pubmed.ncbi.nlm.nih.gov/11718984/" },
+      { "label": "PMID 10071911 (1999) — segmental bone defect healing in rabbits", "url": "https://pubmed.ncbi.nlm.nih.gov/10071911/" },
+      { "label": "PMID 11742568 (2001) — anxiolytic effect in rodents", "url": "https://pubmed.ncbi.nlm.nih.gov/11742568/" }
+    ],
+    "researchNote": "The BPC-157 record indexed here is almost entirely preclinical (rat, mouse, rabbit) at 10 µg/kg or 10 ng/kg intraperitoneal dosing. Human clinical evidence is very limited and is not represented in the extracted papers. A large fraction of the published BPC-157 literature traces to a single Zagreb-based research group; independent replication is sparse."
+  },
   "KLOW": {
     "isBlend": true,
     "subtitle": "The KLOW Blend",

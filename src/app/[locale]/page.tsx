@@ -121,6 +121,22 @@ export default async function HomePage({
         </div>
       </section>
 
+      {/* What are peptides? */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+        <h2 className="font-serif text-2xl text-ink mb-4">
+          {t("whatArePeptidesTitle")}
+        </h2>
+        <p className="text-navy-soft max-w-3xl leading-relaxed mb-4">
+          {t("whatArePeptidesBody")}
+        </p>
+        <Link
+          href="/research"
+          className="inline-block text-navy font-medium text-sm hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 rounded"
+        >
+          {t("exploreResearchLink")}
+        </Link>
+      </section>
+
       {/* Featured videos */}
       {featuredVideos.length > 0 && (
         <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12">

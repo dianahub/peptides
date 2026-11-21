@@ -8,6 +8,8 @@ import {
   integer,
   bigserial,
   customType,
+  primaryKey,
+  jsonb,
 } from "drizzle-orm/pg-core";
 
 const vector = (name: string, dimensions: number) =>
@@ -61,6 +63,7 @@ export const peptides = pgTable("peptides", {
   synonyms: text("synonyms").array().notNull().default([]),
   category: text("category"),
   fdaStatus: text("fda_status"),
+  fdaIndication: text("fda_indication"),
 });
 
 export const studyTypeEnum = pgEnum("study_type", [
@@ -90,6 +93,9 @@ export const papers = pgTable("papers", {
   evidenceScore: integer("evidence_score"),
   retracted: boolean("retracted").notNull().default(false),
   r2Key: text("r2_key"),
+  goals: text("goals").array(),
+  abstract: text("abstract"),
+  extraction: jsonb("extraction"),
 });
 
 export const chunks = pgTable("chunks", {
@@ -100,9 +106,36 @@ export const chunks = pgTable("chunks", {
   embedding: vector("embedding", 1024),
 });
 
+export const goals = pgTable("goals", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  slug: text("slug").notNull().unique(),
+  nameEn: text("name_en").notNull(),
+  nameEs: text("name_es").notNull(),
+  synonymsEn: text("synonyms_en").array().notNull().default([]),
+  synonymsEs: text("synonyms_es").array().notNull().default([]),
+  conditionTerms: text("condition_terms").array().notNull().default([]),
+});
+
+export const peptideGoals = pgTable(
+  "peptide_goals",
+  {
+    peptideId: uuid("peptide_id")
+      .notNull()
+      .references(() => peptides.id, { onDelete: "cascade" }),
+    goalId: uuid("goal_id")
+      .notNull()
+      .references(() => goals.id, { onDelete: "cascade" }),
+  },
+  (t) => [primaryKey({ columns: [t.peptideId, t.goalId] })],
+);
+
 export type Peptide = typeof peptides.$inferSelect;
 export type NewPeptide = typeof peptides.$inferInsert;
 export type Paper = typeof papers.$inferSelect;
 export type NewPaper = typeof papers.$inferInsert;
 export type Chunk = typeof chunks.$inferSelect;
 export type NewChunk = typeof chunks.$inferInsert;
+export type Goal = typeof goals.$inferSelect;
+export type NewGoal = typeof goals.$inferInsert;
+export type PeptideGoal = typeof peptideGoals.$inferSelect;
+export type NewPeptideGoal = typeof peptideGoals.$inferInsert;

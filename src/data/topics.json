@@ -48,6 +48,7 @@
     "group": "Immune Support, Training and Energy",
     "groupNote": null,
     "items": [
+      { "title": "BPC-157", "researchArea": "tissue signaling / healing research" },
       { "title": "KLOW", "researchArea": "tissue-related research" },
       { "title": "TA1", "researchArea": "immune modulation research" },
       { "title": "NAD+", "researchArea": "cellular metabolism" },
