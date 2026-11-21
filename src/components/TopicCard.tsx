@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { TopicDetailModal } from "./TopicDetailModal";
 import { PeptideVideos } from "./PeptideVideos";
+import { YouTubeButton } from "./YouTubeButton";
 import topicDetails from "@/data/topicDetails.json";
 import { slugify } from "@/lib/slugify";
 import { videosForTopic, youtubeSearchUrl } from "@/lib/videos/for-peptide";
@@ -26,14 +27,17 @@ export function TopicCard({ title, researchArea, group }: TopicCardProps) {
 
   return (
     <div className={`bg-white border rounded-lg p-4 flex flex-col gap-3 shadow-sm ${isKlow ? "border-blue-200" : "border-stone-200"}`}>
-      <div>
-        <Link
-          href={`/topics/${slug}`}
-          className="font-semibold text-stone-800 hover:text-sky-700 transition-colors focus:outline-none focus-visible:underline"
-        >
-          {title}
-        </Link>
-        <p className="text-sm text-stone-500 mt-0.5">{researchArea}</p>
+      <div className="flex items-start justify-between gap-2">
+        <div className="flex-1 min-w-0">
+          <Link
+            href={`/topics/${slug}`}
+            className="font-semibold text-stone-800 hover:text-sky-700 transition-colors focus:outline-none focus-visible:underline"
+          >
+            {title}
+          </Link>
+          <p className="text-sm text-stone-500 mt-0.5">{researchArea}</p>
+        </div>
+        <YouTubeButton href={youtubeUrl} size="sm" />
       </div>
       <div className="flex flex-col gap-2 mt-auto">
         {hasDetail ? (
@@ -53,13 +57,11 @@ export function TopicCard({ title, researchArea, group }: TopicCardProps) {
           {t("learnMore")}
         </Link>
       </div>
-      <div className="border-t border-stone-100 pt-3">
-        <PeptideVideos
-          canonicalName={title}
-          ourVideos={ourVideos}
-          youtubeUrl={youtubeUrl}
-        />
-      </div>
+      {ourVideos.length > 0 && (
+        <div className="border-t border-stone-100 pt-3">
+          <PeptideVideos ourVideos={ourVideos} />
+        </div>
+      )}
     </div>
   );
 }
