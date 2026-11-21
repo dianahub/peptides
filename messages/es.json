@@ -179,6 +179,7 @@
     "didYouMean": "¿Quiso decir {suggestion}?",
     "noPeptides": "Aún no hay péptidos vinculados a este objetivo.",
     "noPapers": "Aún no se han extraído artículos.",
+    "noStudiesBadge": "Aún no hay estudios indexados",
     "paperCount": "{count, plural, one {# artículo} other {# artículos}}",
     "topPapersHeading": "Mejores artículos",
     "fdaApproved": "Aprobado por la FDA para: {indication}",

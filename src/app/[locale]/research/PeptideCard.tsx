@@ -52,8 +52,11 @@ export function PeptideCard({ card }: { card: CardData }) {
       ? t("investigational")
       : t("researchOnly");
 
-  const tier = card.bestEvidence ? evidenceTier(card.bestEvidence) : "slate";
-  const badgeText = card.bestEvidence ? translateEvidence(tEv, card.bestEvidence) : null;
+  const hasPapers = card.paperCount > 0;
+  const tier = hasPapers && card.bestEvidence ? evidenceTier(card.bestEvidence) : "slate";
+  const badgeText = hasPapers && card.bestEvidence
+    ? translateEvidence(tEv, card.bestEvidence)
+    : t("noStudiesBadge");
 
   return (
     <article className="rounded-lg border border-navy/15 bg-white shadow-sm overflow-hidden">
