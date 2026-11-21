@@ -139,6 +139,7 @@ function toCard(
   entry: (typeof PEPTIDES)[number],
   rows: PaperRow[],
   paperCount: number,
+  locale: Lang,
 ): PeptideCard {
   const topPapers: TopPaper[] = rows.map((r) => ({
     pmid: r.pmid,
@@ -157,7 +158,7 @@ function toCard(
         sampleSize: rows[0].sample_size,
       })
     : null;
-  const topic = peptideTopic(entry);
+  const topic = peptideTopic(entry, locale);
   return {
     id: entry.id,
     canonicalName: entry.canonicalName,
@@ -176,7 +177,7 @@ function toCard(
   };
 }
 
-async function peptidesForGoal(goalSlug: string): Promise<PeptideCard[]> {
+async function peptidesForGoal(goalSlug: string, locale: Lang): Promise<PeptideCard[]> {
   const rows = await db.execute<{ peptide_id: string } & Record<string, unknown>>(sql`
     SELECT pg.peptide_id
     FROM peptide_goals pg
@@ -210,7 +211,7 @@ async function peptidesForGoal(goalSlug: string): Promise<PeptideCard[]> {
       paperRowsForPeptide(entry.id, goalSlug, 3),
       paperCountForPeptide(entry.id, goalSlug),
     ]);
-    cards.push(toCard(entry, papers, paperCount));
+    cards.push(toCard(entry, papers, paperCount, locale));
   }
   // Order by paper count desc, then canonical name.
   cards.sort((a, b) =>
@@ -219,14 +220,14 @@ async function peptidesForGoal(goalSlug: string): Promise<PeptideCard[]> {
   return cards;
 }
 
-async function cardForPeptide(peptideId: string): Promise<PeptideCard | null> {
+async function cardForPeptide(peptideId: string, locale: Lang): Promise<PeptideCard | null> {
   const entry = PEPTIDES.find((p) => p.id === peptideId);
   if (!entry) return null;
   const [papers, paperCount] = await Promise.all([
     paperRowsForPeptide(entry.id, null, 3),
     paperCountForPeptide(entry.id, null),
   ]);
-  return toCard(entry, papers, paperCount);
+  return toCard(entry, papers, paperCount, locale);
 }
 
 /**
@@ -248,7 +249,7 @@ export async function searchByGoalSlug(
   if (!known) {
     return { query: slug, matched: null, didYouMean: null, peptides: [] };
   }
-  const peptides = await peptidesForGoal(trimmed);
+  const peptides = await peptidesForGoal(trimmed, lang);
   return {
     query: slug,
     matched: { kind: "goal", slug: trimmed, matchedTerm: trimmed, lang },
@@ -271,7 +272,7 @@ export async function searchByGoalOrPeptide(
 
   const goalMatch = lookupGoal(trimmed, lang);
   if (goalMatch.found) {
-    const peptides = await peptidesForGoal(goalMatch.slug);
+    const peptides = await peptidesForGoal(goalMatch.slug, lang ?? "en");
     return {
       query,
       matched: {
@@ -287,7 +288,7 @@ export async function searchByGoalOrPeptide(
 
   const pepMatch = lookupPeptide(trimmed);
   if (pepMatch.found) {
-    const card = await cardForPeptide(pepMatch.id);
+    const card = await cardForPeptide(pepMatch.id, lang ?? "en");
     const entry = PEPTIDES.find((p) => p.id === pepMatch.id);
     return {
       query,

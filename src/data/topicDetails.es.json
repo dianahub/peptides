@@ -1,0 +1,759 @@
+{
+  "KLOW": {
+    "isBlend": true,
+    "subtitle": "La mezcla KLOW",
+    "summary": "KLOW es una combinación de cuatro péptidos — GHK-Cu, KPV, BPC-157 y TB-500 — estudiados actualmente en varias áreas de investigación que involucran vías de señalización tisular, inmunitaria y celular.",
+    "ingredients": [
+      {
+        "name": "GHK-Cu",
+        "label": "Péptido de cobre",
+        "researchArea": "Señalización de síntesis de colágeno, remodelación tisular, actividad antioxidante e investigación de vías de angiogénesis."
+      },
+      {
+        "name": "KPV",
+        "label": "Tripéptido",
+        "researchArea": "Vías de señalización inflamatoria e investigación de modulación inmunitaria, particularmente en contextos de tejido gastrointestinal y cutáneo."
+      },
+      {
+        "name": "BPC-157",
+        "label": "Body Protection Compound",
+        "researchArea": "Señalización en tejido musculoesquelético, investigación del tracto gastrointestinal, señalización nerviosa e investigación de vías de angiogénesis."
+      },
+      {
+        "name": "TB-500",
+        "label": "Fragmento de la timosina beta-4",
+        "researchArea": "Señalización de migración celular, vías de reparación tisular e investigación relacionada con la flexibilidad."
+      }
+    ],
+    "citations": [
+      {
+        "label": "Pickart & Margolina (2018) — Revisión de la señalización regenerativa del GHK-Cu",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25999921/"
+      },
+      {
+        "label": "Sikiric et al. (2016) — Revisión de la señalización tisular del BPC-157",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27830973/"
+      }
+    ],
+    "consultationNote": "La información sobre dosificación, programación y reconstitución se revisa durante una consulta."
+  },
+  "GLP-3 (retatrutide)": {
+    "subtitle": "Triple agonista de los receptores GLP-1/GIP/glucagón",
+    "summary": "Retatrutide es un péptido triagonista en investigación, estudiado por su actividad simultánea sobre los receptores GLP-1, GIP y glucagón. Es uno de los compuestos más observados en la investigación metabólica actual, con resultados del ensayo de Fase 2 publicados en el New England Journal of Medicine en 2023.",
+    "researchAreas": [
+      {
+        "area": "Investigación del agonismo triple de receptores",
+        "detail": "Los estudios investigan cómo el agonismo simultáneo sobre los receptores GLP-1, GIP y glucagón puede influir en las cascadas de señalización metabólica de manera distinta a los agentes de uno o dos receptores. En este contexto de investigación, Retatrutide se considera un \"triagonista\".",
+        "links": [
+          {
+            "label": "Jastreboff et al. 2023 — Ensayo de Fase 2 en NEJM",
+            "url": "https://www.nejm.org/doi/10.1056/NEJMoa2301972"
+          }
+        ]
+      },
+      {
+        "area": "Vías de señalización metabólica",
+        "detail": "La investigación de Fase 2 (el ensayo TRIUMPH-4, NCT05071326) examinó los efectos sobre el peso corporal y los marcadores cardiometabólicos en poblaciones adultas durante 48 semanas. Los hallazgos se publicaron en el New England Journal of Medicine en 2023.",
+        "links": [
+          {
+            "label": "TRIUMPH-4 — ClinicalTrials NCT05071326",
+            "url": "https://clinicaltrials.gov/study/NCT05071326"
+          },
+          {
+            "label": "Jastreboff et al. 2023 — NEJM",
+            "url": "https://www.nejm.org/doi/10.1056/NEJMoa2301972"
+          }
+        ]
+      },
+      {
+        "area": "Investigación de hormonas incretinas",
+        "detail": "Los investigadores estudian el papel de Retatrutide en las vías de señalización del apetito a nivel hipotalámico y sus interacciones con el sistema de hormonas incretinas — el eje GLP-1, GIP y glucagón — que regula el balance energético y la homeostasis de la glucosa."
+      },
+      {
+        "area": "Investigación de marcadores cardiovasculares y metabólicos",
+        "detail": "Los ensayos en curso examinan los cambios en los perfiles lipídicos, la grasa hepática, la presión arterial y otros marcadores cardiometabólicos en el contexto de la investigación de vías de señalización del triagonista.",
+        "links": [
+          {
+            "label": "ClinicalTrials NCT05071326",
+            "url": "https://clinicaltrials.gov/study/NCT05071326"
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "label": "Jastreboff et al. (2023) — Retatrutide Fase 2 (NEJM)",
+        "url": "https://www.nejm.org/doi/10.1056/NEJMoa2301972"
+      },
+      {
+        "label": "TRIUMPH-4 — ClinicalTrials.gov NCT05071326",
+        "url": "https://clinicaltrials.gov/study/NCT05071326"
+      }
+    ],
+    "researchNote": "Compuesto en investigación; no aprobado por la FDA. La investigación continúa en ensayos de Fase 3."
+  },
+  "Oxytocin": {
+    "bottleImage": "/oxytocin-bottle.svg",
+    "bottleAlt": "Frasco de péptido de oxitocina",
+    "subtitle": "Hormona peptídica y neurotransmisor",
+    "summary": "La oxitocina es un neuropéptido y hormona de origen natural producido en el hipotálamo y liberado por la glándula pituitaria. Se estudia por sus funciones en varias vías de señalización, incluidas la modulación del estrés, el comportamiento social, el estado de ánimo, el metabolismo, la función sexual y la investigación del dolor.",
+    "researchAreas": [
+      {
+        "area": "Señalización neuroendocrina y de estrés",
+        "detail": "Los investigadores estudian la interacción de la oxitocina con la amígdala y el eje hipotálamo-hipófisis-adrenal (HHA), investigando su papel en la regulación del cortisol y las vías de modulación de la respuesta al estrés.",
+        "links": [
+          {
+            "label": "Meyer-Lindenberg et al. 2011 — Oxitocina y comportamiento social (Nature Reviews)",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/21779999/"
+          }
+        ]
+      },
+      {
+        "area": "Vías de comportamiento social y vinculación",
+        "detail": "Los estudios examinan su influencia sobre el reconocimiento social, la señalización de confianza y la investigación del comportamiento afiliativo, tanto en modelos animales como en sujetos humanos.",
+        "links": [
+          {
+            "label": "Meyer-Lindenberg et al. 2011 — Oxitocina y comportamiento social",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/21779999/"
+          }
+        ]
+      },
+      {
+        "area": "Señalización del estado de ánimo y neurotransmisores",
+        "detail": "La investigación estudia la interacción de la oxitocina con las vías de la serotonina y la dopamina y su papel en la investigación de señalización relacionada con el estado de ánimo.",
+        "links": [
+          {
+            "label": "Guastella & MacLeod 2012 — Oxitocina y vías de ansiedad",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/22429948/"
+          }
+        ]
+      },
+      {
+        "area": "Señalización metabólica y del apetito",
+        "detail": "Los estudios exploran su papel en el balance energético, las vías neurales de regulación del apetito y la investigación de señalización metabólica."
+      },
+      {
+        "area": "Función sexual y señalización reproductiva",
+        "detail": "La investigación examina su papel en el comportamiento reproductivo, las vías relacionadas con la excitación y la señalización neuroendocrina asociada a la intimidad.",
+        "links": [
+          {
+            "label": "Meyer-Lindenberg et al. 2011 — Señalización neuroendocrina de la oxitocina",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/21779999/"
+          }
+        ]
+      },
+      {
+        "area": "Investigación de vías analgésicas",
+        "detail": "Los investigadores estudian la interacción de la oxitocina con las vías espinales de modulación del dolor y la señalización del receptor opioide en el contexto de la investigación del dolor."
+      }
+    ],
+    "citations": [
+      {
+        "label": "Meyer-Lindenberg et al. (2011) — Oxitocina y comportamiento social (Nature Reviews)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21779999/"
+      },
+      {
+        "label": "Guastella & MacLeod (2012) — Oxitocina y vías de ansiedad social",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22429948/"
+      }
+    ],
+    "researchNote": "Hormona de origen natural; en investigación para muchos de los usos descritos. No es consejo médico."
+  },
+  "PT-141": {
+    "subtitle": "Péptido de investigación del receptor de melanocortina",
+    "summary": "PT-141 (bremelanotida) es un agonista sintético del receptor de melanocortina estudiado por su actividad sobre los receptores MC3 y MC4 en el sistema nervioso central. Una versión farmacéutica (Vyleesi) recibió la aprobación de la FDA para el trastorno del deseo sexual hipoactivo (HSDD) en mujeres premenopáusicas en 2019.",
+    "researchAreas": [
+      {
+        "area": "Señalización del receptor de melanocortina",
+        "detail": "La investigación se centra en la actividad de PT-141 sobre los receptores MC3 y MC4 y sus efectos subsiguientes sobre las vías de señalización de dopamina y norepinefrina en el sistema nervioso central.",
+        "links": [
+          {
+            "label": "FDA — Información de prescripción de Vyleesi (bremelanotida)",
+            "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/210557s000lbl.pdf"
+          }
+        ]
+      },
+      {
+        "area": "Investigación de vías de la función sexual",
+        "detail": "Los estudios examinan su papel en las vías neurales relacionadas con la libido, la señalización de la excitación sexual y la actividad del SNC relacionada con el deseo, tanto en hombres como en mujeres. Los ensayos de Fase 3 que llevaron a la aprobación de Vyleesi por la FDA incluyeron a más de 1.200 mujeres.",
+        "links": [
+          {
+            "label": "Simon et al. 2014 — Resultados de la Fase 3 de bremelanotida",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/25155783/"
+          },
+          {
+            "label": "FDA — Información de prescripción de Vyleesi (2019)",
+            "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/210557s000lbl.pdf"
+          }
+        ]
+      },
+      {
+        "area": "Señalización del estado de ánimo y la motivación",
+        "detail": "Los investigadores estudian su influencia sobre las vías dopaminérgicas involucradas en el estado de ánimo, la motivación y la investigación de la señalización del sistema de recompensa.",
+        "links": [
+          {
+            "label": "Simon et al. 2014 — Resultados de la Fase 3 de bremelanotida",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/25155783/"
+          }
+        ]
+      },
+      {
+        "area": "Investigación de energía y activación del SNC",
+        "detail": "Los estudios exploran su papel en la señalización de activación del sistema nervioso central, las vías de alerta y la investigación neurológica relacionada con la energía."
+      }
+    ],
+    "citations": [
+      {
+        "label": "FDA — Información de prescripción de Vyleesi (bremelanotida) (2019)",
+        "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/210557s000lbl.pdf"
+      },
+      {
+        "label": "Simon et al. (2014) — Resultados del ensayo de Fase 3 de bremelanotida",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25155783/"
+      }
+    ],
+    "researchNote": "Vyleesi (bremelanotida) está aprobado por la FDA para HSDD en mujeres premenopáusicas. PT-141 como péptido de investigación está en estudio para otros usos. No es consejo médico."
+  },
+  "Epithalon": {
+    "subtitle": "Tetrapéptido activador de la telomerasa",
+    "summary": "Epithalon (Epitalon) es un tetrapéptido sintético (Ala-Glu-Asp-Gly) desarrollado por el Dr. Vladimir Khavinson en el Instituto de Bioregulación y Gerontología de San Petersburgo. Se estudia por su posible influencia sobre la actividad de la telomerasa y las vías de investigación del envejecimiento celular.",
+    "researchAreas": [
+      {
+        "area": "Investigación de la actividad de la telomerasa",
+        "detail": "Los estudios de Khavinson et al. investigaron la capacidad del Epithalon para activar la enzima telomerasa en células somáticas humanas, examinando su posible influencia sobre el mantenimiento de la longitud de los telómeros en el contexto de la investigación del envejecimiento celular.",
+        "links": [
+          {
+            "label": "Khavinson et al. 2003 — Epithalon y activación de la telomerasa",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/12937682/"
+          }
+        ]
+      },
+      {
+        "area": "Señalización pineal y circadiana",
+        "detail": "La investigación explora la relación del Epithalon con la producción de melatonina y la función de la glándula pineal en sujetos envejecidos, examinando los cambios en las vías de señalización circadiana asociados con el envejecimiento de la glándula pineal."
+      },
+      {
+        "area": "Investigación de la senescencia celular",
+        "detail": "Los estudios preclínicos examinan los efectos del Epithalon sobre los marcadores de senescencia celular, la señalización relacionada con el estrés oxidativo y la investigación de vías de expresión génica asociadas a la longevidad."
+      },
+      {
+        "area": "Investigación de la regulación del eje hormonal",
+        "detail": "La investigación ha estudiado los efectos del Epithalon sobre la señalización del eje hipotálamo-hipófisis y la investigación del ritmo de melatonina/cortisol en poblaciones de estudio envejecidas."
+      }
+    ],
+    "citations": [
+      {
+        "label": "Khavinson et al. (2003) — Epithalon y activación de la telomerasa en células humanas",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/12937682/"
+      },
+      {
+        "label": "Anisimov et al. (2003) — Epitalamina/Epitalon en investigación de vías de longevidad",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/12705535/"
+      }
+    ],
+    "researchNote": "Compuesto en investigación en el envejecimiento celular; la mayoría de los estudios publicados son preclínicos o provienen de un número reducido de grupos de investigación."
+  },
+  "Semax": {
+    "subtitle": "Neuropéptido análogo de fragmento de ACTH",
+    "summary": "Semax es un heptapéptido sintético análogo del fragmento ACTH(4–10), desarrollado en el Instituto de Genética Molecular de la Academia Rusa de Ciencias. Se estudia por su actividad en la señalización cognitiva, la expresión de BDNF (factor neurotrófico derivado del cerebro) y la investigación de vías neuroprotectoras. Está registrado como medicamento en Rusia.",
+    "researchAreas": [
+      {
+        "area": "Investigación de señalización cognitiva",
+        "detail": "Los estudios examinan la influencia del Semax sobre la atención, las vías neurales relacionadas con la memoria de trabajo y la investigación de señalización nootrópica. Está registrado en Rusia para aplicaciones que incluyen la recuperación de accidentes cerebrovasculares isquémicos y la investigación de señalización cognitiva."
+      },
+      {
+        "area": "Vías de BDNF y neurotrofinas",
+        "detail": "La investigación ha reportado la influencia del Semax sobre la expresión de BDNF (factor neurotrófico derivado del cerebro), VEGF y NGF en el tejido cerebral, con implicaciones para la neuroplasticidad y la investigación de vías neuroprotectoras.",
+        "links": [
+          {
+            "label": "Dolotov et al. 2006 — Semax y expresión de BDNF en cerebro de rata",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/16483706/"
+          }
+        ]
+      },
+      {
+        "area": "Señalización neuroprotectora",
+        "detail": "Los estudios preclínicos han investigado el Semax en modelos de isquemia y estrés neurológico oxidativo, examinando sus posibles efectos sobre las vías de señalización celular neuroprotectora."
+      },
+      {
+        "area": "Modulación dopaminérgica y serotoninérgica",
+        "detail": "La investigación explora las interacciones del Semax con los sistemas de señalización dopaminérgica y serotoninérgica y su relevancia para la investigación de vías del estado de ánimo y el rendimiento cognitivo."
+      }
+    ],
+    "citations": [
+      {
+        "label": "Dolotov et al. (2006) — Semax y expresión de BDNF en cerebro de rata",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/16483706/"
+      },
+      {
+        "label": "Lebedeva et al. (2008) — Semax en investigaciones de vías cognitivas",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/19262313/"
+      }
+    ],
+    "researchNote": "Medicamento registrado en Rusia; en investigación en la mayoría de las demás regiones. Compuesto de investigación de señalización cognitiva."
+  },
+  "Selank": {
+    "subtitle": "Análogo neuropeptídico de la tuftsina",
+    "summary": "Selank es un heptapéptido sintético análogo de la tuftsina (Thr-Lys-Pro-Arg), desarrollado por el Instituto de Genética Molecular de la Academia Rusa de Ciencias. Se estudia por su actividad en la respuesta al estrés, la señalización relacionada con la ansiedad y las vías de modulación inmunitaria, y está registrado como medicamento en Rusia.",
+    "researchAreas": [
+      {
+        "area": "Investigación en señalización ansiolítica y del estrés",
+        "detail": "Los estudios investigan los efectos del Selank sobre las vías de señalización neural relacionadas con la ansiedad, incluidas sus interacciones con la investigación de modulación del receptor GABA-A y la señalización de hormonas del estrés, tanto en modelos animales como en sujetos humanos.",
+        "links": [
+          {
+            "label": "Semenova et al. 2010 — Selank en investigación de vías de ansiedad",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/23884677/"
+          }
+        ]
+      },
+      {
+        "area": "Señalización de BDNF y neurotrófica",
+        "detail": "La investigación ha reportado la influencia del Selank sobre la expresión de BDNF y el equilibrio entre BDNF y otros factores neurotróficos involucrados en la investigación de vías de regulación del estado de ánimo y cognitivas.",
+        "links": [
+          {
+            "label": "Zozulya et al. 2001 — Selank y señalización de BDNF",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/11578793/"
+          }
+        ]
+      },
+      {
+        "area": "Cruce de señalización inmunológica y neurológica",
+        "detail": "Como análogo de la tuftsina, el Selank se estudia por las interacciones entre la señalización inmunitaria (modulación de citocinas) y la investigación de vías del sistema nervioso central, examinando las conexiones de la psiconeuroinmunología."
+      },
+      {
+        "area": "Investigación de vías cognitivas y de memoria",
+        "detail": "Los estudios preclínicos y clínicos investigan la influencia del Selank sobre el aprendizaje, las vías de consolidación de la memoria y la investigación de señalización cognitiva, en relación con sus efectos sobre el catabolismo de encefalinas y los sistemas de neurotransmisores."
+      }
+    ],
+    "citations": [
+      {
+        "label": "Semenova et al. (2010) — Selank en investigación de vías de ansiedad",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/23884677/"
+      },
+      {
+        "label": "Zozulya et al. (2001) — Selank, encefalinas y señalización de BDNF",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/11578793/"
+      }
+    ],
+    "researchNote": "Medicamento registrado en Rusia; en investigación en la mayoría de las demás regiones. Compuesto de investigación en vías de respuesta al estrés."
+  },
+  "Ipamorelin + CJC-1295": {
+    "subtitle": "Combinación de secretagogos de la hormona del crecimiento",
+    "summary": "Esta combinación une Ipamorelin, un GHRP (péptido liberador de hormona del crecimiento) selectivo, con CJC-1295, un análogo de GHRH (hormona liberadora de hormona del crecimiento). La investigación estudia cómo el emparejamiento de un agonista hipofisario de GHSR con un análogo hipotalámico de GHRH afecta la señalización del eje de la hormona del crecimiento.",
+    "researchAreas": [
+      {
+        "area": "Señalización de secretagogos de GH por doble eje",
+        "detail": "Los estudios examinan cómo Ipamorelin actúa sobre el GHSR (receptor secretagogo de la hormona del crecimiento) mientras que CJC-1295 se une a los receptores de GHRH, y la investigación estudia si esta combinación produce efectos aditivos sobre la amplitud del pulso de GH mediante dos vías de señalización separadas.",
+        "links": [
+          {
+            "label": "Raun et al. 1998 — Farmacología de Ipamorelin",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/9849822/"
+          },
+          {
+            "label": "Teichman et al. 2006 — CJC-1295 Fase 1/2",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/17018654/"
+          }
+        ]
+      },
+      {
+        "area": "Investigación del eje de IGF-1",
+        "detail": "La investigación explora cómo la elevación sostenida de GH mediante la señalización combinada de GHRH/GHRP puede afectar las vías de señalización subsiguientes de IGF-1 y su relación con la investigación de vías de anabolismo celular."
+      },
+      {
+        "area": "Señalización de composición corporal",
+        "detail": "Los estudios clínicos de Fase 1/2 con CJC-1295 investigaron los cambios en los marcadores de tejido magro y masa grasa. La investigación continúa sobre los efectos de señalización combinada en las vías metabólicas y de composición corporal."
+      },
+      {
+        "area": "Patrones de liberación nocturna de GH",
+        "detail": "La investigación estudia la relación entre la señalización de los secretagogos de GH y la investigación del pulso nocturno de la hormona del crecimiento, que de manera natural alcanza su máximo durante las fases del sueño de ondas lentas."
+      }
+    ],
+    "citations": [
+      {
+        "label": "Raun et al. (1998) — Farmacología de Ipamorelin y selectividad de GH",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/9849822/"
+      },
+      {
+        "label": "Teichman et al. (2006) — Farmacocinética de CJC-1295 Fase 1/2",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/17018654/"
+      }
+    ],
+    "researchNote": "Investigación del eje de la hormona del crecimiento; ambos son compuestos en investigación."
+  },
+  "Ipamorelin": {
+    "subtitle": "Secretagogo selectivo de la hormona del crecimiento",
+    "summary": "Ipamorelin es un pentapéptido selectivo de tercera generación liberador de hormona del crecimiento (GHRP) estudiado por su actividad sobre las vías de señalización del GHSR (receptor secretagogo de la hormona del crecimiento). Destaca en la investigación por su alta selectividad para la liberación de GH con un efecto mínimo sobre el cortisol o la prolactina.",
+    "researchAreas": [
+      {
+        "area": "Investigación de señalización del GHSR",
+        "detail": "La investigación se centra en la selectividad de unión de Ipamorelin al receptor secretagogo de la hormona del crecimiento (GHSR-1a) y su cascada de señalización posterior que conduce a la liberación hipofisaria de GH sin cruzamiento significativo con las vías del cortisol o la prolactina."
+      },
+      {
+        "area": "Investigación del pulso de la hormona del crecimiento",
+        "detail": "Los estudios examinan cómo Ipamorelin influye en la amplitud y frecuencia de los pulsos de secreción de GH y su relación con la señalización subsiguiente de producción de IGF-1 en el hígado y tejidos periféricos."
+      },
+      {
+        "area": "Vías de composición corporal y metabólicas",
+        "detail": "La investigación estudia la influencia de Ipamorelin sobre la señalización de oxidación de grasas, las vías de preservación del tejido magro y los procesos celulares relacionados con la tasa metabólica."
+      }
+    ],
+    "citations": [
+      {
+        "label": "Raun et al. (1998) — Ipamorelin: un nuevo péptido liberador de hormona del crecimiento",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/9849822/"
+      }
+    ],
+    "researchNote": "Investigación de secretagogos de la hormona del crecimiento; compuesto en investigación."
+  },
+  "CJC-1295": {
+    "subtitle": "Análogo de GHRH de acción prolongada",
+    "summary": "CJC-1295 es un análogo sintético de GHRH (hormona liberadora de hormona del crecimiento) modificado para extender su vida media plasmática mediante la unión a albúmina. Se estudia por su papel en la señalización de la hormona del crecimiento, la farmacocinética de vida media extendida y la investigación de vías celulares subsiguientes.",
+    "researchAreas": [
+      {
+        "area": "Señalización del receptor de GHRH",
+        "detail": "La investigación examina la unión de CJC-1295 a los receptores de GHRH en los somatótrofos hipofisarios y su estimulación de la liberación de GH, comparando su perfil de señalización con el de la GHRH nativa dado su vida media extendida."
+      },
+      {
+        "area": "IGF-1 y señalización anabólica",
+        "detail": "Los estudios clínicos de Fase 1/2 investigaron las elevaciones sostenidas de IGF-1 tras la administración de CJC-1295, con investigación que examina los efectos sobre las vías de señalización anabólica subsiguientes."
+      },
+      {
+        "area": "Investigación de farmacocinética",
+        "detail": "La tecnología DAC (complejo de afinidad al fármaco) en CJC-1295 permite la unión a albúmina que extiende la vida media a varios días. La investigación estudia esta modificación farmacocinética y sus implicaciones para la duración de la señalización del eje de GH."
+      }
+    ],
+    "citations": [
+      {
+        "label": "Teichman et al. (2006) — Farmacocinética clínica de CJC-1295 Fase 1/2",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/17018654/"
+      }
+    ],
+    "researchNote": "Investigación de análogos de GHRH; compuesto en investigación."
+  },
+  "MOTS-c": {
+    "subtitle": "Péptido derivado de las mitocondrias",
+    "summary": "MOTS-c es un péptido de 16 aminoácidos codificado dentro del genoma mitocondrial (gen 12S rRNA). Es uno de una clase de péptidos derivados de las mitocondrias (MDPs) reconocidos por su papel de señalización que se extiende mucho más allá de las mitocondrias, viajando al citosol, al plasma y al núcleo.",
+    "researchAreas": [
+      {
+        "area": "Señalización metabólica de AMPK",
+        "detail": "La investigación se centra en la activación por MOTS-c de las vías de señalización de AMPK involucradas en la captación de glucosa, el metabolismo lipídico y la regulación metabólica general en el tejido muscular esquelético y otros órganos.",
+        "links": [
+          {
+            "label": "Lee et al. 2015 — Descubrimiento de MOTS-c (Cell Metabolism)",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/25683356/"
+          }
+        ]
+      },
+      {
+        "area": "Investigación de sensibilidad a la insulina",
+        "detail": "Los estudios preclínicos han investigado la posible influencia de MOTS-c sobre la señalización del receptor de insulina y la actividad de la vía del transportador de glucosa (GLUT4) en tejido muscular y adiposo.",
+        "links": [
+          {
+            "label": "Lee et al. 2015 — Descubrimiento de MOTS-c (Cell Metabolism)",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/25683356/"
+          }
+        ]
+      },
+      {
+        "area": "Comunicación mitocondrial-nuclear",
+        "detail": "La investigación explora cómo MOTS-c viaja desde las mitocondrias al núcleo para regular la expresión génica involucrada en la señalización nuclear de AMPK y las vías de respuesta al estrés metabólico — una forma novedosa de señalización mitocondrial retrógrada.",
+        "links": [
+          {
+            "label": "Kim et al. 2018 — Señalización nuclear de AMPK por MOTS-c",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/29440437/"
+          }
+        ]
+      },
+      {
+        "area": "Investigación de envejecimiento y longevidad",
+        "detail": "Los estudios han observado que los niveles circulantes de MOTS-c disminuyen con la edad y aumentan con el ejercicio. La investigación estudia su relación con los cambios metabólicos asociados al envejecimiento y la investigación de vías de señalización asociadas a la longevidad."
+      }
+    ],
+    "citations": [
+      {
+        "label": "Lee et al. (2015) — MOTS-c: un péptido derivado de las mitocondrias (Cell Metabolism)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25683356/"
+      },
+      {
+        "label": "Kim et al. (2018) — Señalización nuclear de AMPK por MOTS-c y respuesta al estrés",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29440437/"
+      }
+    ],
+    "researchNote": "Péptido derivado de las mitocondrias; investigación de señalización metabólica. Compuesto en investigación."
+  },
+  "SS-31": {
+    "subtitle": "Tetrapéptido mitocondrial dirigido a la cardiolipina",
+    "summary": "SS-31 (elamipretida) es un tetrapéptido sintético que se concentra selectivamente en la membrana mitocondrial interna, donde interactúa con la cardiolipina. Se estudia por su papel en la función de la membrana mitocondrial, la investigación de vías de energía celular y la señalización de integridad mitocondrial.",
+    "researchAreas": [
+      {
+        "area": "Investigación de cardiolipina y membrana mitocondrial",
+        "detail": "Los estudios examinan la interacción selectiva de SS-31 con la cardiolipina en la membrana mitocondrial interna, investigando cómo esto afecta la eficiencia de la cadena de transporte de electrones y la señalización general de la integridad estructural mitocondrial.",
+        "links": [
+          {
+            "label": "Birk et al. 2013 — SS-31 y cardiolipina (Circulation Research)",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/23837371/"
+          }
+        ]
+      },
+      {
+        "area": "Investigación de vías de energía celular",
+        "detail": "La investigación estudia cómo la interacción de SS-31 con la cardiolipina influye sobre la actividad de la ATP sintasa, las vías de fosforilación oxidativa y la bioenergética celular general en tejidos con alta demanda energética."
+      },
+      {
+        "area": "Señalización de estrés oxidativo",
+        "detail": "Los estudios exploran el potencial de SS-31 para reducir la producción mitocondrial de ROS (especies reactivas de oxígeno) y sus efectos sobre las vías de señalización de estrés oxidativo celular en modelos preclínicos de envejecimiento y enfermedad."
+      },
+      {
+        "area": "Investigación de tejido cardíaco y renal",
+        "detail": "Elamipretida se ha investigado en estudios clínicos para condiciones cardíacas relacionadas con las mitocondrias y la señalización de la función renal. La investigación examina sus efectos en contextos de isquemia-reperfusión y vías de insuficiencia cardíaca.",
+        "links": [
+          {
+            "label": "Daubert et al. 2017 — Ensayo de Fase 2 de elamipretida en insuficiencia cardíaca",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/28711257/"
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "label": "Birk et al. (2013) — Interacciones de SS-31 y cardiolipina (Circulation Research)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/23837371/"
+      },
+      {
+        "label": "Daubert et al. (2017) — Ensayo de Fase 2 de elamipretida en insuficiencia cardíaca",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28711257/"
+      }
+    ],
+    "researchNote": "Investigación de la función mitocondrial; compuesto en investigación con ensayos clínicos en curso."
+  },
+  "Kisspeptin": {
+    "subtitle": "Regulador hipotalámico de la GnRH",
+    "summary": "La kisspeptina es un neuropéptido de origen natural codificado por el gen KISS1. Se reconoce como el regulador central ascendente del eje hipotálamo-hipófisis-gonadal (HHG), proporcionando la señal principal para la liberación de GnRH (hormona liberadora de gonadotropinas). Su descubrimiento transformó la comprensión de la señalización de hormonas reproductivas.",
+    "researchAreas": [
+      {
+        "area": "Regulación del pulso de GnRH",
+        "detail": "La investigación demuestra que las neuronas de kisspeptina en el núcleo arqueado (neuronas KNDy) proporcionan la señal ascendente principal que impulsa la pulsatilidad de GnRH desde el hipotálamo, convirtiendo a la kisspeptina en el \"regulador maestro\" del eje de hormonas reproductivas.",
+        "links": [
+          {
+            "label": "Oakley et al. 2009 — Señalización de kisspeptina en el eje HHG",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/19174496/"
+          }
+        ]
+      },
+      {
+        "area": "Señalización de LH y FSH",
+        "detail": "Los estudios clínicos muestran que la administración de kisspeptina estimula de manera confiable la liberación de LH (hormona luteinizante) y FSH (hormona foliculoestimulante) en humanos, con investigación que explora su papel en contextos de señalización hormonal masculina y femenina.",
+        "links": [
+          {
+            "label": "Dhillo et al. 2005 — Kisspeptina-54 estimula LH/FSH en humanos",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/16179408/"
+          }
+        ]
+      },
+      {
+        "area": "Investigación de hormonas reproductivas",
+        "detail": "La investigación explora la relevancia de la kisspeptina para la señalización del inicio de la pubertad, las vías relacionadas con la fertilidad, la investigación de la amenorrea hipotalámica y su papel en la vinculación del estado metabólico con la señalización de hormonas reproductivas."
+      },
+      {
+        "area": "Investigación de señalización del estado de ánimo y social",
+        "detail": "Los estudios también investigan las posibles interacciones de la kisspeptina con las vías del estado de ánimo y los circuitos neurales del comportamiento sexual, con investigación clínica en el Imperial College London examinando los efectos de señalización psicosexual."
+      }
+    ],
+    "citations": [
+      {
+        "label": "Dhillo et al. (2005) — Kisspeptina-54 estimula LH y FSH en humanos",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/16179408/"
+      },
+      {
+        "label": "Oakley et al. (2009) — Señalización de kisspeptina en el eje HHG",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/19174496/"
+      }
+    ],
+    "researchNote": "Investigación de señalización de hormonas reproductivas; en investigación para aplicaciones clínicas."
+  },
+  "TA1": {
+    "subtitle": "Péptido inmunomodulador tímico",
+    "summary": "La timosina alfa-1 (TA1) es un péptido acetilado de 28 aminoácidos derivado de la protimosina alfa, originalmente aislado del tejido tímico. Es uno de los péptidos inmunomoduladores más estudiados, con aprobaciones farmacéuticas en más de 35 países (comercializado como Zadaxin) para aplicaciones específicas relacionadas con la respuesta inmunitaria.",
+    "researchAreas": [
+      {
+        "area": "Señalización de células T y dendríticas",
+        "detail": "La investigación demuestra la actividad de TA1 en la maduración de células dendríticas y las vías de señalización de células T, particularmente en la estimulación de la diferenciación de células T auxiliares, la activación de linfocitos T citotóxicos y la señalización de células T reguladoras.",
+        "links": [
+          {
+            "label": "Ancell & Phipps 2001 — Revisión de los mecanismos de la timosina alfa-1",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/11500166/"
+          }
+        ]
+      },
+      {
+        "area": "Cruce entre inmunidad innata y adaptativa",
+        "detail": "Los estudios examinan cómo TA1 conecta las vías de señalización de inmunidad innata y adaptativa, incluidos sus efectos sobre la señalización de receptores tipo toll (TLR), la activación de la vía STAT1/3 y la investigación de la actividad de células asesinas naturales (NK)."
+      },
+      {
+        "area": "Investigación de modulación de citocinas",
+        "detail": "La investigación estudia la influencia de TA1 sobre los perfiles de producción de citocinas, incluidas las vías de señalización de IL-2, IL-12, IFN-γ y TNF-α en contextos de regulación inmunitaria e investigación antiinflamatoria."
+      },
+      {
+        "area": "Investigación de enfermedades virales e infecciosas",
+        "detail": "TA1 (Zadaxin) se ha investigado en entornos clínicos en varios países para protocolos adyuvantes de tratamiento de hepatitis B y hepatitis C. Está aprobado en algunos países para estas aplicaciones y como adyuvante para la vacunación contra la influenza en poblaciones mayores.",
+        "links": [
+          {
+            "label": "Garaci 2007 — Revisión clínica de la timosina alfa-1",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/17521716/"
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "label": "Ancell & Phipps (2001) — Revisión de los mecanismos inmunológicos de la timosina alfa-1",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/11500166/"
+      },
+      {
+        "label": "Garaci (2007) — Revisión clínica de la timosina alfa-1",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/17521716/"
+      }
+    ],
+    "researchNote": "Aprobado en algunos países (como Zadaxin) para terapia adyuvante en hepatitis B/C; en investigación en otros países, incluidos los Estados Unidos."
+  },
+  "NAD+": {
+    "subtitle": "Coenzima del metabolismo celular",
+    "summary": "El dinucleótido de nicotinamida y adenina (NAD+) es una coenzima presente en todas las células vivas y central para cientos de reacciones enzimáticas. El interés investigativo ha aumentado debido a su disminución observada con el envejecimiento y su papel en las vías de señalización asociadas a la longevidad. Precursores de NAD+ como NMN (mononucleótido de nicotinamida) y NR (ribósido de nicotinamida) se estudian activamente.",
+    "researchAreas": [
+      {
+        "area": "Metabolismo energético celular",
+        "detail": "El NAD+ es un cofactor esencial en el ciclo del ácido cítrico y la fosforilación oxidativa. La investigación estudia cómo la disponibilidad de NAD+ influye en la eficiencia de la cadena de transporte de electrones mitocondrial y la producción celular de ATP en contextos de envejecimiento y enfermedad."
+      },
+      {
+        "area": "Investigación de activación de sirtuinas",
+        "detail": "Las sirtuinas (SIRT1–7) son desacetilasas dependientes de NAD+ vinculadas al envejecimiento, la inflamación y el estrés metabólico. La investigación explora cómo los precursores de NAD+ (NMN, NR) pueden apoyar la actividad de señalización de las sirtuinas y la investigación de vías asociadas a la longevidad subsiguientes.",
+        "links": [
+          {
+            "label": "Gomes et al. 2013 — NAD+ y homeostasis mitocondrial (Cell)",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/24267892/"
+          }
+        ]
+      },
+      {
+        "area": "Señalización de reparación del ADN (vía PARP)",
+        "detail": "Las enzimas PARP consumen NAD+ durante los procesos de reparación del ADN. La investigación examina la interacción entre la actividad de PARP, la disponibilidad de NAD+ y la señalización de mantenimiento genómico — y si las estrategias de suplementación con NAD+ afectan la capacidad de las vías de reparación del ADN.",
+        "links": [
+          {
+            "label": "Rajman et al. 2018 — Revisión de moléculas que aumentan NAD (Cell Metabolism)",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/29514063/"
+          }
+        ]
+      },
+      {
+        "area": "Ritmo circadiano y reloj metabólico",
+        "detail": "Los estudios investigan las oscilaciones de NAD+ en el contexto de la señalización del ritmo circadiano y su relación con la expresión del gen CLOCK, los ciclos de actividad de SIRT1 y la investigación de vías del reloj metabólico."
+      },
+      {
+        "area": "Investigación de vías neuroprotectoras",
+        "detail": "La investigación examina el papel del NAD+ en el suministro energético neuronal, la señalización mitocondrial de SIRT3 en neuronas y las posibles investigaciones de vías neuroprotectoras en la investigación neurológica relacionada con la edad.",
+        "links": [
+          {
+            "label": "Yoshino et al. 2018 — NMN restaura NAD+ en el envejecimiento (Cell Metabolism)",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/30146488/"
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "label": "Gomes et al. (2013) — NAD+ y homeostasis mitocondrial (Cell)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24267892/"
+      },
+      {
+        "label": "Yoshino et al. (2018) — La suplementación con NMN restaura NAD+ en ratones envejecidos (Cell Metabolism)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30146488/"
+      },
+      {
+        "label": "Rajman et al. (2018) — Potencial terapéutico de las moléculas que aumentan NAD (Cell Metabolism)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29514063/"
+      }
+    ],
+    "researchNote": "Investigación del metabolismo celular y la longevidad. NMN y NR son formas de suplemento dietético; el NAD+ IV/inyectable está en investigación en entornos clínicos."
+  },
+  "hCG": {
+    "subtitle": "Gonadotropina coriónica humana",
+    "summary": "La gonadotropina coriónica humana (hCG) es una hormona glicoproteica producida de manera natural durante el embarazo por las células del sincitiotrofoblasto de la placenta. Estructuralmente relacionada con LH (hormona luteinizante), FSH y TSH, comparte el receptor LH/CG y se estudia en endocrinología reproductiva e investigación de señalización hormonal.",
+    "researchAreas": [
+      {
+        "area": "Investigación de señalización del receptor de LH",
+        "detail": "La hCG comparte el receptor LH/hCG (LHCGR) con la LH endógena. La investigación estudia sus efectos de señalización sobre la producción de testosterona en las células de Leydig en hombres y la señalización de mantenimiento del cuerpo lúteo en mujeres a través de la misma vía receptora."
+      },
+      {
+        "area": "Investigación en medicina reproductiva",
+        "detail": "La hCG se estudia y utiliza extensamente en medicina reproductiva para desencadenar la maduración final del ovocito en protocolos de reproducción asistida y para apoyar la producción de progesterona del cuerpo lúteo. Sus mecanismos de señalización en la investigación de fertilidad están bien documentados.",
+        "links": [
+          {
+            "label": "Huhtaniemi 2005 — hCG en fisiología reproductiva",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/16136710/"
+          }
+        ]
+      },
+      {
+        "area": "Investigación de apoyo al eje de la testosterona",
+        "detail": "En hombres, la investigación estudia el papel de la hCG en el apoyo a la función testicular y la producción intratesticular de testosterona, particularmente en el contexto de la optimización hormonal y la investigación de preservación de la fertilidad durante la terapia con testosterona.",
+        "links": [
+          {
+            "label": "Bassil et al. 2009 — hCG y señalización reproductiva masculina",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/19666800/"
+          }
+        ]
+      },
+      {
+        "area": "Señalización del eje HHG",
+        "detail": "Los estudios examinan los efectos de señalización subsiguientes de la hCG dentro del eje hipotálamo-hipófisis-gonadal (HHG) y sus diferencias respecto a la pulsatilidad de LH endógena en términos de cinética de señalización receptora y activación de vías subsiguientes."
+      }
+    ],
+    "citations": [
+      {
+        "label": "Huhtaniemi (2005) — Revisión de hCG en fisiología reproductiva",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/16136710/"
+      },
+      {
+        "label": "Bassil et al. (2009) — Investigación de hCG y señalización reproductiva masculina",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/19666800/"
+      }
+    ],
+    "researchNote": "Aprobado por la FDA para indicaciones específicas de medicina reproductiva; en investigación para otras aplicaciones descritas. Consulte con un médico con licencia."
+  },
+  "DSIP": {
+    "summary": "El péptido inductor del sueño delta (DSIP) es un neuropéptido en investigación estudiado por su posible papel en las vías de señalización reguladoras del sueño y la investigación relacionada con el ritmo circadiano.",
+    "researchNote": "Investigación en señalización del sueño; datos clínicos limitados."
+  },
+  "Melatonin": {
+    "summary": "La melatonina es una hormona de origen natural producida por la glándula pineal. Se estudia por su papel en la regulación del ritmo circadiano, la señalización fotoperiódica y la investigación de actividad antioxidante.",
+    "researchNote": "Señalización del ritmo circadiano; ampliamente estudiada. Disponible sin receta en los Estados Unidos."
+  },
+  "Pinealon": {
+    "summary": "Pinealon es un tripéptido experimental estudiado en investigación preclínica por sus posibles propiedades de señalización neuroprotectora y sus posibles interacciones con la función de la glándula pineal.",
+    "researchNote": "Investigación de neuropéptidos experimentales; datos humanos limitados."
+  },
+  "ARA-290": {
+    "summary": "ARA-290 (cibinetida) es un péptido derivado de la eritropoyetina estudiado por su actividad sobre el receptor innato de reparación (IRR). La investigación explora su papel en la modulación de vías de señalización inflamatoria y nerviosa.",
+    "researchNote": "Investigación de señalización inflamatoria y nerviosa; compuesto en investigación."
+  },
+  "Bromelain": {
+    "summary": "La bromelina es un complejo enzimático proteolítico derivado de la piña. Se estudia por su actividad en la investigación de vías inflamatorias, la digestión de proteínas y las investigaciones de señalización inmunitaria.",
+    "researchNote": "Suplemento enzimático dietético; investigación en curso sobre sus propiedades de señalización antiinflamatoria."
+  },
+  "Omega-3": {
+    "summary": "Los ácidos grasos omega-3 (EPA y DHA) son grasas poliinsaturadas esenciales estudiadas por su papel en la señalización inflamatoria, la investigación de vías cardiovasculares y las investigaciones de la función neurológica.",
+    "researchNote": "Suplemento de ácido graso esencial; ampliamente investigado."
+  },
+  "Vitamin C": {
+    "summary": "La vitamina C (ácido ascórbico) es un nutriente esencial hidrosoluble estudiado por su papel en la actividad antioxidante, las vías de síntesis de colágeno y la investigación de señalización inmunitaria.",
+    "researchNote": "Nutriente esencial; ampliamente investigado."
+  },
+  "Selenium": {
+    "summary": "El selenio es un oligoelemento esencial incorporado en las selenoproteínas. Se estudia por su papel en la actividad de enzimas antioxidantes, la señalización de la hormona tiroidea y la investigación de vías de la función inmunitaria.",
+    "researchNote": "Suplemento de oligoelemento esencial."
+  },
+  "Magnesium": {
+    "summary": "El magnesio es un mineral esencial que actúa como cofactor en más de 300 reacciones enzimáticas. Se estudia por su papel en la señalización muscular y nerviosa, el metabolismo energético y la investigación de vías de síntesis del ADN.",
+    "researchNote": "Suplemento mineral esencial; ampliamente investigado."
+  }
+}

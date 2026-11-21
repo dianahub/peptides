@@ -4,11 +4,10 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import topicsData from "@/data/topics.json";
-import topicDetails from "@/data/topicDetails.json";
 import { slugify } from "@/lib/slugify";
 import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { TopicDetailBody } from "@/components/TopicDetailBody";
-import type { TopicDetail } from "@/lib/peptides/topic-map";
+import { getTopicDetailByTitle, type Locale } from "@/lib/peptides/topic-map";
 import { PeptideVideos } from "@/components/PeptideVideos";
 import { PEPTIDES } from "@/lib/peptides/data";
 import { videosForPeptide, youtubeSearchUrl } from "@/lib/videos/for-peptide";
@@ -49,7 +48,7 @@ export async function generateMetadata({
   const topic = map.get(slug);
   if (!topic) return {};
 
-  const detail = (topicDetails as Record<string, TopicDetail>)[topic.title];
+  const detail = getTopicDetailByTitle(topic.title, locale === "es" ? "es" : "en");
   const t = await getTranslations({ locale, namespace: "topics" });
   const description = detail?.summary
     ? detail.summary.slice(0, 155)
@@ -78,7 +77,8 @@ export default async function TopicPage({
   if (!topic) notFound();
 
   const t = await getTranslations({ locale, namespace: "topics" });
-  const detail = (topicDetails as Record<string, TopicDetail>)[topic.title];
+  const localeKey: Locale = locale === "es" ? "es" : "en";
+  const detail = getTopicDetailByTitle(topic.title, localeKey);
   const consultationParams = new URLSearchParams({ topic: topic.title });
   const bottleImage = topic.title === "KLOW" ? "/klow-bottle.svg" : detail?.bottleImage;
   const bottleAlt = topic.title === "KLOW" ? "KLOW peptide blend bottle" : detail?.bottleAlt;
