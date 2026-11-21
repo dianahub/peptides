@@ -58,6 +58,13 @@ function peptideLowerNames(id: string): string[] {
   return [p.canonicalName, ...p.synonyms].map((s) => s.toLowerCase());
 }
 
+/** Build `ARRAY[$1,$2,…]::<type>` from a JS array for use with `ANY(…)`. */
+function arrayLiteral(values: string[], pgType: string) {
+  if (values.length === 0) return sql`ARRAY[]::${sql.raw(pgType)}[]`;
+  const parts = values.map((v, i) => (i === 0 ? sql`${v}` : sql`, ${v}`));
+  return sql`ARRAY[${sql.join(parts)}]::${sql.raw(pgType)}[]`;
+}
+
 async function paperRowsForPeptide(
   peptideId: string,
   goalSlug: string | null,
@@ -66,12 +73,14 @@ async function paperRowsForPeptide(
   const names = peptideLowerNames(peptideId);
   if (names.length === 0) return [];
 
+  const nameArr = arrayLiteral(names, "text");
+
   if (goalSlug) {
     const res = await db.execute<PaperRow>(sql`
       SELECT pmid, title, pub_year, species, study_type::text, sample_size, evidence_score
       FROM papers
       WHERE ${goalSlug} = ANY(goals)
-        AND LOWER(extraction->>'peptide') = ANY(${names}::text[])
+        AND LOWER(extraction->>'peptide') = ANY(${nameArr})
       ORDER BY COALESCE(evidence_score, 0) DESC,
                pub_year DESC NULLS LAST,
                pmid DESC
@@ -83,7 +92,7 @@ async function paperRowsForPeptide(
   const res = await db.execute<PaperRow>(sql`
     SELECT pmid, title, pub_year, species, study_type::text, sample_size, evidence_score
     FROM papers
-    WHERE LOWER(extraction->>'peptide') = ANY(${names}::text[])
+    WHERE LOWER(extraction->>'peptide') = ANY(${nameArr})
     ORDER BY COALESCE(evidence_score, 0) DESC,
              pub_year DESC NULLS LAST,
              pmid DESC
@@ -98,18 +107,19 @@ async function paperCountForPeptide(
 ): Promise<number> {
   const names = peptideLowerNames(peptideId);
   if (names.length === 0) return 0;
+  const nameArr = arrayLiteral(names, "text");
   if (goalSlug) {
     const res = await db.execute<{ cnt: string } & Record<string, unknown>>(sql`
       SELECT COUNT(*)::text AS cnt FROM papers
       WHERE ${goalSlug} = ANY(goals)
-        AND LOWER(extraction->>'peptide') = ANY(${names}::text[])
+        AND LOWER(extraction->>'peptide') = ANY(${nameArr})
     `);
     const row = Array.from(res)[0] as { cnt: string } | undefined;
     return Number(row?.cnt ?? 0);
   }
-  const res = await db.execute<{ cnt: string }>(sql`
+  const res = await db.execute<{ cnt: string } & Record<string, unknown>>(sql`
     SELECT COUNT(*)::text AS cnt FROM papers
-    WHERE LOWER(extraction->>'peptide') = ANY(${names}::text[])
+    WHERE LOWER(extraction->>'peptide') = ANY(${nameArr})
   `);
   const row = Array.from(res)[0] as { cnt: string } | undefined;
   return Number(row?.cnt ?? 0);
@@ -157,12 +167,14 @@ async function peptidesForGoal(goalSlug: string): Promise<PeptideCard[]> {
     WHERE g.slug = ${goalSlug}
   `);
   const ids = Array.from(rows).map((r) => (r as { peptide_id: string }).peptide_id);
+  if (ids.length === 0) return [];
 
   // Map DB peptide ids → local PEPTIDES entries by canonical_name join.
   // DB stores uuids; data.ts uses slug ids. We match via canonical_name.
+  const idArr = arrayLiteral(ids, "uuid");
   const names = await db.execute<{ id: string; canonical_name: string } & Record<string, unknown>>(sql`
     SELECT id::text AS id, canonical_name FROM peptides
-    WHERE id = ANY(${ids}::uuid[])
+    WHERE id = ANY(${idArr})
   `);
   const nameById = new Map<string, string>();
   for (const r of Array.from(names) as { id: string; canonical_name: string }[]) {
