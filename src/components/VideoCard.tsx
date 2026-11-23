@@ -1,10 +1,19 @@
+"use client";
+
+import { useState } from "react";
 import type { VideoEntry } from "@/types/videos";
 
-function getEmbedUrl(url: string): string | null {
+interface EmbedInfo {
+  provider: "youtube" | "vimeo";
+  videoId: string;
+  embedUrl: string;
+  thumbnailUrl: string;
+}
+
+function parseEmbed(url: string): EmbedInfo | null {
   try {
     const u = new URL(url);
 
-    // YouTube (regular, shorts, youtu.be)
     if (u.hostname.includes("youtube.com") || u.hostname.includes("youtu.be")) {
       let videoId: string | null = null;
       if (u.hostname.includes("youtu.be")) {
@@ -15,14 +24,23 @@ function getEmbedUrl(url: string): string | null {
         videoId = u.searchParams.get("v");
       }
       if (!videoId || videoId.startsWith("PLACEHOLDER")) return null;
-      return `https://www.youtube-nocookie.com/embed/${videoId}`;
+      return {
+        provider: "youtube",
+        videoId,
+        embedUrl: `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`,
+        thumbnailUrl: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+      };
     }
 
-    // Vimeo
     if (u.hostname.includes("vimeo.com")) {
       const videoId = u.pathname.split("/").filter(Boolean)[0];
       if (!videoId) return null;
-      return `https://player.vimeo.com/video/${videoId}?dnt=1`;
+      return {
+        provider: "vimeo",
+        videoId,
+        embedUrl: `https://player.vimeo.com/video/${videoId}?dnt=1&autoplay=1`,
+        thumbnailUrl: "",
+      };
     }
   } catch {
     // ignore
@@ -31,26 +49,62 @@ function getEmbedUrl(url: string): string | null {
 }
 
 export function VideoCard({ video }: { video: VideoEntry }) {
-  const embedUrl = getEmbedUrl(video.url);
+  const info = parseEmbed(video.url);
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <article className="bg-white rounded-xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-      {embedUrl ? (
-        <div className="aspect-video">
-          <iframe
-            src={embedUrl}
-            title={video.title}
-            loading="lazy"
-            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-full"
-          />
+      {info ? (
+        <div className="aspect-video relative bg-stone-900">
+          {loaded ? (
+            <iframe
+              src={info.embedUrl}
+              title={video.title}
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          ) : (
+            <button
+              type="button"
+              onClick={() => setLoaded(true)}
+              aria-label={`Play video: ${video.title}`}
+              className="w-full h-full relative group focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-400"
+            >
+              {info.provider === "youtube" && info.thumbnailUrl && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={info.thumbnailUrl}
+                  alt=""
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+              )}
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors"
+              >
+                <span className="flex items-center justify-center w-16 h-16 rounded-full bg-black/75 group-hover:bg-red-600 transition-colors shadow-lg">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-7 h-7 text-white translate-x-0.5"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+              </span>
+              <span className="sr-only">
+                Click to load the video player from{" "}
+                {info.provider === "youtube" ? "YouTube" : "Vimeo"}.
+              </span>
+            </button>
+          )}
         </div>
       ) : (
         <div className="aspect-video bg-stone-100 flex items-center justify-center">
           <p className="text-stone-400 text-sm text-center px-4">
-            Video placeholder — replace the URL in{" "}
-            <code className="font-mono">src/data/videos.json</code>
+            Video unavailable
           </p>
         </div>
       )}

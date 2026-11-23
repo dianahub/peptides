@@ -129,6 +129,27 @@ export const peptideGoals = pgTable(
   (t) => [primaryKey({ columns: [t.peptideId, t.goalId] })],
 );
 
+export const videoLocaleEnum = pgEnum("video_locale", ["en", "es", "both"]);
+
+export const featuredVideos = pgTable("featured_videos", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  topicSlug: text("topic_slug").notNull(),
+  youtubeUrl: text("youtube_url").notNull(),
+  title: text("title").notNull(),
+  description: text("description").notNull().default(""),
+  position: integer("position").notNull().default(0),
+  locale: videoLocaleEnum("locale").notNull().default("both"),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
+export type FeaturedVideo = typeof featuredVideos.$inferSelect;
+export type NewFeaturedVideo = typeof featuredVideos.$inferInsert;
+
 export type Peptide = typeof peptides.$inferSelect;
 export type NewPeptide = typeof peptides.$inferInsert;
 export type Paper = typeof papers.$inferSelect;

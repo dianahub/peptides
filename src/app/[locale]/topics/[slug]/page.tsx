@@ -12,6 +12,7 @@ import { PeptideVideos } from "@/components/PeptideVideos";
 import { YouTubeButton } from "@/components/YouTubeButton";
 import { PEPTIDES } from "@/lib/peptides/data";
 import { videosForPeptide, videosForTopic, youtubeSearchUrl } from "@/lib/videos/for-peptide";
+import { getFeaturedVideosForSlug, mergeFeatured } from "@/lib/videos/featured";
 
 interface TopicGroup {
   group: string;
@@ -92,9 +93,11 @@ export default async function TopicPage({
     return names.includes(slug) || slugify(topic.title).includes(slugify(p.canonicalName));
   });
   const videoDisplayName = peptide?.canonicalName ?? topic.title;
-  const ourVideos = peptide
+  const matchedVideos = peptide
     ? videosForPeptide(peptide, slug)
     : videosForTopic(topic.title, slug);
+  const featuredVideosForTopic = await getFeaturedVideosForSlug(slug, localeKey);
+  const ourVideos = mergeFeatured(featuredVideosForTopic, matchedVideos);
   const youtubeUrl = youtubeSearchUrl(videoDisplayName, localeKey);
 
   return (

@@ -19,9 +19,17 @@ export default async function AdminLayout({
 
   return (
     <div className="min-h-screen bg-stone-50">
-      <div className="bg-white border-b border-stone-200 px-4 py-3 flex items-center justify-between max-w-6xl mx-auto">
+      <div className="bg-white border-b border-stone-200 px-4 py-3 flex items-center gap-6 max-w-6xl mx-auto">
         <span className="font-semibold text-stone-700">Futurotek Admin</span>
-        <form action="/api/admin/logout" method="POST">
+        <nav className="flex gap-4 text-sm">
+          <a href="/admin" className="text-stone-600 hover:text-stone-900">
+            Requests
+          </a>
+          <a href="/admin/videos" className="text-stone-600 hover:text-stone-900">
+            Featured videos
+          </a>
+        </nav>
+        <form action="/api/admin/logout" method="POST" className="ml-auto">
           <button
             type="submit"
             className="text-sm text-stone-500 hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded px-2 py-1"

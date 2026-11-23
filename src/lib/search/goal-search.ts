@@ -7,6 +7,7 @@ import { lookupGoal, type Lang } from "@/lib/goals/normalize";
 import { evidenceLabel, type EvidenceLabel } from "@/lib/evidence/label";
 import { peptideTopic, type TopicDetail } from "@/lib/peptides/topic-map";
 import { videosForPeptide, youtubeSearchUrl } from "@/lib/videos/for-peptide";
+import { getFeaturedVideosForSlugs, mergeFeatured } from "@/lib/videos/featured";
 import type { VideoEntry } from "@/types/videos";
 
 export interface TopPaper {
@@ -249,7 +250,10 @@ export async function searchByGoalSlug(
   if (!known) {
     return { query: slug, matched: null, didYouMean: null, peptides: [] };
   }
-  const peptides = await peptidesForGoal(trimmed, lang);
+  const peptides = await attachFeaturedVideos(
+    await peptidesForGoal(trimmed, lang),
+    lang,
+  );
   return {
     query: slug,
     matched: { kind: "goal", slug: trimmed, matchedTerm: trimmed, lang },
@@ -272,7 +276,10 @@ export async function searchByGoalOrPeptide(
 
   const goalMatch = lookupGoal(trimmed, lang);
   if (goalMatch.found) {
-    const peptides = await peptidesForGoal(goalMatch.slug, lang ?? "en");
+    const peptides = await attachFeaturedVideos(
+      await peptidesForGoal(goalMatch.slug, lang ?? "en"),
+      lang ?? "en",
+    );
     return {
       query,
       matched: {
@@ -290,13 +297,14 @@ export async function searchByGoalOrPeptide(
   if (pepMatch.found) {
     const card = await cardForPeptide(pepMatch.id, lang ?? "en");
     const entry = PEPTIDES.find((p) => p.id === pepMatch.id);
+    const withFeatured = card ? await attachFeaturedVideos([card], lang ?? "en") : [];
     return {
       query,
       matched: entry
         ? { kind: "peptide", id: pepMatch.id, canonicalName: entry.canonicalName }
         : null,
       didYouMean: null,
-      peptides: card ? [card] : [],
+      peptides: withFeatured,
     };
   }
 
@@ -307,6 +315,23 @@ export async function searchByGoalOrPeptide(
     didYouMean: peptideDidYouMean(trimmed),
     peptides: [],
   };
+}
+
+async function attachFeaturedVideos(
+  cards: PeptideCard[],
+  locale: Lang,
+): Promise<PeptideCard[]> {
+  const slugs = cards
+    .map((c) => c.topicSlug)
+    .filter((s): s is string => Boolean(s));
+  if (slugs.length === 0) return cards;
+  const featuredMap = await getFeaturedVideosForSlugs(slugs, locale);
+  return cards.map((c) => {
+    if (!c.topicSlug) return c;
+    const featured = featuredMap.get(c.topicSlug) ?? [];
+    if (featured.length === 0) return c;
+    return { ...c, ourVideos: mergeFeatured(featured, c.ourVideos) };
+  });
 }
 
 export interface GoalForMenu {
