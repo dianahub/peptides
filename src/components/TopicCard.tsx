@@ -8,21 +8,24 @@ import { YouTubeButton } from "./YouTubeButton";
 import topicDetails from "@/data/topicDetails.json";
 import { slugify } from "@/lib/slugify";
 import { videosForTopic, youtubeSearchUrl } from "@/lib/videos/for-peptide";
+import { mergeFeatured } from "@/lib/videos/merge";
+import type { VideoEntry } from "@/types/videos";
 
 interface TopicCardProps {
   title: string;
   researchArea: string;
   group: string;
+  featuredVideos?: VideoEntry[];
 }
 
-export function TopicCard({ title, researchArea, group }: TopicCardProps) {
+export function TopicCard({ title, researchArea, group, featuredVideos = [] }: TopicCardProps) {
   const t = useTranslations("topics");
   const locale = useLocale();
   const consultationParams = new URLSearchParams({ topic: `${title} (${group})` });
   const hasDetail = title in topicDetails;
   const isKlow = title === "KLOW";
   const slug = slugify(title);
-  const ourVideos = videosForTopic(title, slug);
+  const ourVideos = mergeFeatured(featuredVideos, videosForTopic(title, slug));
   const youtubeUrl = youtubeSearchUrl(title, locale === "es" ? "es" : "en");
 
   return (

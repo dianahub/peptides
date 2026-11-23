@@ -43,6 +43,13 @@
       "when": 1795292614387,
       "tag": "0005_papers_abstract_extraction",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1795458367705,
+      "tag": "0006_featured_videos",
+      "breakpoints": true
     }
   ]
 }

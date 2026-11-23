@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { TopicCard } from "@/components/TopicCard";
 import topicsData from "@/data/topics.json";
+import { slugify } from "@/lib/slugify";
+import { getFeaturedVideosForSlugs } from "@/lib/videos/featured";
 
 interface TopicGroup {
   group: string;
@@ -31,6 +33,15 @@ export default async function TopicsPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "topics" });
+
+  const allSlugs = Array.from(
+    new Set(
+      (topicsData as TopicGroup[]).flatMap((g) =>
+        g.items.map((i) => slugify(i.title)),
+      ),
+    ),
+  );
+  const featuredMap = await getFeaturedVideosForSlugs(allSlugs);
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
@@ -75,6 +86,7 @@ export default async function TopicsPage({
                   title={item.title}
                   researchArea={item.researchArea}
                   group={group.group}
+                  featuredVideos={featuredMap.get(slugify(item.title)) ?? []}
                 />
               ))}
             </div>
