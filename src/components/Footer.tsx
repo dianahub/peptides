@@ -13,6 +13,7 @@ export function Footer() {
     { href: "/topics" as const, label: t("topics") },
     { href: "/consultation" as const, label: t("consultation") },
     { href: "/about" as const, label: t("about") },
+    { href: "/sourcing" as const, label: t("sourcing") },
     { href: "/disclaimer" as const, label: t("disclaimerLink") },
     { href: "/privacy" as const, label: t("privacy") },
     { href: "/terms" as const, label: t("terms") },
