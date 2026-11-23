@@ -50,6 +50,13 @@ export function Nav() {
             </span>
             <span className="text-xs tabular-nums">+1 (202) 640-0054</span>
           </a>
+          <Link
+            href="/sourcing"
+            aria-current={pathname === "/sourcing" ? "page" : undefined}
+            className="text-xs text-white/55 hover:text-white/85 transition-colors whitespace-nowrap"
+          >
+            {t("sourcing")}
+          </Link>
           <LocaleSwitcher />
         </div>
       </div>
@@ -133,6 +140,14 @@ export function Nav() {
             <span className="text-[11px] uppercase tracking-wider text-white/50">{t("referralLine")}</span>
             <span className="tabular-nums">+1 (202) 640-0054</span>
           </a>
+          <Link
+            href="/sourcing"
+            aria-current={pathname === "/sourcing" ? "page" : undefined}
+            onClick={() => setOpen(false)}
+            className="block py-3 border-b border-white/10 text-white/70 hover:text-white text-sm transition-colors whitespace-nowrap"
+          >
+            {t("sourcing")}
+          </Link>
           <div className="pt-3 pb-1 border-b border-white/10">
             <NavSearch variant="mobile" onNavigate={() => setOpen(false)} />
           </div>
