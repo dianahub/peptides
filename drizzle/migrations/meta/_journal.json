@@ -50,6 +50,13 @@
       "when": 1795458367705,
       "tag": "0006_featured_videos",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1795459354550,
+      "tag": "0007_featured_videos_locale",
+      "breakpoints": true
     }
   ]
 }

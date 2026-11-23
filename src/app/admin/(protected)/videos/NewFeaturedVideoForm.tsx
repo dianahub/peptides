@@ -3,7 +3,13 @@
 import { useTransition, useRef } from "react";
 import { createFeaturedVideo } from "./actions";
 
-export function NewFeaturedVideoForm({ slugOptions }: { slugOptions: string[] }) {
+export function NewFeaturedVideoForm({
+  slugOptions,
+  defaultLocale,
+}: {
+  slugOptions: string[];
+  defaultLocale: "en" | "es";
+}) {
   const [isPending, startTransition] = useTransition();
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -62,10 +68,20 @@ export function NewFeaturedVideoForm({ slugOptions }: { slugOptions: string[] })
         title="Lower = earlier"
         className="border border-stone-300 rounded px-2 py-1 text-sm w-20"
       />
+      <select
+        name="locale"
+        defaultValue={defaultLocale}
+        title="Locale: en shows only on /en; es only on /es; both shows on both"
+        className="border border-stone-300 rounded px-2 py-1 text-sm"
+      >
+        <option value="en">EN</option>
+        <option value="es">ES</option>
+        <option value="both">Both</option>
+      </select>
       <textarea
         name="description"
         placeholder="Description (optional)"
-        className="border border-stone-300 rounded px-2 py-1 text-sm sm:col-span-5"
+        className="border border-stone-300 rounded px-2 py-1 text-sm sm:col-span-4"
         rows={2}
       />
       <button

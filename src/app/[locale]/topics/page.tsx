@@ -41,7 +41,10 @@ export default async function TopicsPage({
       ),
     ),
   );
-  const featuredMap = await getFeaturedVideosForSlugs(allSlugs);
+  const featuredMap = await getFeaturedVideosForSlugs(
+    allSlugs,
+    locale === "es" ? "es" : "en",
+  );
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">

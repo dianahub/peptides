@@ -24,6 +24,7 @@ const inputSchema = z.object({
   title: z.string().trim().min(1).max(200),
   description: z.string().trim().max(1000).default(""),
   position: z.coerce.number().int().min(0).max(999).default(0),
+  locale: z.enum(["en", "es", "both"]).default("both"),
 });
 
 function parse(formData: FormData) {
@@ -33,6 +34,7 @@ function parse(formData: FormData) {
     title: formData.get("title"),
     description: formData.get("description") ?? "",
     position: formData.get("position") ?? 0,
+    locale: formData.get("locale") ?? "both",
   });
 }
 
@@ -55,6 +57,7 @@ export async function createFeaturedVideo(formData: FormData) {
     title: data.title,
     description: data.description,
     position: data.position,
+    locale: data.locale,
   });
   revalidateEverywhere(data.topicSlug);
 }
@@ -71,6 +74,7 @@ export async function updateFeaturedVideo(id: string, formData: FormData) {
       title: data.title,
       description: data.description,
       position: data.position,
+      locale: data.locale,
       updatedAt: new Date(),
     })
     .where(eq(featuredVideos.id, uuid));

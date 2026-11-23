@@ -96,7 +96,7 @@ export default async function TopicPage({
   const matchedVideos = peptide
     ? videosForPeptide(peptide, slug)
     : videosForTopic(topic.title, slug);
-  const featuredVideosForTopic = await getFeaturedVideosForSlug(slug);
+  const featuredVideosForTopic = await getFeaturedVideosForSlug(slug, localeKey);
   const ourVideos = mergeFeatured(featuredVideosForTopic, matchedVideos);
   const youtubeUrl = youtubeSearchUrl(videoDisplayName, localeKey);
 

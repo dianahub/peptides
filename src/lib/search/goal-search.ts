@@ -252,6 +252,7 @@ export async function searchByGoalSlug(
   }
   const peptides = await attachFeaturedVideos(
     await peptidesForGoal(trimmed, lang),
+    lang,
   );
   return {
     query: slug,
@@ -277,6 +278,7 @@ export async function searchByGoalOrPeptide(
   if (goalMatch.found) {
     const peptides = await attachFeaturedVideos(
       await peptidesForGoal(goalMatch.slug, lang ?? "en"),
+      lang ?? "en",
     );
     return {
       query,
@@ -295,7 +297,7 @@ export async function searchByGoalOrPeptide(
   if (pepMatch.found) {
     const card = await cardForPeptide(pepMatch.id, lang ?? "en");
     const entry = PEPTIDES.find((p) => p.id === pepMatch.id);
-    const withFeatured = card ? await attachFeaturedVideos([card]) : [];
+    const withFeatured = card ? await attachFeaturedVideos([card], lang ?? "en") : [];
     return {
       query,
       matched: entry
@@ -315,12 +317,15 @@ export async function searchByGoalOrPeptide(
   };
 }
 
-async function attachFeaturedVideos(cards: PeptideCard[]): Promise<PeptideCard[]> {
+async function attachFeaturedVideos(
+  cards: PeptideCard[],
+  locale: Lang,
+): Promise<PeptideCard[]> {
   const slugs = cards
     .map((c) => c.topicSlug)
     .filter((s): s is string => Boolean(s));
   if (slugs.length === 0) return cards;
-  const featuredMap = await getFeaturedVideosForSlugs(slugs);
+  const featuredMap = await getFeaturedVideosForSlugs(slugs, locale);
   return cards.map((c) => {
     if (!c.topicSlug) return c;
     const featured = featuredMap.get(c.topicSlug) ?? [];

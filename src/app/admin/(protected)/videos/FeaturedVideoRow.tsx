@@ -11,7 +11,7 @@ export function FeaturedVideoRow({ video }: { video: FeaturedVideo }) {
   if (editing) {
     return (
       <tr className="border-t border-stone-200 bg-sky-50">
-        <td colSpan={6} className="px-3 py-3">
+        <td colSpan={7} className="px-3 py-3">
           <form
             action={(fd) =>
               startTransition(async () => {
@@ -28,6 +28,15 @@ export function FeaturedVideoRow({ video }: { video: FeaturedVideo }) {
               required
               className="border border-stone-300 rounded px-2 py-1 text-sm"
             />
+            <select
+              name="locale"
+              defaultValue={video.locale}
+              className="border border-stone-300 rounded px-2 py-1 text-sm"
+            >
+              <option value="en">EN</option>
+              <option value="es">ES</option>
+              <option value="both">Both</option>
+            </select>
             <input
               name="youtubeUrl"
               defaultValue={video.youtubeUrl}
@@ -53,7 +62,7 @@ export function FeaturedVideoRow({ video }: { video: FeaturedVideo }) {
               name="description"
               defaultValue={video.description}
               placeholder="Description"
-              className="border border-stone-300 rounded px-2 py-1 text-sm sm:col-span-6"
+              className="border border-stone-300 rounded px-2 py-1 text-sm sm:col-span-5"
               rows={2}
             />
             <div className="sm:col-span-6 flex gap-2 justify-end">
@@ -83,6 +92,17 @@ export function FeaturedVideoRow({ video }: { video: FeaturedVideo }) {
     <tr className="border-t border-stone-200">
       <td className="px-3 py-2 text-sm font-mono text-stone-700">
         {video.topicSlug}
+      </td>
+      <td className="px-3 py-2 text-xs">
+        <span
+          className={`inline-block rounded px-1.5 py-0.5 uppercase font-semibold ${
+            video.locale === "both"
+              ? "bg-stone-200 text-stone-700"
+              : "bg-sky-100 text-sky-700"
+          }`}
+        >
+          {video.locale}
+        </span>
       </td>
       <td className="px-3 py-2 text-sm">
         <a
