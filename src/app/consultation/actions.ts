@@ -2,6 +2,16 @@
 
 import { z } from "zod";
 import { headers } from "next/headers";
+import { db } from "@/db";
+import { consultationRequests } from "@/db/schema";
+import { hashIp } from "@/lib/ip-hash";
+import { checkRateLimit, recordRateLimitHit } from "@/lib/rate-limit";
+import { sendAdminNotification } from "@/lib/email";
+
+const CONSENT_TEXT_EN =
+  "My name, email, and topic of interest will be shared with The Longevity Consultants so they can contact me about a consultation.";
+const CONSENT_TEXT_ES =
+  "Mi nombre, correo electrónico e interés temático serán compartidos con The Longevity Consultants para que puedan contactarme sobre una consulta.";
 
 function getSchema(isEs: boolean) {
   return z.object({
@@ -23,8 +33,6 @@ type FormState = {
   error?: string;
   fieldErrors?: Record<string, string>;
 } | null;
-
-const LEAD_API = process.env.LEAD_API_URL ?? "https://futurotekhealth.com/api/lead";
 
 export async function submitConsultation(
   _prev: FormState,
@@ -69,47 +77,53 @@ export async function submitConsultation(
     headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ??
     headersList.get("x-real-ip") ??
     "unknown";
+  const ipHash = hashIp(clientIp);
+
+  if (!(await checkRateLimit(ipHash))) {
+    return {
+      error: isEs
+        ? "Demasiadas solicitudes. Por favor intente de nuevo más tarde."
+        : "Too many requests. Please try again later.",
+    };
+  }
+
+  const submittedAt = new Date();
+  const consentText = isEs ? CONSENT_TEXT_ES : CONSENT_TEXT_EN;
 
   try {
-    const res = await fetch(LEAD_API, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Client-IP": clientIp,
-      },
-      body: JSON.stringify({
-        name: parsed.data.name,
-        email: parsed.data.email,
-        phone: parsed.data.phone ?? undefined,
-        interest: parsed.data.topic ?? "Peptides",
-        message: parsed.data.message ?? undefined,
-        source: "peptides",
-      }),
+    await db.insert(consultationRequests).values({
+      name: parsed.data.name,
+      email: parsed.data.email,
+      message: parsed.data.message ?? null,
+      topic: parsed.data.topic ?? null,
+      consentGiven: true,
+      consentText,
+      consentedAt: submittedAt,
+      ipHash,
     });
-
-    if (!res.ok) {
-      const data = await res.json().catch(() => ({}));
-      if (res.status === 429) {
-        return {
-          error: isEs
-            ? "Demasiadas solicitudes. Por favor intente de nuevo más tarde."
-            : "Too many requests. Please try again later.",
-        };
-      }
-      console.error("[submitConsultation] API error:", res.status, data);
-      return {
-        error: isEs
-          ? "Algo salió mal. Por favor intente de nuevo."
-          : "Something went wrong. Please try again.",
-      };
-    }
   } catch (err) {
-    console.error("[submitConsultation] fetch error:", err);
+    console.error("[submitConsultation] DB insert failed:", err);
     return {
       error: isEs
         ? "No se pudo enviar su solicitud. Por favor intente de nuevo."
         : "Could not submit your request. Please try again.",
     };
+  }
+
+  await recordRateLimitHit(ipHash);
+
+  try {
+    await sendAdminNotification({
+      name: parsed.data.name,
+      email: parsed.data.email,
+      phone: parsed.data.phone ?? null,
+      message: parsed.data.message ?? null,
+      topic: parsed.data.topic ?? null,
+      locale: isEs ? "es" : "en",
+      submittedAt,
+    });
+  } catch (err) {
+    console.error("[submitConsultation] email notification failed:", err);
   }
 
   return { success: true };
